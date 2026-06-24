@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Data Architect | Investment &amp; ROI Calculator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fbf9f8",
+                        "background": "#fbf9f8",
+                        "on-surface": "#1b1c1c",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#003f23",
+                        "inverse-on-surface": "#f3f0f0",
+                        "inverse-primary": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#455f88",
+                        "on-secondary-fixed-variant": "#004881",
+                        "secondary-container": "#7db6ff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#303030",
+                        "surface-container-low": "#f6f3f2",
+                        "on-tertiary-fixed": "#002110",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-variant": "#e4e2e1",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "error-container": "#ffdad6",
+                        "on-background": "#1b1c1c",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary-fixed-dim": "#74db9d",
+                        "secondary-fixed": "#d3e4ff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#91f8b8",
+                        "surface-container": "#f0eded",
+                        "surface-container-high": "#eae8e7",
+                        "secondary": "#1960a3",
+                        "outline": "#74777f",
+                        "on-secondary-container": "#00477f",
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "on-tertiary-container": "#4bb278",
+                        "surface-dim": "#dcd9d9",
+                        "surface": "#fbf9f8",
+                        "tertiary": "#002713",
+                        "primary-container": "#1a365d",
+                        "primary": "#002045"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #002045;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-[#fbf9f8]/80 dark:bg-[#1b1c1c]/80 backdrop-blur-xl docked full-width top-0 z-50 sticky shadow-[0_12px_32px_rgba(27,28,28,0.04)]">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-[1440px] mx-auto">
+<div class="text-lg font-bold tracking-tighter text-[#002045] dark:text-[#fbf9f8]">The Data Architect</div>
+<div class="hidden md:flex gap-8 items-center font-['Inter'] font-medium text-sm tracking-tight">
+<a class="text-[#43474e] dark:text-[#e4e2e1] hover:text-[#002045] transition-all" href="#">Market Intel</a>
+<a class="text-[#43474e] dark:text-[#e4e2e1] hover:text-[#002045] transition-all" href="#">Portfolio</a>
+<a class="text-[#43474e] dark:text-[#e4e2e1] hover:text-[#002045] transition-all" href="#">Neighborhoods</a>
+<a class="text-[#43474e] dark:text-[#e4e2e1] hover:text-[#002045] transition-all" href="#">Agents</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#002045] cursor-pointer hover:opacity-80 transition-all">notifications</span>
+<span class="material-symbols-outlined text-[#002045] cursor-pointer hover:opacity-80 transition-all">chat_bubble</span>
+<img alt="User profile avatar" class="w-8 h-8 rounded-full bg-surface-container-high" data-alt="close-up portrait of a professional analyst in a clean corporate attire with soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4cI1hdjvSB4oMa1z4voHivyHh7cB78toEwqcpie2TbXgy1aW35WvVnpfbrLqfXQwbEB5EFgHmcY7q8V5C_q9qmOzI7mnKYdwNhmw9bBEV38gfzVnUxeh3uBoBqfpN2Kbwu9hplgeEz3XzmtIYrmojzz936Yah7KHC0KO8AVRGBnpGdWkvyfdof_reLMo804PpWCG-Be_Zw9LOu4zHspf59ld2IJcD_hG8x_f4_3RCVMk4DEDiWHct0Ci0-5r8p6RxyOcxiZSR8vk"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop) -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-[#f6f3f2] dark:bg-[#1b1c1c] p-6 gap-2 z-40 mt-16">
+<div class="mb-8">
+<div class="font-black text-[#002045] dark:text-[#fbf9f8] uppercase tracking-widest text-xs">The Data Architect</div>
+<div class="text-[#002045] dark:text-[#74db9d] text-xs opacity-70">Market Intelligence</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-[#43474e] hover:bg-[#fbf9f8] rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm font-medium tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-[#2a2b2b] text-[#002045] dark:text-[#74db9d] rounded-lg shadow-sm font-semibold transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">calculate</span>
+<span class="text-sm font-medium tracking-wide">Calculate</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#43474e] hover:bg-[#fbf9f8] rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-sm font-medium tracking-wide">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#43474e] hover:bg-[#fbf9f8] rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="text-sm font-medium tracking-wide">Saved Properties</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#43474e] hover:bg-[#fbf9f8] rounded-lg transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm font-medium tracking-wide">Settings</span>
+</a>
+</div>
+<div class="mt-auto pt-6">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-white rounded-xl font-bold text-sm shadow-md hover:opacity-90 transition-all">
+                Upgrade to Pro
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-8 pb-32 px-4 md:px-8 max-w-[1200px]">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row justify-between items-end gap-4">
+<div>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-secondary mb-2 block">Institutional Grade Analysis</span>
+<h1 class="text-4xl md:text-5xl font-black text-primary tracking-tighter leading-tight">Ontario Investment <br/>ROI Engine</h1>
+</div>
+<div class="bg-surface-container-low px-6 py-4 rounded-xl flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Market Hotness</span>
+<span class="text-lg font-bold text-tertiary-fixed-dim">Toronto Core: +4.2%</span>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold tracking-widest text-on-surface-variant">Avg. Cap Rate</span>
+<span class="text-lg font-bold text-primary">3.8% — 4.5%</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid Analysis -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Principal Inputs (Glassmorphism Card) -->
+<section class="md:col-span-4 bg-surface-container-lowest rounded-2xl p-8 shadow-[0_12px_32px_rgba(27,28,28,0.04)] flex flex-col gap-8">
+<h3 class="text-lg font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">tune</span>
+                    Parameters
+                </h3>
+<div class="space-y-6">
+<div class="group">
+<label class="block text-[10px] uppercase font-black tracking-widest text-on-surface-variant mb-2">Purchase Price (CAD)</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-primary opacity-50">$</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-8 pr-4 font-bold text-primary focus:ring-2 focus:ring-secondary/20 outline-none transition-all" type="text" value="1,250,000"/>
+</div>
+</div>
+<div class="group">
+<div class="flex justify-between items-center mb-2">
+<label class="text-[10px] uppercase font-black tracking-widest text-on-surface-variant">Mortgage Rate</label>
+<span class="text-sm font-bold text-primary">5.25%</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-high rounded-lg appearance-none cursor-pointer accent-primary" max="10" min="1" step="0.25" type="range" value="5.25"/>
+</div>
+<div class="group">
+<label class="block text-[10px] uppercase font-black tracking-widest text-on-surface-variant mb-2">Down Payment</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="bg-primary text-white py-2 rounded-lg text-xs font-bold">20%</button>
+<button class="bg-surface-container-high text-on-surface-variant py-2 rounded-lg text-xs font-bold">Custom</button>
+</div>
+</div>
+<div class="pt-4 border-t border-surface-container-high">
+<h4 class="text-xs font-bold text-on-surface mb-4">Location Adjustments</h4>
+<select class="w-full bg-surface-container-low border-none rounded-xl py-3 px-4 font-medium text-sm text-primary appearance-none outline-none">
+<option>Toronto - Waterfront Communities</option>
+<option>Toronto - Annex</option>
+<option>Mississauga - City Centre</option>
+<option>Ottawa - ByWard Market</option>
+</select>
+</div>
+</div>
+</section>
+<!-- Cash Flow Projections (Main Data Visualization Placeholder) -->
+<section class="md:col-span-8 bg-surface-container-low rounded-2xl p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="text-2xl font-black text-primary tracking-tight">10-Year Cash Flow Projection</h3>
+<p class="text-sm text-on-surface-variant mt-1">Inflation adjusted at 2.5% annually</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-sm uppercase tracking-tighter">Growth Forecast: High</span>
+</div>
+</div>
+<!-- Asymmetric Visualization Concept -->
+<div class="relative h-64 w-full flex items-end gap-1 overflow-hidden rounded-xl bg-surface-container-lowest/50 p-4">
+<div class="h-[20%] w-full bg-primary/10 rounded-t-sm"></div>
+<div class="h-[25%] w-full bg-primary/20 rounded-t-sm"></div>
+<div class="h-[30%] w-full bg-primary/30 rounded-t-sm"></div>
+<div class="h-[38%] w-full bg-primary/40 rounded-t-sm"></div>
+<div class="h-[45%] w-full bg-primary/50 rounded-t-sm"></div>
+<div class="h-[55%] w-full bg-primary/60 rounded-t-sm"></div>
+<div class="h-[62%] w-full bg-primary/70 rounded-t-sm"></div>
+<div class="h-[75%] w-full bg-primary/80 rounded-t-sm"></div>
+<div class="h-[88%] w-full bg-secondary rounded-t-sm"></div>
+<div class="h-[100%] w-full bg-gradient-to-t from-primary to-secondary rounded-t-sm"></div>
+<div class="absolute top-8 left-8 flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold text-on-surface-variant">Net Profit Year 10</span>
+<span class="text-3xl font-black text-primary">$412,400</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-secondary shadow-sm">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-1">Cap Rate</span>
+<span class="text-lg font-black text-primary">4.12%</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-tertiary-fixed-dim shadow-sm">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-1">GRM</span>
+<span class="text-lg font-black text-primary">16.4</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-error/50 shadow-sm">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-1">Mo. Cashflow</span>
+<span class="text-lg font-black text-primary">$840</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-primary shadow-sm">
+<span class="text-[10px] font-bold uppercase text-on-surface-variant block mb-1">IRR (10Y)</span>
+<span class="text-lg font-black text-primary">14.8%</span>
+</div>
+</div>
+</section>
+<!-- Buy vs Rent Analysis -->
+<section class="md:col-span-7 bg-surface-container-lowest rounded-2xl p-8 shadow-[0_12px_32px_rgba(27,28,28,0.04)]">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-xl font-black text-primary tracking-tight italic">Buy vs. Rent Scenarios</h3>
+<div class="flex items-center gap-2 text-xs font-bold text-secondary">
+<span class="material-symbols-outlined text-sm">info</span>
+                        Toronto Average Rent: $3,100
+                    </div>
+</div>
+<div class="flex flex-col gap-4">
+<!-- Buying Bar -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase text-on-surface-variant">
+<span>Cost of Ownership (Monthly)</span>
+<span class="text-primary">$6,450</span>
+</div>
+<div class="w-full bg-surface-container-low h-4 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+<!-- Renting Bar -->
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold uppercase text-on-surface-variant">
+<span>Cost of Renting (Monthly)</span>
+<span class="text-primary">$3,800</span>
+</div>
+<div class="w-full bg-surface-container-low h-4 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[50%]"></div>
+</div>
+</div>
+<div class="mt-6 p-6 bg-surface-container-low rounded-xl">
+<p class="text-sm text-on-surface leading-relaxed">
+<strong class="text-primary">The Breakeven Point:</strong> In the Toronto market at current rates, buying this asset outperforms renting after <span class="font-bold text-secondary">6.4 years</span> when accounting for principal pay-down and 3.5% average appreciation.
+                        </p>
+</div>
+</div>
+</section>
+<!-- Local Taxes & Maintenance -->
+<section class="md:col-span-5 bg-[#002045] text-white rounded-2xl p-8 relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary-fixed-dim">verified</span>
+                        Regional Estimates
+                    </h3>
+<div class="space-y-6">
+<div class="flex justify-between items-center py-2 border-b border-white/10">
+<span class="text-sm font-medium opacity-70">Property Tax (Toronto)</span>
+<span class="font-bold">$7,880 /yr</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-white/10">
+<span class="text-sm font-medium opacity-70">Maintenance (1% Rule)</span>
+<span class="font-bold">$12,500 /yr</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-white/10">
+<span class="text-sm font-medium opacity-70">Land Transfer Tax</span>
+<span class="font-bold text-tertiary-fixed-dim">$42,950</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-sm font-medium opacity-70">Expected Vacancy (2%)</span>
+<span class="font-bold">$1,200 /yr</span>
+</div>
+</div>
+<button class="mt-8 w-full py-4 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl font-bold transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Tax Report
+                    </button>
+</div>
+<!-- Abstract Texture Overlay -->
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary/20 rounded-full blur-3xl"></div>
+</section>
+</div>
+<!-- Dynamic Neighborhood Map Selection -->
+<section class="mt-12">
+<h3 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-6">Compare Performance by Neighborhood</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img alt="Toronto Liberty Village aerial" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="aerial drone photography of liberty village toronto showing modern condo buildings and historical brick architecture at sunrise" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyKo5jiGlMf8t6sQbt1fui-XY60kD8RAbTVfAfLMzEeg9yVkS4Je-qUhJ5BIwMSAOywxRL_XmP0J7RVrJ3A5N-tQoidKm69Wv8e0OLEBkwkLlLat4MLyueDOUXDuqWWtyxc-yTObYHDqgRUax-33qtnv7aYlSBE6PMU3_s2dbiGrbeviK2kRPOukGhEbhZPe8UKkmhKqz2ug4YC8e0ZsprKLaPc2uqt_O0PQB8ueOnpyqe2_hHWx4NFuibjg5-2dPv8JZ5ao9x88E"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="text-white font-bold">Liberty Village</span>
+</div>
+</div>
+<div class="flex justify-between items-center px-2">
+<span class="text-xs text-on-surface-variant">Avg. ROI</span>
+<span class="text-sm font-bold text-secondary">+12.4%</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img alt="Toronto Leslieville streetscape" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="charming streetscape in leslieville toronto with boutique storefronts and mature trees in soft afternoon sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAaXphO3uIhuEA1aslDhekr83V6ArdQcbhtbnMGrBXt0_p510GGyqa5KfKftawdZ0hRDi_Pn37M7oOYLgxKvmglx4CGjfXqwOgF6ZV2mpRFKnHtiog52hKuzxxUW0FW6zjQVHz-YQdTYMnu9dEz5iWOpLxhoHmsh4Pga-9HEHYXmI3l8vHGor83pc6_Go_ALeKNfmkr60N0HS7Wwkt7Wy2nQMQSfA92DugGVSiuhO05skjRqR-E_JLE_T7CrmsqTodN3MGKeirlLY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="text-white font-bold">Leslieville</span>
+</div>
+</div>
+<div class="flex justify-between items-center px-2">
+<span class="text-xs text-on-surface-variant">Avg. ROI</span>
+<span class="text-sm font-bold text-secondary">+10.8%</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="relative h-40 rounded-2xl overflow-hidden mb-3">
+<img alt="Toronto The Kingsway residential" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="luxury residential neighborhood the kingsway toronto with grand traditional homes and manicured lawns under a clear blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcgM8irc5o6vfS_swwa6eRQROQYYL8PLlh_MdxPFNRXTnf2z6XMJfJuppKCgnpCaIgpk4ZdlA8jyqJJNcA4faZJ8xcQHDDwiBMlsnlKyZcT6jRmqOLpH6drH0gOsxLJuw5QNVI-LwFBkROzMW9IP5uSwvQ6IWn8KVGY23ykPTRjXVaCC709Srp09YVKiADbhwt4_eYWB-ivsKD3KK42RffhFrRnHUY2eBG4WHQ4QX6XIlBI3XDLczY6BKj500DlMwRn4qey9o3Np0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="text-white font-bold">The Kingsway</span>
+</div>
+</div>
+<div class="flex justify-between items-center px-2">
+<span class="text-xs text-on-surface-variant">Avg. ROI</span>
+<span class="text-sm font-bold text-secondary">+8.2%</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full bg-[#fbf9f8]/90 dark:bg-[#1b1c1c]/90 backdrop-blur-lg border-t border-[#e4e2e1]/20 flex justify-around items-center px-4 py-3 pb-safe z-50">
+<div class="flex flex-col items-center justify-center text-[#43474e] dark:text-[#e4e2e1] px-4 py-1.5 transition-all hover:bg-[#f6f3f2]">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Inter'] text-[10px] uppercase font-bold tracking-widest mt-1">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#002045] dark:bg-[#74db9d] text-white dark:text-[#002045] rounded-xl px-4 py-1.5 scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-['Inter'] text-[10px] uppercase font-bold tracking-widest mt-1">Calculate</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#43474e] dark:text-[#e4e2e1] px-4 py-1.5 transition-all hover:bg-[#f6f3f2]">
+<span class="material-symbols-outlined">diversity_3</span>
+<span class="font-['Inter'] text-[10px] uppercase font-bold tracking-widest mt-1">Network</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#43474e] dark:text-[#e4e2e1] px-4 py-1.5 transition-all hover:bg-[#f6f3f2]">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-['Inter'] text-[10px] uppercase font-bold tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

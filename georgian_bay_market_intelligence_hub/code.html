@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Georgian Bay Market Intelligence Hub | Polsinello Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary": "#ffffff",
+                "background": "#fbf9f8",
+                "on-surface-variant": "#43474e",
+                "secondary": "#1960a3",
+                "surface-dim": "#dcd9d9",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "outline": "#74777f",
+                "on-secondary-fixed": "#001c38",
+                "secondary-fixed": "#d3e4ff",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#a2c9ff",
+                "on-background": "#1b1c1c",
+                "on-secondary-fixed-variant": "#004881",
+                "secondary-container": "#7db6ff",
+                "outline-variant": "#c4c6cf",
+                "on-secondary": "#ffffff",
+                "error": "#ba1a1a",
+                "tertiary-container": "#003f23",
+                "on-error-container": "#93000a",
+                "on-tertiary-container": "#4bb278",
+                "tertiary-fixed": "#91f8b8",
+                "inverse-surface": "#303030",
+                "surface-tint": "#455f88",
+                "on-secondary-container": "#00477f",
+                "surface-container-high": "#eae8e7",
+                "surface-container": "#f0eded",
+                "on-tertiary-fixed-variant": "#00522f",
+                "on-surface": "#1b1c1c",
+                "on-primary-fixed": "#001b3c",
+                "surface": "#fbf9f8",
+                "inverse-primary": "#adc7f7",
+                "surface-container-low": "#f6f3f2",
+                "primary": "#002045",
+                "on-primary-fixed-variant": "#2d476f",
+                "primary-container": "#1a365d",
+                "on-tertiary-fixed": "#002110",
+                "surface-variant": "#e4e2e1",
+                "primary-fixed": "#d6e3ff",
+                "tertiary-fixed-dim": "#74db9d",
+                "inverse-on-surface": "#f3f0f0",
+                "on-error": "#ffffff",
+                "surface-container-highest": "#e4e2e1",
+                "on-primary-container": "#86a0cd",
+                "surface-bright": "#fbf9f8",
+                "tertiary": "#002713",
+                "primary-fixed-dim": "#adc7f7"
+            },
+            "fontFamily": {
+                "headline": ["Inter", "sans-serif"],
+                "display": ["Inter", "sans-serif"],
+                "body": ["Inter", "sans-serif"],
+                "label": ["Inter", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(12px); background: rgba(251, 249, 248, 0.8); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .chart-line { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear forwards; }
+        @keyframes dash { to { stroke-dashoffset: 0; } }
+        .gradient-text { background: linear-gradient(135deg, #002045 0%, #1960a3 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateListing",
+      "name": "Georgian Bay Market Intelligence Hub",
+      "description": "Institutional-grade real estate market data for Georgian Bay area by Polsinello Insights.",
+      "brand": {
+        "@type": "Brand",
+        "name": "Polsinello Insights",
+        "slogan": "Heritage Intelligence Since 1989"
+      },
+      "areaServed": "Georgian Bay, Ontario",
+      "telephone": "(905) 830-9111"
+    }
+    </script>
+</head>
+<body class="selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-2xl font-bold text-on-surface tracking-tight">Polsinello Insights</span>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary py-1 text-sm" href="#">Market Intelligence</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-sm" href="#">Asset Classes</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors text-sm" href="#">Forecasts</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container rounded-full px-4 py-2 gap-2 border border-transparent focus-within:border-primary-container transition-all">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 p-0" placeholder="Search Markets..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface">monitor_heart</span></button>
+<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface">notifications</span></button>
+<button class="p-2 hover:bg-surface-variant/50 rounded-full transition-colors"><span class="material-symbols-outlined text-on-surface">settings</span></button>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden ml-2">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a real estate executive with a focused, authoritative expression, wearing a tailored navy suit. The lighting is crisp and editorial, set against a blurred high-end office interior with warm oak textures and soft ambient highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1ME-eHHm7RiKet9VU7Dmq5GH8nCupxmAEgGaCrpdNB7Iufe5FQV1dMH-_k3gHUFgyyj9q1yPSBcEU2c1ENt2igeCmcjVEvaQwY5t_CMHKPU5DgRJsBP0h-vUELuzPJ-0T6zM6kxcv1cYAVs8HDasebFH7guBdiTTZW4RZy0ezT2U9mMe-gq7HHa3uVumakmhMH93sADdpnejptdE8fY7F4Ajp0bjVgMrPVMmnpbSOtmxuVNhRChEhUE1kgjFKw3qons3BliEoAfA"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex pt-[73px]">
+<!-- SideNavBar -->
+<aside class="fixed left-0 bottom-0 top-[73px] hidden md:flex flex-col w-64 bg-surface-container border-r border-outline-variant py-6">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-md text-xs font-bold tracking-tighter text-on-surface uppercase">Terminal</span>
+<span class="text-[10px] bg-tertiary-container text-on-tertiary-container px-1.5 rounded">V3.5.2</span>
+</div>
+<p class="text-[10px] text-on-surface-variant font-medium">GEORGIAN BAY NODE ACTIVE</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-6 py-3 bg-secondary-container text-on-secondary-container border-r-2 border-tertiary" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-sm font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span>
+<span class="text-sm font-medium">Market Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined text-lg">fact_check</span>
+<span class="text-sm font-medium">Asset Audit</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined text-lg">terminal</span>
+<span class="text-sm font-medium">Terminal</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined text-lg">gavel</span>
+<span class="text-sm font-medium">Compliance</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined text-lg">location_city</span>
+<span class="text-sm font-medium">Portfolio</span>
+</a>
+</nav>
+<div class="px-4 mt-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+                    New Analysis
+                </button>
+</div>
+<div class="mt-auto px-6 space-y-4 pt-6 border-t border-outline-variant/30">
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+<span class="text-xs font-medium">System Logs</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">contact_support</span>
+<span class="text-xs font-medium">Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 md:ml-64 p-6 md:p-10 min-h-screen">
+<!-- Hero Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Heritage Intelligence</span>
+<span class="text-on-surface-variant text-xs font-medium italic">Since 1989</span>
+</div>
+<h1 class="text-4xl md:text-6xl font-black text-primary leading-none mb-6 tracking-tight">
+                        Georgian Bay <br/>
+<span class="gradient-text">Market Intelligence.</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+                        Institutional-grade PropTx datasets and precision forecasting for Ontario's most coveted shoreline. Access real-time inventory velocity and high-fidelity asset audits.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-all">
+                            Book Appointment
+                            <span class="material-symbols-outlined">event_available</span>
+</button>
+<a class="flex items-center gap-3 px-8 py-4 rounded-xl border border-outline-variant font-bold text-primary hover:bg-surface-container-low transition-all" href="tel:9058309111">
+<span class="material-symbols-outlined text-secondary">call</span>
+                            (905) 830-9111
+                        </a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="w-full aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl relative">
+<img class="w-full h-full object-cover" data-alt="A breathtaking high-angle aerial view of the Georgian Bay coastline in Ontario during the golden hour. The crystalline turquoise waters meet rugged granite shores and lush pine forests. Several luxury modern waterfront estates with large glass windows are visible, nestled discreetly into the landscape. The atmosphere is serene, high-end, and aspirational." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtMy8o6pwWgO502bT1nAfQcyWUMDWY5K_dGGPfGeMRrLpKONsp9xbt7iV2kPy59xSf7SexMpSPmgFkT2MP8UhLBAW8ei051FoRlpDZO8aSWxp30YxZIxIpHKLMq2hKTHC2VSb0HGwTHEp4Tz23-X6fLTLYgnQxw11WWt2xoPyOdOqLxXcw1WgB3KhcF_O4cMsErEAz2ErXOlzn5jGMDznlVmO7j1BPjqrCJYrNmMb_D4j1Fpg0Tw63fTHI8egeMF6BzURaA05urts"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 glass-panel p-6 rounded-2xl border border-white/20">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-tighter mb-1">Regional Benchmark</p>
+<p class="text-2xl font-black text-primary">$1.84M Avg</p>
+</div>
+<div class="text-right">
+<span class="text-tertiary-fixed-dim flex items-center gap-1 font-bold text-sm">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                                        +12.4% YoY
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Data Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<!-- Market Velocity Chart -->
+<div class="md:col-span-2 lg:col-span-2 bg-surface-container-lowest p-8 rounded-3xl flex flex-col border border-outline-variant/10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-bold text-on-surface text-lg">Market Velocity</h3>
+<p class="text-xs text-on-surface-variant">Average Days on Market (LTM)</p>
+</div>
+<div class="flex items-center gap-2 text-xs font-bold text-tertiary-fixed-dim bg-tertiary-container/10 px-2 py-1 rounded">
+                            FAST PACE
+                        </div>
+</div>
+<div class="flex-1 flex items-end gap-2 h-48">
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[40%]" title="Jan"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[55%]" title="Feb"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[70%]" title="Mar"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[65%]" title="Apr"></div>
+<div class="flex-1 bg-secondary-container rounded-t-lg transition-all h-[95%]" title="May"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[85%]" title="Jun"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[75%]" title="Jul"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg transition-all hover:bg-secondary-container h-[60%]" title="Aug"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-outline uppercase tracking-widest px-2">
+<span>Q1-23</span>
+<span>Q2-23</span>
+<span>Q3-23</span>
+<span>Q4-23</span>
+</div>
+</div>
+<!-- Asset Concentration -->
+<div class="bg-primary p-8 rounded-3xl flex flex-col justify-between text-white border border-outline-variant/10 overflow-hidden relative">
+
+<div class="relative z-10">
+<h3 class="font-bold text-white/70 text-sm uppercase tracking-widest mb-1">Inventory Forecast</h3>
+<p class="text-3xl font-black">-14.2%</p>
+<p class="text-xs text-white/50 mt-2">Next 120 Days Supply Variance</p>
+</div>
+<div class="relative z-10 pt-4 border-t border-white/10 mt-4">
+<div class="flex justify-between items-center text-xs">
+<span class="font-medium">Demand Index</span>
+<span class="font-black text-tertiary-fixed-dim">9.2 / 10</span>
+</div>
+</div>
+</div>
+<!-- Heritage Callout -->
+<div class="bg-surface-container-low p-8 rounded-3xl flex flex-col justify-between border border-outline-variant/10">
+<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm">
+<span class="material-symbols-outlined text-primary">history</span>
+</div>
+<div>
+<h3 class="font-black text-primary text-2xl leading-tight mb-2">35 Years of Integrity.</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                            Polsinello Insights has curated Georgian Bay's most significant transactions since 1989.
+                        </p>
+</div>
+<button class="mt-6 text-xs font-bold text-secondary uppercase tracking-widest flex items-center gap-1 group">
+                        Executive Summary
+                        <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Interactive Map / Location Intelligence Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<div class="lg:col-span-8 h-[500px] rounded-[2.5rem] overflow-hidden relative shadow-inner">
+<img class="w-full h-full object-cover" data-location="Georgian Bay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSQSao2ijpL_nAAyhkUbNMEhS9T2mHiw6RrS5c3tNnW73xY82Zr7qWmFNYRqOiA2nyveYRTBDvHqAxibUeK8RbuI-AGWkVUfPFes9YN6MDtlF_td513v-TDHKSRd3r7nuedVX0F5yFUX-JVdOIHkm5lDBwU6YCBSTPPqEIj3BrTO3oKhsPPd-RQVZWGUQgoo5skaZbkfavNvwiUPQEBALBAMPXFjTh0thenLoL55QEGy-QeXDXvEawTsvVdVuORu57O-afdcnWN2c"/>
+<!-- Glass Filter Overlay -->
+<div class="absolute top-6 left-6 flex flex-col gap-3">
+<div class="glass-panel p-2 rounded-2xl border border-white/30 flex items-center gap-2 shadow-lg">
+<button class="bg-primary text-white px-4 py-2 rounded-xl text-xs font-bold">Residences</button>
+<button class="px-4 py-2 rounded-xl text-xs font-bold text-on-surface-variant hover:bg-surface-variant/30">Cottages</button>
+<button class="px-4 py-2 rounded-xl text-xs font-bold text-on-surface-variant hover:bg-surface-variant/30">Estates</button>
+</div>
+</div>
+<!-- Intelligence Pins -->
+<div class="absolute top-[40%] left-[30%] animate-bounce">
+<div class="w-10 h-10 bg-primary-container border-4 border-white rounded-full flex items-center justify-center shadow-2xl">
+<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<div class="absolute bottom-6 right-6 glass-panel p-4 rounded-2xl border border-white/30 shadow-2xl max-w-xs">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-8 h-8 rounded bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container text-sm">bolt</span>
+</div>
+<p class="text-xs font-black text-primary">Live Activity Feed</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px]">
+<span class="text-on-surface-variant">New Listing: Honey Harbour</span>
+<span class="text-primary font-bold">2m ago</span>
+</div>
+<div class="flex justify-between text-[10px]">
+<span class="text-on-surface-variant">Price Drop: Parry Sound</span>
+<span class="text-primary font-bold">14m ago</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container p-8 rounded-3xl">
+<h4 class="font-bold text-primary mb-4">Regional Insights</h4>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary">waves</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Shoreline Density</p>
+<p class="text-xs text-on-surface-variant">Highest growth seen in western exposure corridors.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary">groups</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Demographic Shift</p>
+<p class="text-xs text-on-surface-variant">24% increase in institutional portfolio buyers since 2021.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 shrink-0 bg-white rounded-lg flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary">verified_user</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Audit Transparency</p>
+<p class="text-xs text-on-surface-variant">100% verified PropTx documentation for all listings.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-secondary-container p-8 rounded-3xl relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-black text-on-secondary-container text-xl mb-2">Market Report 2024</h4>
+<p class="text-xs text-on-secondary-container/80 mb-6 leading-relaxed">Download our comprehensive 48-page analysis of the Georgian Bay ecosystem.</p>
+<button class="bg-primary text-white px-6 py-3 rounded-xl text-xs font-bold hover:opacity-90 transition-all flex items-center gap-2">
+                                Access Intelligence
+                                <span class="material-symbols-outlined text-sm">download</span>
+</button>
+</div>
+<span class="material-symbols-outlined absolute -bottom-6 -right-6 text-[120px] text-white/10 pointer-events-none">auto_graph</span>
+</div>
+</div>
+</section>
+<!-- Floating CTA Section -->
+<section class="bg-surface-container-low rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden mb-12 border border-outline-variant/10">
+<div class="max-w-3xl mx-auto relative z-10">
+<h2 class="text-3xl md:text-5xl font-black text-primary mb-6 tracking-tight">Ready for a Strategic Advantage?</h2>
+<p class="text-lg text-on-surface-variant mb-10 leading-relaxed">
+                        Don't navigate the complex waters of Georgian Bay real estate alone. Put 35 years of data and heritage experience to work for your portfolio.
+                    </p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+<button class="w-full md:w-auto bg-primary text-white px-10 py-5 rounded-2xl font-black text-lg shadow-xl hover:scale-105 transition-all">
+                            Book Your Audit
+                        </button>
+<a class="w-full md:w-auto bg-white text-primary px-10 py-5 rounded-2xl font-black text-lg border border-outline-variant shadow-md hover:bg-surface-container transition-all" href="tel:9058309111">
+                            Call (905) 830-9111
+                        </a>
+</div>
+</div>
+<!-- Abstract Design Elements -->
+<div class="absolute top-0 left-0 w-64 h-64 bg-secondary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 right-0 w-96 h-96 bg-tertiary-fixed-dim/10 rounded-full blur-[120px]"></div>
+</section>
+<!-- Footer-ish Meta Info -->
+<footer class="border-t border-outline-variant py-12 flex flex-col md:flex-row justify-between items-start gap-10">
+<div class="max-w-xs">
+<span class="font-headline-md text-xl font-bold text-on-surface mb-4 block">Polsinello Insights</span>
+<p class="text-xs text-on-surface-variant leading-loose mb-6">
+                        Institutional-grade real estate analytics for the discerning investor. Our heritage is built on the bedrock of transparency and data-driven results.
+                    </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-16">
+<div>
+<h5 class="font-black text-primary text-sm mb-4 uppercase tracking-widest">Regional Hubs</h5>
+<ul class="space-y-3">
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Muskoka</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Collingwood</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Wasaga Beach</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Parry Sound</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-black text-primary text-sm mb-4 uppercase tracking-widest">Legal &amp; Data</h5>
+<ul class="space-y-3">
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">PropTx Terms</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Listing Disclaimer</a></li>
+<li><a class="text-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-2xl border border-outline-variant/30">
+<p class="text-xs font-bold text-primary mb-2">Regional Compliance</p>
+<p class="text-[10px] text-on-surface-variant leading-relaxed">
+                        Data provided by TRREB, BDAR, and Lakelands. Polsinello Insights operates as a specialized division of Polsinello Real Estate Inc., Brokerage.
+                    </p>
+</div>
+</footer>
+</main>
+</div>
+<!-- Mobile NavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t border-outline-variant flex justify-around items-center py-3 z-50">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Terminal</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">analytics</span>
+<span class="text-[10px] font-medium">Markets</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">map</span>
+<span class="text-[10px] font-medium">Explore</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant" href="#">
+<span class="material-symbols-outlined text-2xl">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+<!-- Success Feedback Overlay -->
+<div class="fixed top-24 right-6 bg-tertiary-container text-on-tertiary-container px-6 py-4 rounded-2xl shadow-2xl border border-tertiary-fixed-dim/20 transform translate-x-[150%] transition-transform duration-500 flex items-center gap-3 z-[60]" id="success-toast">
+<span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+<div class="flex flex-col">
+<span class="text-sm font-black">Data Feed Refreshed</span>
+<span class="text-[10px] opacity-80 uppercase font-bold">Georgian Bay Node Live</span>
+</div>
+</div>
+<script>
+        // Micro-interactions and Toast trigger
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const toast = document.getElementById('success-toast');
+                toast.classList.remove('translate-x-[150%]');
+                setTimeout(() => {
+                    toast.classList.add('translate-x-[150%]');
+                }, 3000);
+            });
+        });
+
+        // Simple Parallax for Hero
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const heroImg = document.querySelector('img[data-alt*="Georgian Bay coastline"]');
+            if(heroImg) {
+                heroImg.style.transform = `translateY(${scroll * 0.1}px)`;
+            }
+        });
+    </script>
+</body></html>

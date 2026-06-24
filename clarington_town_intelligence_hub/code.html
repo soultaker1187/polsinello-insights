@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clarington Intelligence Hub | Polsinello Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-panel {
+            background: rgba(13, 28, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .terminal-glow {
+            box-shadow: 0 0 15px rgba(190, 198, 224, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #051424;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+        @keyframes pulse-subtle {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .animate-pulse-subtle {
+            animation: pulse-subtle 3s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#dae2fd",
+                        "outline-variant": "#45464d",
+                        "on-primary": "#283044",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "background": "#051424",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "surface": "#051424",
+                        "surface-container-high": "#1c2b3c",
+                        "on-tertiary": "#00354a",
+                        "inverse-on-surface": "#233143",
+                        "on-primary-container": "#798098",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-bright": "#2c3a4c",
+                        "outline": "#909097",
+                        "primary-container": "#0f172a",
+                        "surface-tint": "#bec6e0",
+                        "surface-dim": "#051424",
+                        "on-surface": "#d4e4fa",
+                        "primary": "#bec6e0",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#0d1c2d",
+                        "surface-container-highest": "#273647",
+                        "on-tertiary-container": "#008abb",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-secondary-container": "#aeb9d0",
+                        "tertiary-container": "#001a27",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed": "#001e2c",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-secondary": "#263143",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#c4e7ff",
+                        "secondary-container": "#3e495d",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "surface-variant": "#273647",
+                        "on-surface-variant": "#c6c6cd",
+                        "secondary-fixed": "#d8e3fb",
+                        "inverse-surface": "#d4e4fa",
+                        "inverse-primary": "#565e74",
+                        "tertiary": "#7bd0ff",
+                        "surface-container-lowest": "#010f1f",
+                        "secondary": "#bcc7de",
+                        "on-secondary-fixed": "#111c2d",
+                        "surface-container": "#122131",
+                        "on-background": "#d4e4fa"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-lg": ["IBM Plex Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["IBM Plex Sans"],
+                        "headline-lg": ["IBM Plex Sans"],
+                        "body-md": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30 custom-scrollbar overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto bg-surface/80 backdrop-blur-xl shadow-sm shadow-on-surface/5">
+<div class="flex items-center gap-6">
+<span class="text-headline-sm font-black text-primary tracking-tight">Polsinello Insights</span>
+<nav class="hidden md:flex items-center gap-8 ml-8">
+<a class="font-label-md text-label-md tracking-wider uppercase text-primary border-b-2 border-primary pb-1" href="#">Market Intel</a>
+<a class="font-label-md text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="font-label-md text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="font-label-md text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Developer Tools</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex flex-col items-end mr-4">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-tighter">Established</span>
+<span class="text-label-md font-label-md text-primary font-bold">Since 1989</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high/50 p-2 rounded-full transition-all">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high/50 p-2 rounded-full transition-all">settings</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center border border-outline/20">
+<span class="text-[10px] font-bold text-on-secondary-container">JD</span>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low flex flex-col p-4 z-40 hidden xl:flex pt-24">
+<div class="mb-8 px-4">
+<h2 class="text-primary font-black text-headline-sm">Polsinello</h2>
+<p class="text-outline text-label-sm uppercase tracking-widest">Institutional Intelligence</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 bg-primary-container text-primary rounded-lg px-4 py-3 font-semibold group transition-all" href="#">
+<span class="material-symbols-outlined" data-weight="fill">analytics</span>
+<span class="font-body-md">Market Intel</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg group transition-all" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-body-md">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg group transition-all" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg group transition-all" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-body-md">Developer Tools</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4 pt-8 border-t border-outline/10">
+<button class="w-full bg-primary text-on-primary py-3 px-4 rounded-lg font-bold text-label-md uppercase tracking-tight hover:opacity-90 transition-opacity">
+                Upgrade to Pro
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="text-label-md">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-2 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="text-label-md">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="xl:ml-72 pt-24 pb-12 px-8 min-h-screen">
+<!-- Hero Intelligence Header -->
+<div class="max-w-[1440px] mx-auto mb-10">
+<div class="relative overflow-hidden rounded-xl border border-outline/20 bg-surface-container-low p-8 flex flex-col md:flex-row justify-between items-end gap-6 terminal-glow">
+<div class="z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-tertiary text-[10px] font-bold uppercase tracking-tighter rounded">Region: Clarington</span>
+<span class="px-2 py-0.5 bg-primary-container text-primary text-[10px] font-bold uppercase tracking-tighter rounded">Status: Expansion Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-none mb-4">Clarington Expansion Hub</h1>
+<p class="text-body-lg text-on-surface-variant max-w-2xl">Institutional analysis of the Bowmanville Expansion Corridor and Courtice Growth Zone, tracking infrastructure-led capital appreciation and inventory cycles.</p>
+</div>
+<div class="z-10 text-right">
+<div class="text-label-sm font-label-sm text-outline mb-1">REAL-TIME DATA FEED</div>
+<div class="font-label-md text-primary bg-primary/5 px-4 py-2 border border-primary/20 rounded-md inline-block">
+<span class="animate-pulse inline-block w-2 h-2 rounded-full bg-primary mr-2"></span>
+                        LAST SYNC: 11:42:09 EST
+                    </div>
+</div>
+<!-- Subtle Background Grid/Shader Overlay Placeholder -->
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="w-full h-full" style="background-image: radial-gradient(circle at 2px 2px, #909097 1px, transparent 0); background-size: 24px 24px;"></div>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- GO Transit Impact Column -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-container p-6 rounded-xl border border-outline/20">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">GO Expansion</h3>
+<span class="material-symbols-outlined text-primary">train</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline/10">
+<p class="text-label-sm font-label-sm text-outline uppercase mb-1">Target Completion</p>
+<p class="text-headline-md font-bold text-on-surface">2026-2027</p>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-lowest border border-outline/10">
+<p class="text-label-sm font-label-sm text-outline uppercase mb-1">Bowmanville Station Corridor</p>
+<p class="text-body-md text-on-surface-variant">Proximal land values increased <span class="text-primary font-bold">+18.4%</span> YoY vs Regional average of 12.1%.</p>
+</div>
+<div class="relative h-32 w-full rounded-lg overflow-hidden border border-outline/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A high-tech digital rendering of a modern train station architecture in Bowmanville, Ontario. The scene is set at dusk with cinematic blue and gold lighting reflecting off glass surfaces. The style is professional and clean, using a dark-mode financial terminal aesthetic with subtle data overlays showing infrastructure routes." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBUwovd8ZE1NHTnGvtrwUEvDW_IqYfuMn0XTTBP8GIqZ-dD543sPaRXEUBAYaSqXSps3jYMA2uLFd-Q4b5mg116sz6NTWku4X54VWES5yOWkXxLgLZdvRFBubWlTysLqUbBzGXQuop61cUfdP5kkq8Y73UTU85W-RZygFZtRrRBrNgq7HOnDLqGO7QMT6Rx5pwhLpxNMQBQIEFV0UzAqnZRfB3q5mZ9phUar2mSj6AtArtlRc7P__mzSKJPV5Dh67V2y10ZC9WK880')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-2 left-3 text-label-sm text-on-surface font-bold">Bowmanville Station Node</div>
+</div>
+</div>
+</div>
+<!-- Market Velocity Stats -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline/20">
+<h3 class="font-label-md text-label-md text-outline uppercase tracking-widest mb-6">Market Velocity Index</h3>
+<div class="space-y-6">
+<div class="flex items-end justify-between border-b border-outline/10 pb-2">
+<div>
+<p class="text-body-md text-on-surface">Days on Market (Avg)</p>
+<p class="text-label-sm text-outline">14-Day Trailing</p>
+</div>
+<div class="text-right">
+<span class="text-headline-md font-bold text-primary">12</span>
+<span class="text-label-sm text-error ml-1">↓ 2d</span>
+</div>
+</div>
+<div class="flex items-end justify-between border-b border-outline/10 pb-2">
+<div>
+<p class="text-body-md text-on-surface">Absorption Rate</p>
+<p class="text-label-sm text-outline">New vs Sold</p>
+</div>
+<div class="text-right">
+<span class="text-headline-md font-bold text-primary">84%</span>
+<span class="text-label-sm text-primary ml-1">↑ 3%</span>
+</div>
+</div>
+<div class="flex items-end justify-between border-b border-outline/10 pb-2">
+<div>
+<p class="text-body-md text-on-surface">Sale to List Ratio</p>
+<p class="text-label-sm text-outline">Final Transaction</p>
+</div>
+<div class="text-right">
+<span class="text-headline-md font-bold text-primary">102.1%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Central Expansion Analysis -->
+<div class="md:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Interactive Growth Zone Map Placeholder -->
+<div class="md:col-span-2 h-[400px] rounded-xl border border-outline/20 overflow-hidden relative group">
+<div class="absolute inset-0 grayscale opacity-40 group-hover:opacity-60 transition-opacity" data-location="Clarington, Ontario" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBe34toE0HlfGNl051hjj6x4TU7MElhmDmUk88b0noputnFPtmFzlEQClNT-jBN_WlsCR-ZB7rFtJcZ4EI5wePjycGvPf0AfSGTZSqVW21Qey6AK_9-Gp0PmN_yvCDASDL7OqHEUnlUcd0CkzZeNGXEECdd3AEqUJ3nJin7-rgGtohqMOOoneUD990Fj062Py_pPScZIzVdiPjJU8RNYWc2dOuWBWGmmt4K-S8Zkiz_XZNseyI4M7Qo2SLi6oGauLfd2CiCmSLVK1E')"></div>
+<div class="absolute inset-0 bg-primary/5 pointer-events-none"></div>
+<!-- Overlay Markers -->
+<div class="absolute top-1/4 left-1/3 bg-primary-container/90 backdrop-blur text-on-primary-container px-3 py-1 rounded-full text-[10px] font-bold border border-primary/50 shadow-lg cursor-pointer hover:scale-105 transition-transform">
+                        COURTICE GROWTH ZONE
+                    </div>
+<div class="absolute bottom-1/3 right-1/4 bg-tertiary-container/90 backdrop-blur text-tertiary px-3 py-1 rounded-full text-[10px] font-bold border border-tertiary/50 shadow-lg cursor-pointer hover:scale-105 transition-transform">
+                        BOWMANVILLE EXPANSION
+                    </div>
+<div class="absolute top-4 left-4 bg-surface-container-lowest/80 backdrop-blur p-4 rounded-lg border border-outline/20">
+<h4 class="text-label-md font-bold text-primary uppercase">Zoning Velocity</h4>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-[10px] text-outline">Residential</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-[10px] text-outline">Mixed Use</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-4 right-4 text-label-sm text-outline bg-surface-container-lowest/60 px-2 py-1 rounded backdrop-blur">
+                        Interactive GIS Feed v4.2
+                    </div>
+</div>
+<!-- Inventory Forecast: Low-Rise Detached -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline/20">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">Inventory Forecast</h3>
+<span class="material-symbols-outlined text-primary">house</span>
+</div>
+<p class="text-label-sm text-outline uppercase mb-4 tracking-tighter">Low-Rise Detached Projections (6 Months)</p>
+<div class="h-40 flex items-end gap-2 px-2">
+<div class="flex-1 bg-surface-container-highest rounded-t h-[60%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-primary text-[10px] font-bold">142</div>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-t h-[75%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-primary text-[10px] font-bold">168</div>
+</div>
+<div class="flex-1 bg-primary/60 rounded-t h-[45%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-primary text-[10px] font-bold">112</div>
+</div>
+<div class="flex-1 bg-primary/60 rounded-t h-[30%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-primary text-[10px] font-bold">85</div>
+</div>
+<div class="flex-1 bg-primary rounded-t h-[20%] relative group">
+<div class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 text-primary text-[10px] font-bold">45</div>
+</div>
+</div>
+<div class="flex justify-between mt-2 text-label-sm font-label-sm text-outline">
+<span>Current</span>
+<span>Q3-24</span>
+<span>Q4-24</span>
+<span>Forecast</span>
+</div>
+<div class="mt-6 p-3 bg-error-container/10 border border-error/20 rounded">
+<p class="text-error text-label-sm font-bold">Alert: Supply Crunch Imminent</p>
+<p class="text-[11px] text-outline mt-1 leading-tight">Forecasted detached inventory to drop below 0.8 months of supply by Oct 2024.</p>
+</div>
+</div>
+<!-- Catchment Area School Leaderboard -->
+<div class="bg-surface-container p-6 rounded-xl border border-outline/20">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md text-primary">School Leaderboard</h3>
+<span class="material-symbols-outlined text-primary">school</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-outline/5 hover:border-primary/30 transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<span class="w-6 text-label-md font-bold text-outline">01</span>
+<div>
+<p class="text-body-md font-bold text-on-surface">Holy Trinity CSS</p>
+<p class="text-label-sm text-outline">Courtice Zone</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">8.4/10</div>
+<div class="text-[10px] text-primary">EQAO Peak</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-outline/5 hover:border-primary/30 transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<span class="w-6 text-label-md font-bold text-outline">02</span>
+<div>
+<p class="text-body-md font-bold text-on-surface">Bowmanville HS</p>
+<p class="text-label-sm text-outline">Expansion Corridor</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">7.9/10</div>
+<div class="text-[10px] text-primary-fixed-dim">Stable</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded border border-outline/5 hover:border-primary/30 transition-colors cursor-default">
+<div class="flex items-center gap-3">
+<span class="w-6 text-label-md font-bold text-outline">03</span>
+<div>
+<p class="text-body-md font-bold text-on-surface">Clarington Central</p>
+<p class="text-label-sm text-outline">Bowmanville</p>
+</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">7.6/10</div>
+<div class="text-[10px] text-tertiary">Trending Up</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 text-label-md font-label-md text-outline hover:text-primary transition-colors py-2 border-t border-outline/10">VIEW FULL CATCHMENT MAP</button>
+</div>
+</div>
+</div>
+<!-- Terminal Feed Footer Component -->
+<div class="max-w-[1440px] mx-auto mt-6">
+<div class="bg-surface-container-lowest border border-outline/20 p-4 rounded-xl font-label-sm text-label-sm">
+<div class="flex items-center gap-4 mb-3 border-b border-outline/10 pb-2">
+<span class="text-primary font-bold">SYSTEM FEED: LATEST CLARINGTON TRANSACTIONS</span>
+<span class="text-outline">ST-LEVEL ACCURACY ACTIVE</span>
+</div>
+<div class="space-y-2 opacity-80 h-24 overflow-y-auto custom-scrollbar pr-4">
+<div class="flex gap-4">
+<span class="text-outline shrink-0">11:38:14</span>
+<span class="text-on-surface">[SOLD] Detached (4+1 BR) - Courtice North Zone - $1,142,000 (104% List)</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">11:35:02</span>
+<span class="text-on-surface">[NEW LISTING] Semi-Detached - Bowmanville Station Corridor - $849,900</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">11:32:44</span>
+<span class="text-on-surface">[PRICE MOD] Condominium - Bowmanville Centre - -2.5% Adj</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline shrink-0">11:30:19</span>
+<span class="text-on-surface">[ZONING] Multi-Residential Application Submitted - 24 Units - Courtice Growth Hub</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-outline/10 mt-12">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-label-md font-bold text-primary tracking-tighter">Polsinello Insights</span>
+<span class="font-label text-label-sm text-outline">© 2024 Polsinello Insights. Since 1989. All rights reserved.</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-colors font-label text-label-sm" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-colors font-label text-label-sm" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-colors font-label text-label-sm" href="#">API Documentation</a>
+<a class="text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-colors font-label text-label-sm" href="#">Contact Analyst</a>
+</div>
+</footer>
+<!-- FAB (Suppressed as per logic for intelligence terminal dashboard focus) -->
+<script>
+        // Micro-interactions for the terminal effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const feedLines = document.querySelectorAll('.space-y-2 div');
+            feedLines.forEach((line, index) => {
+                line.style.opacity = '0';
+                line.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    line.style.transition = 'all 0.5s ease-out';
+                    line.style.opacity = '1';
+                    line.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+
+            // Smooth scaling for charts on hover
+            const bars = document.querySelectorAll('.bg-primary, .bg-primary\\/60, .bg-surface-container-highest');
+            bars.forEach(bar => {
+                bar.addEventListener('mouseenter', () => {
+                    bar.style.filter = 'brightness(1.2)';
+                    bar.style.transition = 'all 0.2s ease-out';
+                });
+                bar.addEventListener('mouseleave', () => {
+                    bar.style.filter = 'brightness(1)';
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Data Architect | Institutional Appraisal Engine</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d6e3ff",
+                        "primary": "#002045",
+                        "on-background": "#1b1c1c",
+                        "primary-fixed-dim": "#adc7f7",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-fixed": "#002110",
+                        "background": "#fbf9f8",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-primary-container": "#86a0cd",
+                        "inverse-on-surface": "#f3f0f0",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "outline": "#74777f",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary": "#ffffff",
+                        "surface": "#fbf9f8",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dcd9d9",
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-fixed": "#001c38",
+                        "surface-variant": "#e4e2e1",
+                        "secondary": "#1960a3",
+                        "surface-container": "#f0eded",
+                        "surface-tint": "#455f88",
+                        "tertiary-container": "#003f23",
+                        "tertiary": "#002713",
+                        "tertiary-fixed": "#91f8b8",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-bright": "#fbf9f8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#eae8e7",
+                        "tertiary-fixed-dim": "#74db9d",
+                        "primary-container": "#1a365d",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-tertiary-container": "#4bb278",
+                        "on-secondary-container": "#00477f",
+                        "inverse-primary": "#adc7f7",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 hidden lg:flex flex-col bg-slate-50 dark:bg-slate-950 p-4 gap-y-2 z-50">
+<div class="mb-8 px-2">
+<h1 class="text-xl font-black text-blue-900 dark:text-blue-100 tracking-tighter">Ontario Inst.</h1>
+<p class="font-sans text-xs uppercase tracking-widest font-semibold text-slate-500 dark:text-slate-500">Institutional Grade</p>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-white dark:bg-slate-900 text-blue-900 dark:text-blue-400 rounded-lg shadow-sm font-sans text-xs uppercase tracking-widest font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span>Appraisals</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span>Models</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Data Feeds</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Reporting</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 pt-4 border-t border-slate-100 dark:border-slate-900">
+<button class="mb-4 bg-primary text-white py-3 rounded-xl font-bold text-sm tracking-tight active:opacity-80 transition-all">New Appraisal</button>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-500 dark:text-slate-500 hover:text-blue-900 dark:hover:text-blue-300 font-sans text-xs uppercase tracking-widest font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 flex flex-col min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-40 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-3 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-lg font-bold tracking-tighter text-blue-950 dark:text-white">The Data Architect</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-blue-900 dark:text-white border-b-2 border-blue-900 dark:border-blue-400 pb-1 font-sans tracking-tight text-sm font-medium" href="#">Market Insights</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 font-sans tracking-tight text-sm font-medium transition-colors" href="#">Portfolio</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-800 dark:hover:text-blue-300 font-sans tracking-tight text-sm font-medium transition-colors" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-slate-100 dark:bg-slate-900 rounded-full px-4 py-1.5 gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs w-48 text-on-surface" placeholder="Search Neighbourhoods..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100/50 dark:hover:bg-slate-800/50 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300" data-icon="settings">settings</span>
+</button>
+</div>
+<img alt="Analyst Profile" class="w-8 h-8 rounded-full object-cover" data-alt="professional portrait of a senior real estate analyst in a modern office with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwMYxDr7lasdQ3nHd2ZWCYZsHNgJWRApaO9uWFZt5ev46KQV4LNQ2ko_E06Z52pONvdWdl4qtZ2JZp73wdJJedtQTh1OBnZlmx4W0b6lB0TWC_Lc0Foo3xKwAr9NGdoAjlAo4OZCU0f4DhMsAeHmoAJAZqsjtlywpBtMzoa2A8kOoVfmQWw2BHkU-BqwDp8WUy-e5AQTWfUBOKE74zytkwDcpRmfpz68V6SN3EkTSTDVpLGMf6k6eoedDCAZC4HDSJZ-N0irksKR0"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 max-w-[1440px] mx-auto w-full space-y-8">
+<!-- Hero Stats Bento -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl text-white flex flex-col justify-between relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-sm font-medium opacity-80 mb-1">Model Confidence Score</p>
+<h2 class="text-5xl font-black tracking-tighter">98.2%</h2>
+<div class="mt-4 flex items-center gap-2">
+<span class="bg-tertiary-container text-on-tertiary-container px-2 py-0.5 rounded-sm text-[10px] font-bold uppercase tracking-wider">Institutional Grade</span>
+<span class="text-xs opacity-70">Historical Accuracy Trend +0.4%</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[160px]" data-icon="shield_check">shield</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-4">
+<div class="flex justify-between items-start">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">PropTx Data Feed</span>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="text-[10px] text-on-tertiary-container font-semibold">LIVE</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-2xl font-bold text-primary">Active</p>
+<p class="text-xs text-on-surface-variant">Syncing: 4,209 New Entries (GTA)</p>
+</div>
+<div class="w-full bg-surface-container h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-4/5"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-xl space-y-4">
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Validation Queue</span>
+<div class="space-y-1">
+<p class="text-2xl font-bold text-primary">12 Units</p>
+<p class="text-xs text-on-surface-variant">Awaiting Human Oversight</p>
+</div>
+<button class="w-full py-2 bg-surface-container-high rounded-lg text-xs font-bold text-primary hover:bg-surface-container-highest transition-colors">Process Queue</button>
+</div>
+</section>
+<!-- Main Intelligence Row -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Delta Heatmap (Left/Center) -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-xl overflow-hidden relative min-h-[480px] flex flex-col">
+<div class="p-6 flex justify-between items-center bg-surface-container-low/50 backdrop-blur-md absolute top-0 left-0 right-0 z-10">
+<div>
+<h3 class="text-lg font-bold tracking-tight">Ontario Appraisal Deltas</h3>
+<p class="text-xs text-on-surface-variant">Real-time variance across Greater Golden Horseshoe Centres</p>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 bg-surface-container-lowest rounded-full text-[10px] font-bold shadow-sm">RESIDENTIAL</button>
+<button class="px-3 py-1 bg-transparent text-on-surface-variant rounded-full text-[10px] font-bold">COMMERCIAL</button>
+</div>
+</div>
+<div class="flex-1 w-full bg-slate-200 relative">
+<img alt="Map showing heat data over Ontario" class="w-full h-full object-cover" data-alt="abstract satellite-style map of Ontario with glowing green and orange data clusters representing price density" data-location="Ontario" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh1QYwU0qjq1edBvJEtn4pejJwrIDgQsRbgpHnWFmJDN-e7ZIMfyEkADe1DbQM_DnbL4zLF4XCHolUJQUm6FCTXkDaNuDL3JxW8hECJOsmQylqf27E5BZXu-Yuhb3iXkaTGLPqhmqx7AoQGsX2RUc92y9knRlgjBfeXygbRi0Kbog80sWXPPJOQ4wl28WDTqDNxu9ljdiFJO2h3cKAMNbiZcQNkO_91djPVdncYoLfRu2eGQRw7_v5w0IHSmgkDse5fKPwzF-b_Z0"/>
+<!-- Simulated Heatmap Elements -->
+<div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+<div class="absolute top-1/2 left-1/3 w-32 h-32 bg-tertiary-fixed-dim/30 rounded-full blur-3xl"></div>
+<div class="absolute top-1/4 right-1/4 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<!-- Overlay Legend -->
+<div class="absolute bottom-6 right-6 bg-surface-container-lowest p-4 rounded-xl shadow-lg border border-outline-variant/20 space-y-3 max-w-[240px]">
+<p class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Price Trajectory Forecast</p>
+<div class="flex items-center justify-between gap-4">
+<span class="text-xs font-medium">Toronto Core</span>
+<span class="text-xs font-bold text-on-tertiary-container">+4.2%</span>
+</div>
+<div class="flex items-center justify-between gap-4">
+<span class="text-xs font-medium">Hamilton Industrial</span>
+<span class="text-xs font-bold text-on-tertiary-container">+2.8%</span>
+</div>
+<div class="flex items-center justify-between gap-4">
+<span class="text-xs font-medium">Ottawa Suburbs</span>
+<span class="text-xs font-bold text-error">-0.5%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Weighting Engine (Right) -->
+<div class="lg:col-span-4 space-y-6">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
+<h3 class="text-sm font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="settings_input_component">settings_input_component</span>
+                            Weighting Engine
+                        </h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>COMPARABLE SALES</span>
+<span>45%</span>
+</div>
+<div class="h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-primary rounded-full w-[45%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>NEIGHBOURHOOD TRENDS</span>
+<span>30%</span>
+</div>
+<div class="h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-primary rounded-full w-[30%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>MACROECONOMIC INPUTS</span>
+<span>15%</span>
+</div>
+<div class="h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-primary rounded-full w-[15%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold">
+<span>ZONING SPECIFICS</span>
+<span>10%</span>
+</div>
+<div class="h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-primary rounded-full w-[10%]"></div>
+</div>
+</div>
+</div>
+<button class="mt-8 w-full py-2.5 bg-secondary text-white rounded-lg text-xs font-bold hover:bg-primary transition-colors">Adjust Parameters</button>
+</div>
+<div class="bg-primary-container p-6 rounded-xl text-white">
+<h3 class="text-sm font-bold mb-3">Model Training Progress</h3>
+<div class="flex items-center gap-4">
+<div class="relative w-12 h-12">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<circle class="stroke-primary text-slate-700" cx="18" cy="18" fill="none" r="16" stroke-width="4"></circle>
+<circle class="stroke-on-tertiary-container" cx="18" cy="18" fill="none" r="16" stroke-dasharray="75, 100" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-[10px] font-bold">75%</span>
+</div>
+<div class="space-y-0.5">
+<p class="text-xs font-bold">Epoch 42-B</p>
+<p class="text-[10px] opacity-60">Neural Net Optimization</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Appraisals Table -->
+<section class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 overflow-hidden">
+<div class="p-6 flex justify-between items-center border-b border-surface-container">
+<h3 class="text-lg font-bold tracking-tight text-primary">Predictive Valuations</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span> Optimized
+                        </div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant font-medium">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span> Pending
+                        </div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Asset Details</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Market Index</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Appraised Value</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Confidence</th>
+<th class="px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="domain">domain</span>
+</div>
+<div>
+<p class="text-sm font-bold">142 Bay St, Toronto</p>
+<p class="text-[10px] text-on-surface-variant">Core Financial District</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-medium">ON-T-FIN-01</div>
+<div class="text-[10px] text-on-tertiary-container font-bold">+1.2% Trend</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-black">$4,280,000</div>
+<div class="text-[10px] text-on-surface-variant">Est. Range: $4.1M - $4.4M</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-on-tertiary-container">99.1%</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-on-tertiary-container rounded-full w-[99%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-xs font-bold text-secondary hover:underline">View Ledger</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50/50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="apartment">apartment</span>
+</div>
+<div>
+<p class="text-sm font-bold">788 King St W, Toronto</p>
+<p class="text-[10px] text-on-surface-variant">Entertainment District</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-xs font-medium">ON-T-ENT-42</div>
+<div class="text-[10px] text-error font-bold">-0.2% Trend</div>
+</td>
+<td class="px-6 py-4">
+<div class="text-sm font-black">$1,150,000</div>
+<div class="text-[10px] text-on-surface-variant">Est. Range: $1.1M - $1.2M</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-on-tertiary-container">97.4%</span>
+<div class="w-16 h-1.5 bg-surface-container rounded-full">
+<div class="h-full bg-on-tertiary-container rounded-full w-[97%]"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-xs font-bold text-secondary hover:underline">View Ledger</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 py-6 w-full gap-4">
+<p class="font-sans text-[10px] text-slate-500 uppercase tracking-widest">© 2024 The Data Architect | Ontario Institutional Real Estate Services</p>
+<div class="flex gap-6">
+<a class="font-sans text-[10px] text-slate-500 hover:text-blue-700 dark:hover:text-blue-400 no-underline transition-colors uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="font-sans text-[10px] text-slate-500 hover:text-blue-700 dark:hover:text-blue-400 no-underline transition-colors uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="font-sans text-[10px] text-slate-500 hover:text-blue-700 dark:hover:text-blue-400 no-underline transition-colors uppercase tracking-widest" href="#">Data Methodology</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-[10px] font-bold text-on-surface-variant">SYSTEM STATUS: OPTIMAL</span>
+</div>
+</div>
+</footer>
+</main>
+<!-- FAB (Suppressed on deep analytics as per shell rules, but shown here for Dashboard context) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

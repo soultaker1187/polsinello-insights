@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Architect Portal | The Data Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#86a0cd",
+                    "tertiary-fixed": "#91f8b8",
+                    "on-secondary-container": "#00477f",
+                    "on-secondary-fixed-variant": "#004881",
+                    "surface-bright": "#fbf9f8",
+                    "secondary-container": "#7db6ff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#43474e",
+                    "surface-dim": "#dcd9d9",
+                    "surface": "#fbf9f8",
+                    "inverse-primary": "#adc7f7",
+                    "on-tertiary": "#ffffff",
+                    "inverse-on-surface": "#f3f0f0",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#00522f",
+                    "primary-fixed-dim": "#adc7f7",
+                    "surface-tint": "#455f88",
+                    "on-tertiary-fixed": "#002110",
+                    "surface-container-low": "#f6f3f2",
+                    "on-background": "#1b1c1c",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "surface-container-high": "#eae8e7",
+                    "error-container": "#ffdad6",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-secondary-fixed": "#001c38",
+                    "inverse-surface": "#303030",
+                    "outline-variant": "#c4c6cf",
+                    "on-primary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#74db9d",
+                    "surface-variant": "#e4e2e1",
+                    "on-primary-fixed": "#001b3c",
+                    "outline": "#74777f",
+                    "on-surface": "#1b1c1c",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "tertiary": "#002713",
+                    "on-tertiary-container": "#4bb278",
+                    "tertiary-container": "#003f23",
+                    "primary-container": "#1a365d",
+                    "background": "#fbf9f8",
+                    "surface-container": "#f0eded",
+                    "secondary-fixed": "#d3e4ff",
+                    "primary": "#002045",
+                    "secondary": "#1960a3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(251, 249, 248, 0.7);
+            backdrop-filter: blur(20px);
+        }
+        .custom-shadow {
+            box-shadow: 0 12px 32px rgba(27, 28, 28, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- SideNavBar (Shared Component) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#f6f3f2] flex flex-col py-8 z-50">
+<div class="px-6 mb-10">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="architecture">architecture</span>
+</div>
+<div>
+<h1 class="text-lg font-black text-[#1a365d] leading-none">Architect Portal</h1>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant mt-1">Follow Up Boss Active</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Active: Dashboard -->
+<a class="flex items-center px-6 py-3 text-[#1a365d] font-bold border-r-4 border-[#1a365d] bg-[#ffffff] transition-all" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-sm tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#43474e] hover:bg-[#e4e2e1] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="text-sm tracking-wide">Clients</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#43474e] hover:bg-[#e4e2e1] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="person_search">person_search</span>
+<span class="text-sm tracking-wide">Leads</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#43474e] hover:bg-[#e4e2e1] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="format_list_bulleted">format_list_bulleted</span>
+<span class="text-sm tracking-wide">Property Lists</span>
+</a>
+<a class="flex items-center px-6 py-3 text-[#43474e] hover:bg-[#e4e2e1] transition-all duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="analytics">analytics</span>
+<span class="text-sm tracking-wide">Market Intel</span>
+</a>
+</nav>
+<div class="px-6 mb-8">
+<button class="w-full py-3 bg-gradient-to-br from-primary to-primary-container text-white rounded-xl font-bold text-sm shadow-lg active:scale-95 transition-transform">
+                Invite Client
+            </button>
+</div>
+<footer class="mt-auto border-t border-outline-variant/20 pt-4">
+<a class="flex items-center px-6 py-2 text-[#43474e] text-sm hover:bg-[#e4e2e1]" href="#">
+<span class="material-symbols-outlined mr-3 text-sm" data-icon="help">help</span>
+                Support
+            </a>
+<a class="flex items-center px-6 py-2 text-[#43474e] text-sm hover:bg-[#e4e2e1]" href="#">
+<span class="material-symbols-outlined mr-3 text-sm" data-icon="archive">archive</span>
+                Archive
+            </a>
+</footer>
+</aside>
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center px-6 sticky top-0 z-40 h-16 bg-gradient-to-b from-[#fbf9f8] to-[#f6f3f2] backdrop-blur-md bg-opacity-80 ml-64">
+<div class="flex items-center gap-6">
+<div class="relative group">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary text-lg" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-full text-sm w-72 focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search clients or neighbourhoods..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1 border-r border-outline-variant/30 pr-4">
+<button class="p-2 text-[#43474e] hover:bg-[#f0eded] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#43474e] hover:bg-[#f0eded] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+</button>
+<button class="p-2 text-[#43474e] hover:bg-[#f0eded] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="flex items-center gap-3 pl-2">
+<div class="text-right">
+<p class="text-sm font-bold text-primary leading-none">Marcus Sterling</p>
+<p class="text-[10px] text-on-surface-variant font-medium">Principal Architect</p>
+</div>
+<img alt="Agent profile avatar" class="w-10 h-10 rounded-full border-2 border-white shadow-sm object-cover" data-alt="professional male real estate agent headshot with confident smile in a modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkoJe_5tQgvdKGfMskJsYeEGKcUYsj_oNZ82a3mGlI1wcoT-_jmOBfMs257BKftYSoooFS5n55B5kbHs85HEexlDwaOg0XTYRoOhmqR2pxeozK6OsutRs0YNmLI7p9WmV8zEiH1ICni7Bm4awdZYrzqGCLNjcbl_EDatqw-W2rFeF6iensbnM4r-sfSUlAOzE5STVdfUSHIzhgjMWxBB_2V8fvFHxFQjCjYUoFbeoMgNUwVj06E01hIJts4tLzF36VyM6JFRemHSA"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-screen">
+<!-- Header Section -->
+<div class="flex justify-between items-end mb-10">
+<div class="space-y-1">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-sm uppercase tracking-tighter">Live Market Feed</span>
+<span class="text-xs text-on-surface-variant/60 font-medium">Data via PropTx &amp; TRREB</span>
+</div>
+<h2 class="text-4xl font-black tracking-tight text-primary">Client Collaboration Dashboard</h2>
+<p class="text-on-surface-variant font-medium">Curating intelligence for your Ontario portfolio.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-5 py-2.5 bg-surface-container-high text-primary font-bold text-sm rounded-xl hover:bg-surface-container-highest transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                    Export Q3 Report
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Active Collaboration Feed (Column 1-4) -->
+<section class="col-span-12 lg:col-span-4 space-y-6">
+<div class="bg-surface-container-low p-6 rounded-3xl h-full flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-lg font-bold tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="forum">forum</span>
+                            Collaboration Feed
+                        </h3>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="space-y-4 overflow-y-auto max-h-[600px] pr-2">
+<!-- Feed Item 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl custom-shadow">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="favorite">favorite</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-medium leading-relaxed">
+<span class="font-bold">Client Sarah Jenkins</span> saved <span class="text-secondary underline decoration-2 underline-offset-2">123 Spadina Ave</span>
+</p>
+<p class="text-[11px] text-on-surface-variant mt-1">24 minutes ago • Toronto</p>
+</div>
+</div>
+</div>
+<!-- Feed Item 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl custom-shadow border-l-4 border-primary">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="description">description</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-medium leading-relaxed">
+<span class="font-bold">System</span> generated a Valuation for <span class="font-bold">The Miller Family</span>
+</p>
+<p class="text-[11px] text-on-surface-variant mt-1">2 hours ago • Oakville</p>
+</div>
+</div>
+</div>
+<!-- Feed Item 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl custom-shadow">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="maps_home_work">maps_home_work</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-medium leading-relaxed">
+<span class="font-bold">Agent Sterling</span> added expert commentary to <span class="text-secondary underline decoration-2 underline-offset-2">55 Bloor St W</span>
+</p>
+<p class="text-[11px] text-on-surface-variant mt-1">4 hours ago • Yorkville</p>
+</div>
+</div>
+</div>
+<!-- Feed Item 4 -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl custom-shadow opacity-70">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="visibility">visibility</span>
+</div>
+<div>
+<p class="text-sm text-on-surface font-medium leading-relaxed">
+<span class="font-bold">Client Robert P.</span> viewed <span class="font-bold">Downtown Waterfront</span> Watchlist
+                                    </p>
+<p class="text-[11px] text-on-surface-variant mt-1">Yesterday • Harbourfront</p>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-auto pt-6 text-sm font-bold text-primary flex items-center justify-center gap-2 hover:underline">
+                        View Full Interaction History
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Main Workspace: Watchlists & Commentary (Column 5-12) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Shared Watchlists Grid -->
+<section>
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-extrabold tracking-tight text-primary">Shared Watchlists</h3>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low rounded-lg text-primary hover:bg-surface-container-high"><span class="material-symbols-outlined" data-icon="grid_view">grid_view</span></button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg"><span class="material-symbols-outlined" data-icon="list">list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Property Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden custom-shadow group">
+<div class="relative h-48">
+<img alt="Luxury modern home in Toronto" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Modern minimalist luxury architecture with floor-to-ceiling windows and lush landscaping in a high-end Toronto neighbourhood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKnEQ3G_Aqn87Byef00W4slW6p17kw8ON6J7kGLZ_bkBck-9ROvwcjkrQ8aQRZIAddduks94CDczJ1ecV8WHgEf6qau6WKTqZRInnM6105aZuofp8ibeJ_xy5S0oYBm_D_tD8NWj35w9bOcxvocrf2mfxkFymt5wnACrhzM6CpBSgZq_MKJmc3KDBm3QX1cHUgW4s2tPGGItUB8311pJHuX5_m_JUMzWhXU2glgGWfI16YRXgXklGPaHDQVpt6xOC67dJEJCD-vZQ"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-primary/90 text-white text-[10px] font-bold rounded-sm backdrop-blur-md">WATCHING</span>
+</div>
+<div class="absolute bottom-4 right-4 glass-panel px-4 py-2 rounded-xl">
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest">Architect Estimate</p>
+<p class="text-lg font-black text-primary leading-tight">$3,450,000</p>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h4 class="text-lg font-bold text-primary">123 Spadina Ave, Units 405</h4>
+<p class="text-sm text-on-surface-variant">Entertainment District, Toronto</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="bed">bed</span>
+<span class="text-xs font-bold">3 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="shower">shower</span>
+<span class="text-xs font-bold">2 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="square_foot">square_foot</span>
+<span class="text-xs font-bold">1,850 sqft</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Property Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden custom-shadow group">
+<div class="relative h-48">
+<img alt="Traditional brick estate" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Stately traditional red brick estate house with white pillars and manicured green lawn in the Old Oakville neighbourhood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA97-RRNBp9TrNIgyAVcNb1SeIMIUl0dec_bnPbuFJ1GRsQcre45yEQxIbnPQa3q1fn5q9QkW_hZyka00O3vqNTcSJ7nDps1Jv4tCl1NKzGFWkWxq1sGzWar2dvOupAWwnOSB0LxpKCe4A0LS9lt03Uvj4m1pUqfbrAa-DpFn-SjR-gB99VvdfAUZ68CixO8zydS2bPLlsC7UcZ7gtoK6EAQiNnotOxL5CThL8dEY6Mb51_taxljZjRUFi-5xTxDr8NuuOdEHs-kpM"/>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-bold rounded-sm">NEW VALUATION</span>
+</div>
+<div class="absolute bottom-4 right-4 glass-panel px-4 py-2 rounded-xl">
+<p class="text-[10px] text-primary font-bold uppercase tracking-widest">Architect Estimate</p>
+<p class="text-lg font-black text-primary leading-tight">$4,120,000</p>
+</div>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<h4 class="text-lg font-bold text-primary">88 Lakeshore Rd East</h4>
+<p class="text-sm text-on-surface-variant">Old Oakville, Halton</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="bed">bed</span>
+<span class="text-xs font-bold">5 Beds</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="shower">shower</span>
+<span class="text-xs font-bold">4 Baths</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="square_foot">square_foot</span>
+<span class="text-xs font-bold">4,200 sqft</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Commentary Tool & FUB Leads Integration -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- FUB Leads Integration -->
+<section class="bg-surface-container-low p-6 rounded-3xl">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-extrabold tracking-tight flex items-center gap-2">
+<img alt="FUB Logo" class="w-5 h-5 rounded-sm object-contain" data-alt="minimalist tech logo with geometric blue shapes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-B-MzLD5Omgi5FIJ-3z-ATCkBdyub1h6LJMarw-jehw3mtuD8IaURz7STIo4YQkBVMNIo7PnRgvcbtHpstQaO4hClEx2rkV5CH41cn6GzBU1pVXcPyGJCngWic97LaUNzdxCzCmXpwnyrmLicLlmCZp2eE3JNnF3aRAfWvSoiz5cydI2NurR2KXlDD3vkDcU9Hnr_MUoHIRS5ydewkZyBqysw-bX8qeSJGaMiETatQAbiVetqjPhg5VaF5XLsThg-EzLPZV9XDDA"/>
+                                FUB Lead Integration
+                            </h3>
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[9px] font-black rounded-full uppercase">3 New</span>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-surface-container-lowest rounded-2xl flex items-center justify-between">
+<div>
+<p class="text-sm font-bold text-primary">Alexandra Chen</p>
+<p class="text-[11px] text-on-surface-variant">Lead via: Zillow Canada</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low rounded-lg text-primary hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined text-sm" data-icon="analytics">analytics</span></button>
+<button class="p-2 bg-primary text-white rounded-lg hover:shadow-lg transition-all"><span class="material-symbols-outlined text-sm" data-icon="chat">chat</span></button>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-2xl flex items-center justify-between">
+<div>
+<p class="text-sm font-bold text-primary">David Thompson</p>
+<p class="text-[11px] text-on-surface-variant">Lead via: Referral</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low rounded-lg text-primary hover:bg-primary hover:text-white transition-all"><span class="material-symbols-outlined text-sm" data-icon="analytics">analytics</span></button>
+<button class="p-2 bg-primary text-white rounded-lg hover:shadow-lg transition-all"><span class="material-symbols-outlined text-sm" data-icon="chat">chat</span></button>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Commentary Workspace -->
+<section class="bg-primary text-white p-6 rounded-3xl relative overflow-hidden">
+<div class="relative z-10 flex flex-col h-full">
+<h3 class="font-extrabold tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+                                Market Commentary
+                            </h3>
+<textarea class="w-full bg-primary-container/40 border-none rounded-xl text-xs placeholder:text-on-primary-container text-white h-24 focus:ring-1 focus:ring-on-primary-container/50 mb-4" placeholder="Write private expert analysis for Client Chen regarding the Yorkville property trends..."></textarea>
+<div class="mt-auto flex justify-between items-center">
+<span class="text-[10px] text-on-primary-container font-medium">Last saved: 10:45 AM</span>
+<button class="px-4 py-2 bg-white text-primary text-xs font-bold rounded-lg hover:bg-secondary-fixed transition-colors">Post Note</button>
+</div>
+</div>
+<!-- Decorative mesh gradient -->
+<div class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary/30 opacity-40 pointer-events-none"></div>
+</section>
+</div>
+<!-- Footer Stats -->
+<div class="pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row gap-6 items-center justify-between">
+<div class="flex gap-8">
+<div>
+<p class="text-2xl font-black text-primary">84%</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Client Engagement</p>
+</div>
+<div>
+<p class="text-2xl font-black text-primary">12</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Active Valuations</p>
+</div>
+<div>
+<p class="text-2xl font-black text-on-tertiary-container">+$240k</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Market Delta (MOM)</p>
+</div>
+</div>
+<div class="flex items-center gap-4 text-on-surface-variant/40">
+<span class="text-[10px] font-bold">DATA INTEGRITY SECURED</span>
+<div class="flex gap-3 grayscale contrast-125 opacity-40">
+<span class="text-[10px] border border-current px-1 font-black">TRREB</span>
+<span class="text-[10px] border border-current px-1 font-black">PropTx</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB (Suppressed on Dashboard as per logic, but here for demonstration if it were a high-action screen) -->
+<!-- Suppression logic: Rendered here as an 'Expert Access' button only if it aligns with primary task -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-50">
+<span class="material-symbols-outlined text-2xl" data-icon="bolt">bolt</span>
+</button>
+</body></html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polsinello Insights | Barrie Town Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary": "#7bd0ff",
+                      "on-primary-container": "#798098",
+                      "on-background": "#d4e4fa",
+                      "error": "#ffb4ab",
+                      "primary-container": "#0f172a",
+                      "surface-container-low": "#0d1c2d",
+                      "secondary-container": "#3e495d",
+                      "tertiary-fixed-dim": "#7bd0ff",
+                      "surface": "#051424",
+                      "primary": "#bec6e0",
+                      "inverse-primary": "#565e74",
+                      "surface-container-lowest": "#010f1f",
+                      "primary-fixed-dim": "#bec6e0",
+                      "tertiary-container": "#001a27",
+                      "on-error": "#690005",
+                      "secondary": "#bcc7de",
+                      "on-tertiary-container": "#008abb",
+                      "on-surface": "#d4e4fa",
+                      "on-secondary-fixed": "#111c2d",
+                      "surface-dim": "#051424",
+                      "surface-bright": "#2c3a4c",
+                      "surface-container-high": "#1c2b3c",
+                      "on-tertiary-fixed": "#001e2c",
+                      "surface-tint": "#bec6e0",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#3c475a",
+                      "tertiary-fixed": "#c4e7ff",
+                      "primary-fixed": "#dae2fd",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "surface-container-highest": "#273647",
+                      "on-secondary-container": "#aeb9d0",
+                      "on-tertiary": "#00354a",
+                      "surface-container": "#122131",
+                      "secondary-fixed-dim": "#bcc7de",
+                      "on-primary": "#283044",
+                      "on-tertiary-fixed-variant": "#004c69",
+                      "on-surface-variant": "#c6c6cd",
+                      "surface-variant": "#273647",
+                      "inverse-on-surface": "#233143",
+                      "inverse-surface": "#d4e4fa",
+                      "outline": "#909097",
+                      "on-primary-fixed": "#131b2e",
+                      "secondary-fixed": "#d8e3fb",
+                      "error-container": "#93000a",
+                      "background": "#051424",
+                      "outline-variant": "#45464d",
+                      "on-secondary": "#263143"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-md": "32px",
+                      "margin-lg": "48px",
+                      "unit": "4px",
+                      "gutter": "16px",
+                      "margin-sm": "16px",
+                      "container-max": "1440px"
+              },
+              "fontFamily": {
+                      "headline": ["IBM Plex Sans", "sans-serif"],
+                      "body": ["Inter", "sans-serif"],
+                      "mono": ["JetBrains Mono", "monospace"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(13, 28, 45, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .terminal-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .terminal-scroll::-webkit-scrollbar-track {
+            background: #010f1f;
+        }
+        .terminal-scroll::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+        .data-row:hover {
+            background: rgba(188, 198, 224, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-tertiary/30">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-sm shadow-on-surface/5">
+<div class="flex items-center gap-8">
+<div class="text-headline-sm font-black text-primary dark:text-primary-fixed tracking-tight font-headline">Polsinello Insights</div>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-headline text-label-md tracking-wider uppercase text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 transition-all duration-300 ease-in-out hover:opacity-90" href="#">Market Intel</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Portfolio</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Analytics</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Developer Tools</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:block text-label-sm font-mono text-outline uppercase tracking-widest">Since 1989</div>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high/50 transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high/50 transition-colors">settings</button>
+<div class="h-8 w-8 rounded-full bg-primary-container border border-outline/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a financial analyst in a dark navy suit, captured in a moody architectural setting with clean glass lines and cool blue lighting. The style is executive and authoritative, matching the dark terminal theme of Polsinello Insights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-TSIDJeQz46YJsHMi1IE3ObsyHNkPjGg-ebCtdBm-ajg-Qnu8MQLs2CevqzQux02IYoj2D6QmO9m-taBOjDO-eHCSPydlb737M-8Meru1ectUuEEjyu32fEiBDWY7PjQMHyrUVQrwY4MAPVXOnbaCDPjySG61YumGmS-6H1-6VxD10BfyGUCDXX4mScux9AuFeOb5THEY2KWahbpnBioMrDp2P6tbBxGgDK_gF1JvroXQJ-J20wpP1E4UPVcloxeWi7tINyFRb0k"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Left) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 z-40 h-screen w-72 bg-surface-container-low dark:bg-surface-container-low pt-24 hidden xl:flex">
+<div class="px-4 mb-8">
+<div class="text-headline-sm font-black text-primary dark:text-primary-fixed font-headline">Polsinello</div>
+<div class="text-label-sm font-mono text-outline uppercase tracking-tighter">Institutional Intelligence</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-lg px-4 py-3 font-semibold transition-all duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-body text-body-md">Market Intel</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-body text-body-md">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-body text-body-md">Developer Tools</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<button class="w-full py-3 px-4 bg-tertiary text-on-tertiary font-bold rounded-lg text-label-md hover:opacity-90 transition-opacity">Upgrade to Pro</button>
+<div class="pt-4 border-t border-outline/10">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-2 hover:underline text-body-md" href="#">
+<span class="material-symbols-outlined">help</span> Support
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-2 hover:underline text-body-md" href="#">
+<span class="material-symbols-outlined">logout</span> Sign Out
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="xl:ml-72 pt-24 min-h-screen">
+<div class="px-8 max-w-[1440px] mx-auto pb-20">
+<!-- Hero / Pulse Header -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+<div class="lg:col-span-2 relative h-96 rounded-xl overflow-hidden glass-panel flex flex-col justify-end p-8 group">
+<div class="absolute inset-0 z-0">
+
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<img class="w-full h-full object-cover mix-blend-overlay group-hover:scale-105 transition-transform duration-1000" data-alt="A cinematic, low-angle long exposure of the Barrie waterfront at night, capturing the sleek architectural lines of new luxury developments and the glow of Kempenfelt Bay. The scene is filtered through a deep navy and slate palette, emphasizing the institutional and high-end nature of the regional intelligence platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwkR51-wqwTI1bIMmJK7lzeaT8o6i5iS_koO3PZ5PsR-HH_KEDt1ifyPeVaQQmyPluK_bE4UgsXzBkOX802Hz9Z1tcBpK1SYzXRhfGO6GP14x58vNExKdPC52UL_Yi5cFF17dpBGSA-0qzqYjm9wbqE7pMQUiUlDjNBrByYBzDMpvTzLMULbtZ2J2f_a0-2KL_qEr8klxDwF2xpcaMJXk9CMr_kEM7Rrp9rZaTsVa5D0epwVwT378quT1IvogwueVozxGRp3Jl-Xw"/>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="inline-block w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-mono text-label-sm text-tertiary uppercase tracking-widest">Barrie Market Pulse // Live Update</span>
+</div>
+<h1 class="font-headline text-display-lg text-on-background mb-4">Regional Growth Intelligence</h1>
+<p class="max-w-xl text-body-lg text-on-surface-variant">The Simcoe County Growth Mandate is driving unprecedented intensification across South Barrie and the Wellington waterfront. Access institutional-grade data for the 400-series corridor.</p>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-6 flex flex-col">
+<h3 class="font-headline text-headline-md text-primary mb-4 flex items-center justify-between">
+                        Pulse Metrics
+                        <span class="material-symbols-outlined text-outline">trending_up</span>
+</h3>
+<div class="space-y-6 flex-1">
+<div class="pb-4 border-b border-outline/10">
+<div class="text-label-sm font-mono text-outline mb-1 uppercase">Commuter Index (GTA)</div>
+<div class="flex items-end justify-between">
+<span class="text-headline-lg font-headline text-on-background">8.4</span>
+<span class="text-label-md text-tertiary">+1.2% MoM</span>
+</div>
+</div>
+<div class="pb-4 border-b border-outline/10">
+<div class="text-label-sm font-mono text-outline mb-1 uppercase">Intensification Yield</div>
+<div class="flex items-end justify-between">
+<span class="text-headline-lg font-headline text-on-background">14.2%</span>
+<span class="text-label-md text-tertiary">Stable</span>
+</div>
+</div>
+<div>
+<div class="text-label-sm font-mono text-outline mb-1 uppercase">Growth Mandate Velocity</div>
+<div class="flex items-end justify-between">
+<span class="text-headline-lg font-headline text-on-background">High</span>
+<span class="text-label-md text-tertiary">Target 2051</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 border border-outline/20 text-on-surface-variant font-mono text-label-md hover:bg-surface-container-high transition-colors">Download Terminal PDF</button>
+</div>
+</section>
+<!-- Bento Intelligence Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-12">
+<!-- South Barrie Focus -->
+<div class="md:col-span-2 lg:col-span-3 glass-panel rounded-xl overflow-hidden p-6 border-l-4 border-tertiary">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline text-headline-md text-on-background">South Barrie Hub</h2>
+<p class="font-mono text-label-sm text-outline">GO STATION ADJACENT ANALYSIS</p>
+</div>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">train</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-6">Mass transit connectivity is accelerating the conversion of agricultural peripherals into high-density transit-oriented communities. Phase 3 intensification is now 85% approved.</p>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-label-md font-mono py-2 border-y border-outline/5 data-row">
+<span class="text-outline">Absorption Rate</span>
+<span class="text-on-background">42 Days</span>
+</div>
+<div class="flex items-center justify-between text-label-md font-mono py-2 border-b border-outline/5 data-row">
+<span class="text-outline">Cap Rate Avg.</span>
+<span class="text-on-background">4.8%</span>
+</div>
+</div>
+</div>
+<!-- Wellington Waterfront -->
+<div class="md:col-span-2 lg:col-span-3 glass-panel rounded-xl overflow-hidden p-6">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="font-headline text-headline-md text-on-background">Wellington Luxury</h2>
+<p class="font-mono text-label-sm text-outline">WATERFRONT PREMIUM MONITOR</p>
+</div>
+<span class="material-symbols-outlined text-outline">sailing</span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-square bg-surface-container-high rounded-lg overflow-hidden relative group">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A minimalist architectural visualization of a luxury waterfront penthouse in Barrie, featuring floor-to-ceiling glass and views of a sunset over Kempenfelt Bay. The aesthetic is clean, sharp, and corporate, using a deep blue and slate gray palette with crisp white highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCkH0WuV9mU4-UnSIFZZqUCzyhxB2qTNwoJiPJYRm26Pitidie7FmpzEPGdBiuaDsjB2q2jKZdvMc9DnAGcfORX65CtdVMyii5kdyQkkjhLUbqQHNxwR0zCVLM5Y64cjxtki6P4MQDesdODpUidvK2fO3sCY7PdmYNJiRJx3wJpBaTT1lsMFbz_DCpkLmE5yOq6v24ePSS46pN5lXv_U-1i8OYT1jlIA2Ci4SmJAbi3wmI9xU4dJ2y-0A6XYpI5jIaYKNsCYim6gI"/>
+<div class="absolute bottom-2 left-2 text-[8px] font-mono bg-background/80 px-1 text-outline">UNIT-W88</div>
+</div>
+<div class="flex flex-col justify-center">
+<div class="text-display-lg font-headline text-on-background">1.8M</div>
+<div class="text-label-sm font-mono text-outline">ENTRY THRESHOLD (CAD)</div>
+</div>
+</div>
+</div>
+<!-- School Rankings Terminal -->
+<div class="md:col-span-4 lg:col-span-4 glass-panel rounded-xl p-6 bg-surface-container-lowest">
+<h3 class="font-mono text-label-md text-tertiary mb-4 tracking-widest uppercase">Institutional Data: Education Quality</h3>
+<div class="overflow-x-auto terminal-scroll">
+<table class="w-full text-left font-mono">
+<thead class="text-label-sm text-outline border-b border-outline/20">
+<tr>
+<th class="pb-3 uppercase">Institution</th>
+<th class="pb-3 uppercase">Province Rank</th>
+<th class="pb-3 uppercase">STEM Rating</th>
+<th class="pb-3 uppercase">Enrollment cap</th>
+</tr>
+</thead>
+<tbody class="text-body-md">
+<tr class="data-row">
+<td class="py-4 text-on-background font-bold">Barrie Central</td>
+<td class="py-4 text-on-surface-variant">Top 15%</td>
+<td class="py-4"><span class="px-2 py-0.5 rounded-sm bg-tertiary/10 text-tertiary text-[10px]">A-GRADE</span></td>
+<td class="py-4 text-on-surface-variant">94%</td>
+</tr>
+<tr class="data-row">
+<td class="py-4 text-on-background font-bold">Eastview Secondary</td>
+<td class="py-4 text-on-surface-variant">Top 20%</td>
+<td class="py-4"><span class="px-2 py-0.5 rounded-sm bg-outline/10 text-outline text-[10px]">B+GRADE</span></td>
+<td class="py-4 text-on-surface-variant">88%</td>
+</tr>
+<tr class="data-row">
+<td class="py-4 text-on-background font-bold">Innisdale Collegiate</td>
+<td class="py-4 text-on-surface-variant">Top 25%</td>
+<td class="py-4"><span class="px-2 py-0.5 rounded-sm bg-outline/10 text-outline text-[10px]">B GRADE</span></td>
+<td class="py-4 text-on-surface-variant">91%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Simcoe Mandate Feed -->
+<div class="md:col-span-2 lg:col-span-2 glass-panel rounded-xl p-6 flex flex-col h-full bg-surface-container-low border border-outline/10">
+<h3 class="font-headline text-label-md text-primary mb-4 uppercase tracking-wider">Growth Mandate Feed</h3>
+<div class="space-y-4 flex-1 overflow-y-auto terminal-scroll pr-2">
+<div class="border-l-2 border-outline/20 pl-4 py-1">
+<div class="text-[10px] font-mono text-outline mb-1">08:42 EST | MANDATE-v4.2</div>
+<div class="text-body-md text-on-background leading-snug">Planning Dept. signals accelerated zoning for Essa Rd corridor.</div>
+</div>
+<div class="border-l-2 border-tertiary pl-4 py-1">
+<div class="text-[10px] font-mono text-tertiary mb-1">11:15 EST | INFRA-LOG</div>
+<div class="text-body-md text-on-background leading-snug">Metrolinx confirms double-tracking expansion on Barrie Line.</div>
+</div>
+<div class="border-l-2 border-outline/20 pl-4 py-1 opacity-60">
+<div class="text-[10px] font-mono text-outline mb-1">YESTERDAY | POLICY</div>
+<div class="text-body-md text-on-background leading-snug">Regional Council votes on secondary plan for Hewitts Creekside.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Technical Analysis Section -->
+<section class="mb-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+<div class="space-y-6">
+<h2 class="font-headline text-headline-lg text-on-background">Technical Analysis: Simcoe 2051</h2>
+<p class="text-body-lg text-on-surface-variant leading-relaxed">
+                            The Provincial Growth Plan for the Greater Golden Horseshoe mandates Barrie as a Primary Settlement Area. Polsinello Insights tracks the decoupling of municipal policy and market reality, providing institutional players with a 24-month lead on intensification triggers.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 bg-surface-container-highest text-on-background font-mono text-label-sm border border-outline/10">#intensification</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-background font-mono text-label-sm border border-outline/10">#transit-oriented</span>
+<span class="px-3 py-1 bg-surface-container-highest text-on-background font-mono text-label-sm border border-outline/10">#MCR-2051</span>
+</div>
+</div>
+<div class="h-64 rounded-xl border border-outline/20 overflow-hidden relative">
+
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="bg-background/90 px-4 py-2 border border-outline/20 font-mono text-label-md text-primary">PROJECTED DENSITY HEATMAP</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-surface dark:bg-surface border-t border-outline/10">
+<div class="flex flex-col items-center md:items-start">
+<div class="text-label-md font-bold text-primary dark:text-primary-fixed font-headline mb-2">Polsinello Insights</div>
+<div class="font-label text-label-sm text-on-surface-variant dark:text-outline">© 2024 Polsinello Insights. Since 1989. All rights reserved.</div>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200" href="#">API Documentation</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200" href="#">Contact Analyst</a>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for data rows
+        document.querySelectorAll('.data-row').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(4px)';
+                row.style.transition = 'transform 0.2s ease-out';
+            });
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+            });
+        });
+    </script>
+</body></html>

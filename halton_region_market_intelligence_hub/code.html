@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Halton Region Market Intelligence Hub | The Data Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .data-gradient {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+        }
+        .metric-card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+            transition: all 0.3s ease;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-container": "#2170e4",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary-container": "#009668",
+                    "on-primary-fixed": "#131b2e",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#fefcff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "tertiary": "#000000",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-dim": "#cbdbf5",
+                    "primary-container": "#131b2e",
+                    "background": "#f8f9ff",
+                    "on-background": "#0b1c30",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-tint": "#565e74",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-surface": "#0b1c30",
+                    "on-primary-container": "#7c839b",
+                    "on-secondary-fixed-variant": "#004395",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed": "#d8e2ff",
+                    "outline-variant": "#c6c6cd",
+                    "surface-container-high": "#dce9ff",
+                    "on-secondary-fixed": "#001a42",
+                    "surface-container-low": "#eff4ff",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed-dim": "#bec6e0",
+                    "tertiary-container": "#002113",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "surface-container": "#e5eeff",
+                    "outline": "#76777d",
+                    "inverse-surface": "#213145",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#dae2fd",
+                    "primary": "#000000",
+                    "inverse-primary": "#bec6e0",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "secondary": "#0058be",
+                    "on-surface-variant": "#45464d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "base": "4px",
+                    "sm": "8px",
+                    "gutter": "20px",
+                    "xl": "48px",
+                    "md": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "data-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md">
+<!-- Top Navigation -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<nav class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-headline-lg font-bold text-primary">The Data Architect</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">Market Data</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">AI Appraisals</a>
+<a class="text-secondary font-bold border-b-2 border-secondary font-body-md text-body-md" href="#">Regional Insights</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors duration-200 font-body-md text-body-md" href="#">TRREB Analytics</a>
+</div>
+<div class="flex items-center gap-md">
+<button class="bg-primary text-on-primary px-lg py-sm font-bold text-body-md cursor-pointer active:opacity-80">Sign In</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-surface-container-lowest py-xl border-b border-outline-variant">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none">
+
+</div>
+<div class="max-w-container-max mx-auto px-lg grid lg:grid-cols-2 items-center gap-xl">
+<div class="space-y-md">
+<div class="inline-flex items-center gap-sm px-sm py-xs bg-secondary-container/10 border border-secondary-container/20">
+<span class="flex h-2 w-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-data-mono text-data-mono text-secondary">PropTx™ Live Synchronization Active</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary leading-tight">Halton Region:<br/>Institutional Market Intelligence</h1>
+<p class="font-body-md text-on-surface-variant max-w-xl">
+                        Deep-dive analytics into the Greater Golden Horseshoe's premium growth corridor. Real-time listing data and AI-driven appraisals for Oakville, Burlington, and Milton.
+                    </p>
+<div class="flex gap-md pt-md">
+<button class="bg-primary text-on-primary px-xl py-md font-bold text-body-md hover:bg-on-background transition-colors">Generate Portfolio Report</button>
+<button class="border border-outline px-xl py-md font-bold text-body-md hover:bg-surface-container transition-colors">Explore Sub-Markets</button>
+</div>
+</div>
+<div class="hidden lg:block relative">
+<div class="glass-panel p-lg relative z-10 border border-outline-variant shadow-lg">
+<div class="flex justify-between items-center mb-md border-b border-outline-variant pb-sm">
+<span class="font-data-mono text-data-mono text-on-surface-variant">REGION_METRIC: HALTON_AVG</span>
+<span class="material-symbols-outlined text-secondary" data-icon="monitoring">monitoring</span>
+</div>
+<div class="space-y-lg">
+<div class="flex items-end justify-between">
+<div class="h-32 flex items-end gap-1 flex-1">
+<div class="bg-secondary-container w-full h-[40%]"></div>
+<div class="bg-secondary-container w-full h-[55%]"></div>
+<div class="bg-secondary-container w-full h-[50%]"></div>
+<div class="bg-secondary-container w-full h-[70%]"></div>
+<div class="bg-secondary-container w-full h-[85%]"></div>
+<div class="bg-secondary w-full h-[95%]"></div>
+</div>
+<div class="pl-lg text-right">
+<div class="font-data-mono text-data-mono text-on-surface-variant uppercase">YoY Delta</div>
+<div class="font-display-lg text-headline-lg text-secondary">+12.4%</div>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-4 -right-4 w-full h-full bg-primary-container -z-10 opacity-5"></div>
+</div>
+</div>
+</section>
+<!-- Market Pulse Section -->
+<section class="py-xl max-w-container-max mx-auto px-lg">
+<div class="flex justify-between items-end mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Halton Market Pulse</h2>
+<p class="font-body-md text-on-surface-variant">Last updated: 14:02 EST • Real-time Repliers API Feed</p>
+</div>
+<div class="hidden md:block">
+<span class="font-data-mono text-data-mono px-sm py-xs bg-surface-container border border-outline-variant">BOARD_SYNC: TRREB_HALTON</span>
+</div>
+</div>
+<div class="grid md:grid-cols-3 gap-lg">
+<div class="glass-panel p-lg metric-card-hover">
+<div class="flex justify-between items-start mb-md">
+<span class="font-data-mono text-data-mono text-on-surface-variant">MEDIAN_PRICE</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="payments">payments</span>
+</div>
+<div class="font-display-lg text-headline-lg text-primary">$1,280,000</div>
+<div class="flex items-center gap-xs mt-sm text-on-tertiary-container">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="font-data-mono text-data-mono">2.4% vs prev month</span>
+</div>
+</div>
+<div class="glass-panel p-lg metric-card-hover">
+<div class="flex justify-between items-start mb-md">
+<span class="font-data-mono text-data-mono text-on-surface-variant">INVENTORY_MONTHS</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="inventory_2">inventory_2</span>
+</div>
+<div class="font-display-lg text-headline-lg text-primary">2.1 Months</div>
+<div class="flex items-center gap-xs mt-sm text-error">
+<span class="material-symbols-outlined text-sm" data-icon="trending_down">trending_down</span>
+<span class="font-data-mono text-data-mono">-0.4% absorption rate</span>
+</div>
+</div>
+<div class="glass-panel p-lg metric-card-hover">
+<div class="flex justify-between items-start mb-md">
+<span class="font-data-mono text-data-mono text-on-surface-variant">SNLR_INDEX</span>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="balance">balance</span>
+</div>
+<div class="font-display-lg text-headline-lg text-primary">58%</div>
+<div class="flex items-center gap-xs mt-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="equalizer">equalizer</span>
+<span class="font-data-mono text-data-mono">Balanced Territory</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sub-Market Intelligence Table -->
+<section class="py-xl bg-surface-container-low border-y border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg">
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary">Sub-Market Intelligence</h2>
+<p class="font-body-md text-on-surface-variant">Cross-municipal performance metrics across Halton Region.</p>
+</div>
+<div class="bg-surface-container-lowest overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-primary text-on-primary">
+<th class="p-md font-data-mono text-data-mono uppercase tracking-wider">Sub-Market</th>
+<th class="p-md font-data-mono text-data-mono uppercase tracking-wider">Median Value</th>
+<th class="p-md font-data-mono text-data-mono uppercase tracking-wider">Price Trajectory</th>
+<th class="p-md font-data-mono text-data-mono uppercase tracking-wider">Inventory Velocity</th>
+<th class="p-md font-data-mono text-data-mono uppercase tracking-wider">Buy Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-bold text-primary">Oakville</td>
+<td class="p-md font-data-mono">$1,540,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs text-on-tertiary-container font-data-mono">
+<span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span> Bullish
+                                    </span>
+</td>
+<td class="p-md font-data-mono">24 Days</td>
+<td class="p-md">
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-sm py-xs font-data-mono text-xs rounded">A+</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-bold text-primary">Burlington</td>
+<td class="p-md font-data-mono">$1,150,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs text-secondary font-data-mono">
+<span class="material-symbols-outlined text-xs" data-icon="east">east</span> Stable
+                                    </span>
+</td>
+<td class="p-md font-data-mono">31 Days</td>
+<td class="p-md">
+<span class="bg-secondary-fixed/20 text-on-secondary-fixed-variant px-sm py-xs font-data-mono text-xs rounded">B</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="p-md font-bold text-primary">Milton</td>
+<td class="p-md font-data-mono">$1,020,000</td>
+<td class="p-md">
+<span class="inline-flex items-center gap-xs text-on-tertiary-container font-data-mono">
+<span class="material-symbols-outlined text-xs" data-icon="north_east">north_east</span> Rapid Growth
+                                    </span>
+</td>
+<td class="p-md font-data-mono">18 Days</td>
+<td class="p-md">
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-sm py-xs font-data-mono text-xs rounded">A</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- The Halton Premium Module -->
+<section class="py-xl">
+<div class="max-w-container-max mx-auto px-lg">
+<div class="grid lg:grid-cols-2 gap-xl items-center">
+<div class="aspect-[3/2] bg-cover bg-center border border-outline-variant shadow-xl relative" data-alt="A sophisticated architectural photograph of a luxury glass-walled waterfront home on the shores of Lake Ontario in Oakville. The lighting is early morning blue hour, emphasizing the sleek metallic and glass textures of the building. The background shows the calm, expansive horizon of the lake, conveying a sense of exclusive coastal luxury and high-value real estate. The image has a clean, professional commercial photography aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCOWmjBX3M9uevGeYx69XmTZgc5Mms2Rj5SsiST_4Zs2C7Bwtnt-9tEyTgT_su9PYS8QrzvC7MC8-vTmeqvT1UONRdrcBZoyr5fOKA3RIqfOHcJoMkFiWUzWzUecV0XILaehnXa_Ikecm6-mPAESP7meTjHkvblsYg-CcPgTu0hNC1SVPDIJPmNiX1lpLzReWak11IKyoaGsndKpzP1qivwX4sBv-vqt2sJgEZrKeLxVlpxFM7X5yQTT7_6sVp51Jx4jF2r4M1AeAc')">
+<div class="absolute bottom-md left-md bg-primary text-on-primary px-md py-sm font-data-mono text-xs">
+                            PREMIUM_ASSET: WATERFRONT_OAKVILLE
+                        </div>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center gap-sm">
+<span class="bg-secondary text-on-secondary px-sm py-xs font-data-mono text-xs">AI ANALYSIS</span>
+<span class="font-data-mono text-data-mono text-on-surface-variant">INSIGHT_ID: HP_4420</span>
+</div>
+<h2 class="font-display-lg text-headline-lg text-primary">The Halton Premium: Waterfront Multiplier</h2>
+<p class="font-body-md text-on-surface-variant">
+                            Our proprietary appraisal engine identifies a 2.4x valuation multiplier for waterfront-adjacent properties in South Oakville compared to equivalent square footage inland. Milton's new-growth corridors are currently yielding 15% higher rent-to-value ratios than established Burlington suburbs.
+                        </p>
+<div class="space-y-md">
+<div class="flex justify-between items-center border-b border-outline-variant pb-sm">
+<span class="font-body-md font-bold">Waterfront Multiplier</span>
+<span class="font-data-mono text-secondary">+142% Premium</span>
+</div>
+<div class="flex justify-between items-center border-b border-outline-variant pb-sm">
+<span class="font-body-md font-bold">Inland Development Yield</span>
+<span class="font-data-mono text-on-tertiary-container">5.2% Avg Yield</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Hot Pockets Grid -->
+<section class="py-xl bg-surface-container">
+<div class="max-w-container-max mx-auto px-lg">
+<div class="flex justify-between items-center mb-xl">
+<h2 class="font-display-lg text-headline-lg text-primary">'Hot Pockets' Premium Listings</h2>
+<a class="text-secondary font-bold hover:underline flex items-center gap-xs" href="#">
+                        View All Halton Inventory <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant group cursor-pointer overflow-hidden">
+<div class="aspect-[3/2] overflow-hidden relative">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A modern architectural masterpiece in Oakville featuring massive limestone pillars and floor-to-ceiling glass windows. The property is surrounded by manicured emerald lawns and mature oak trees. The lighting is warm golden hour, highlighting the premium building materials and the affluent neighborhood vibe. Sharp focus, professional real estate photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE8CURZuxvbWFAIz31NwqA0hJxM42HyAIWjdp7Tnxu_w9yWEUwuf9n3Ii18q9FqTXqIEA1XYC0NdOj1mBYQyg1OPVL-do_hp5oVs1n40268aqghKQO1laSD_MErMVt2xKQNbtbFca1JrhF9dOlvg8RaoHVLkfwWUqZSTj6IMvZoF4EdFSfXzi2kltgzUqErv1vc4Pwa2ZPM1U2x4Bcyn5Nn1y59idLrwwWvTQH0iSuVNuKcnzsK2yxKnwkT1TDabtQQBBmeJEndwo"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur-sm px-sm py-xs font-data-mono text-xs border border-outline-variant">
+                                LIVE_SYNC
+                            </div>
+</div>
+<div class="p-md">
+<div class="font-data-mono text-xs text-on-surface-variant mb-xs">OAKVILLE • CLEARVIEW</div>
+<h3 class="font-bold text-primary mb-sm line-clamp-1">Chartwell Institutional Estate</h3>
+<div class="flex justify-between items-center">
+<span class="font-display-lg text-headline-lg-mobile text-primary">$4,850,000</span>
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-xs py-base text-[10px] font-bold">AI_UPGRADE_POTENTIAL</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant group cursor-pointer overflow-hidden">
+<div class="aspect-[3/2] overflow-hidden relative">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A luxury contemporary condo in Burlington with a wide balcony overlooking the Spencer Smith Park and Lake Ontario. The interior visible through the glass is minimalist with marble accents and high-end lighting fixtures. Daytime lighting, bright and airy feel, emphasizing the premium location and lifestyle. Clean lines, ultra-modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsWLdFw9NcVS7KUiNNwWuBS4jPZjCZF0jNtyfVb2lbrE5M8wRS9Rw7WET8aji6H0D-KUquAcKHCTQSHZ3P35kDtW0O3bMin3kFRM6IMj1BFL-oH6Halr8LLOdH6lgmfJBFA7JCGvrh53VQL8toNxVL0-RcG-LNMI6Umkr1zAfBu3fyMJSeqvO0mS-vW4EvHwLADnWbJNn6rE7YWdd7uNJ-hQj5V9Y9ZuoVfitAnnDQqFxe8P1_cxiht-uluIMkt5xBlEm90m2ip-4"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur-sm px-sm py-xs font-data-mono text-xs border border-outline-variant">
+                                LIVE_SYNC
+                            </div>
+</div>
+<div class="p-md">
+<div class="font-data-mono text-xs text-on-surface-variant mb-xs">BURLINGTON • DOWNTOWN</div>
+<h3 class="font-bold text-primary mb-sm line-clamp-1">Lake-Front Penthouse Suite</h3>
+<div class="flex justify-between items-center">
+<span class="font-display-lg text-headline-lg-mobile text-primary">$1,920,000</span>
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-xs py-base text-[10px] font-bold">HIGH_DEMAND</span>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant group cursor-pointer overflow-hidden">
+<div class="aspect-[3/2] overflow-hidden relative">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="A newly constructed detached executive home in Milton's premium Escarpment community. Features a dark brick facade with natural wood accents and a modern black metal roof. The background shows the lush greenery of the Niagara Escarpment. Crisp, clear lighting, emphasizing the newness and quality of the build. Modern suburban luxury style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwZ1z9tBriX0LGRFZPlzFNdfISn7e2CKgbgce3IAst0TGBqyxaCa2uNejxxbD676uZnEVovGP4Px1PxW3ixVyPMIMfngm-80e5w8JkdaGziSIz0xPJh3GDJ262Bt7LXlWR0DCFH64YIk8QY9eYWxKVQx3O3OZbckn9fc_1dQusNLrsvgeJ3HENHJVXWvGCmVlXd29d2_eSKQNLt_olC4iVZIOqoz4mtTNA4iw6tz6POBheO35n5VBWiFFJYk5uNMTYDX3AvVOO2as"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur-sm px-sm py-xs font-data-mono text-xs border border-outline-variant">
+                                LIVE_SYNC
+                            </div>
+</div>
+<div class="p-md">
+<div class="font-data-mono text-xs text-on-surface-variant mb-xs">MILTON • ESCARPMENT</div>
+<h3 class="font-bold text-primary mb-sm line-clamp-1">Executive Heritage Detached</h3>
+<div class="flex justify-between items-center">
+<span class="font-display-lg text-headline-lg-mobile text-primary">$1,450,000</span>
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-xs py-base text-[10px] font-bold">RAPID_VELOCITY</span>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest border border-outline-variant group cursor-pointer overflow-hidden">
+<div class="aspect-[3/2] overflow-hidden relative">
+<img class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500" data-alt="An expansive multi-million dollar estate in Bronte Creek, Oakville, with a massive driveway, natural stone exterior, and professional landscaping. The image is taken at dusk with interior and exterior lights warmly glowing. The composition highlights the privacy and scale of the property. High-end real estate portfolio style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPFXGZwaDBcM-OhHSlb68DlvQbTZi-rsazCfJvawU4PSE4kGhKYrSSbyiSBvCEQDr_XneW5B_68PIl482_Tc0w3CjvTCNh0LpKVvGB4omGMhw-USEO-yUI_vrdv70592XEPT-t4alykQqJq3cQ7GmJHb-MwQ7bOtgv7173PehXFddzbRzp1y6n9oyhbHe9cmctwAaVQDaJxXxQ_LDSpZ21VGAqyN_z05VGiXnFnZ21htJegJ6xroPZMzCt8_Fn6Ni26Avorp0kGXs"/>
+<div class="absolute top-sm right-sm bg-white/90 backdrop-blur-sm px-sm py-xs font-data-mono text-xs border border-outline-variant">
+                                LIVE_SYNC
+                            </div>
+</div>
+<div class="p-md">
+<div class="font-data-mono text-xs text-on-surface-variant mb-xs">OAKVILLE • BRONTE CREEK</div>
+<h3 class="font-bold text-primary mb-sm line-clamp-1">Bronte Valley Custom Estate</h3>
+<div class="flex justify-between items-center">
+<span class="font-display-lg text-headline-lg-mobile text-primary">$3,200,000</span>
+<span class="bg-tertiary-fixed-dim/20 text-on-tertiary-container px-xs py-base text-[10px] font-bold">PREMIUM_LOT</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Conversion Hooks Section -->
+<section class="py-xl bg-primary text-on-primary relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+
+</div>
+<div class="max-w-container-max mx-auto px-lg relative z-10">
+<div class="grid lg:grid-cols-2 gap-xl">
+<div class="p-xl border border-on-primary/20 bg-white/5 backdrop-blur-md">
+<h3 class="font-headline-lg text-headline-lg mb-md">What's my Halton home worth?</h3>
+<p class="font-body-md text-on-primary/70 mb-lg">Access our institutional-grade AI appraisal engine. 98.4% accuracy vs TRREB closed sales.</p>
+<div class="flex gap-xs">
+<input class="flex-1 bg-white/10 border-on-primary/20 text-on-primary placeholder:text-on-primary/40 p-md focus:ring-secondary focus:border-secondary" placeholder="Enter property address..." type="text"/>
+<button class="bg-secondary text-on-secondary px-lg font-bold hover:bg-secondary-container transition-colors">Analyze</button>
+</div>
+</div>
+<div class="p-xl border border-on-primary/20 bg-white/5 backdrop-blur-md flex flex-col justify-between">
+<div>
+<h3 class="font-headline-lg text-headline-lg mb-md">Download Halton Q3 Report</h3>
+<p class="font-body-md text-on-primary/70 mb-lg">Complete sub-market analysis, absorption rates, and 2025 regional forecasts.</p>
+</div>
+<button class="w-full border-2 border-on-primary py-md font-bold text-display-md flex items-center justify-center gap-md hover:bg-on-primary hover:text-primary transition-all">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+                            Access Institutional PDF
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="space-y-sm">
+<div class="font-display-lg text-headline-lg-mobile font-bold text-primary">The Data Architect</div>
+<p class="font-data-mono text-data-mono text-on-surface-variant max-w-sm">
+                    © 2024 The Data Architect. Real-time listing data provided by Repliers API.
+                </p>
+<p class="text-[10px] font-data-mono text-on-surface-variant uppercase opacity-60">
+                    PropTx™ and REALTOR® compliant platform. Data accuracy guaranteed by Board synchronization protocols.
+                </p>
+</div>
+<div class="grid grid-cols-2 gap-x-xl gap-y-sm">
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Market Index</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Board Sync Status</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for hover states on charts
+        document.querySelectorAll('.metric-card-hover').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1.2) rotate(5deg)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) icon.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body></html>

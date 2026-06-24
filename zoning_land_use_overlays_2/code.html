@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Data Architect | Zoning &amp; Land Use</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#f0eded",
+                    "primary": "#002045",
+                    "on-background": "#1b1c1c",
+                    "inverse-on-surface": "#f3f0f0",
+                    "secondary-container": "#7db6ff",
+                    "background": "#fbf9f8",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#303030",
+                    "outline": "#74777f",
+                    "on-primary-container": "#86a0cd",
+                    "outline-variant": "#c4c6cf",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#00522f",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#fbf9f8",
+                    "surface-container-highest": "#e4e2e1",
+                    "secondary-fixed": "#d3e4ff",
+                    "primary-fixed-dim": "#adc7f7",
+                    "inverse-primary": "#adc7f7",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-fixed": "#91f8b8",
+                    "surface": "#fbf9f8",
+                    "on-surface-variant": "#43474e",
+                    "surface-variant": "#e4e2e1",
+                    "primary-container": "#1a365d",
+                    "on-secondary-container": "#00477f",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f6f3f2",
+                    "tertiary": "#002713",
+                    "on-surface": "#1b1c1c",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-tint": "#455f88",
+                    "tertiary-container": "#003f23",
+                    "secondary": "#1960a3",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "on-primary-fixed": "#001b3c",
+                    "on-secondary-fixed-variant": "#004881",
+                    "tertiary-fixed-dim": "#74db9d",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-tertiary-fixed": "#002110",
+                    "on-tertiary-container": "#4bb278",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .zoning-mask {
+            mix-blend-mode: multiply;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body overflow-hidden">
+<!-- TopNavBar -->
+<nav class="flex justify-between items-center px-8 h-16 w-full fixed top-0 z-50 bg-surface shadow-sm font-sans text-sm tracking-wide">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-primary">The Data Architect</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Market Intel</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Advisory</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center bg-surface-container px-4 py-2 rounded-full w-64">
+<span class="material-symbols-outlined text-primary text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs w-full p-0" placeholder="Search address or area..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors">settings</button>
+<img alt="User profile photo" class="w-8 h-8 rounded-full border-2 border-surface-container-high" data-alt="Professional portrait of a male data analyst in a dark navy suit with soft studio lighting and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6meIBHWVYMhjuMgSapH-DKhIi3eARuPcwa_cKsW5S5QdpCefooZw_E7aAh5000aY4sVpAjHBEjRH8Vr9QrWoTXhYVLcE5Q8RP-XKE8MjVFPkSOepT8o2xfuw1Sad9DSgo46c3Y-mWlB3844ajn2cZeoA08cRj-7TL8s-wrcVM8bGQ_0XR7w1vodxo9GWz-ZfUlznzPwhFOSEy5vh5RyATRqdBhBuj1AT3U6BXM9NN6iyDOp0INi8SyhkQAW6SnlsF8kQCj8_mVgw"/>
+</div>
+</nav>
+<div class="flex h-screen pt-16">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 flex flex-col py-6 bg-surface-container-low text-sm font-medium Inter border-r-0 z-40">
+<div class="px-8 mb-8">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm">domain</span>
+</div>
+<div>
+<h3 class="text-lg font-black text-primary leading-tight">Ontario Market</h3>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Institutional Grade</p>
+</div>
+</div>
+</div>
+<div class="flex-1 space-y-1">
+<!-- Zoning Maps is ACTIVE -->
+<a class="bg-white text-primary rounded-l-full ml-4 pl-4 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span>Zoning Maps</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span>Predictive Analytics</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard_customize</span>
+<span>Sellers Centre</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">location_city</span>
+<span>Neighbourhoods</span>
+</a>
+<a class="text-on-surface-variant pl-8 py-3 flex items-center gap-4 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Valuations</span>
+</a>
+</div>
+<div class="px-6 mt-auto">
+<button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-xs tracking-tight hover:bg-primary-container transition-colors">
+                    Generate Report
+                </button>
+<div class="mt-6 pt-6 border-t border-surface-container-highest space-y-1">
+<a class="text-on-surface-variant pl-2 py-2 flex items-center gap-4 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">help</span>
+<span class="text-xs">Support</span>
+</a>
+<a class="text-on-surface-variant pl-2 py-2 flex items-center gap-4 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="text-xs">Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 flex-1 flex relative bg-surface overflow-hidden">
+<!-- Map Canvas -->
+<div class="flex-1 relative overflow-hidden bg-surface-dim">
+<img alt="Toronto Neighbourhood Map" class="w-full h-full object-cover opacity-80" data-alt="Detailed top-down architectural site plan and map of a Toronto urban neighbourhood with visible street patterns and property lots" data-location="Toronto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEkForuk4aI3L9IazgYYaJkRdjAgq08gBl5eoCHKSeuxev1eChr1ELKpfQvDYEK5AjSicKTeraaOfLq1rzWNVccdb9cCrzG_wnH6jrZGm9q-oubQdeDP1FE8JMC7EJx2yPuSpzAdFZtIoIgqf1m_XyMRUWADfXzQSZ-plDrwZpTKspezT538UrRaSSsk7zSJKu9jOSnyN7NEAgVTi_i8ZeaA8ytnfvczFRz7OxxhI4odrKOkDwH2-tLI3_pXyHDypcnSiS59peVbk"/>
+<!-- Zoning Overlays (Simulated with translucent absolute divs) -->
+<div class="absolute inset-0 pointer-events-none opacity-40">
+<div class="absolute top-20 left-40 w-64 h-80 bg-blue-500/50 mix-blend-multiply border border-blue-600/30"></div>
+<div class="absolute top-40 right-60 w-96 h-96 bg-red-500/50 mix-blend-multiply border border-red-600/30"></div>
+<div class="absolute bottom-20 left-1/3 w-40 h-60 bg-green-500/50 mix-blend-multiply border border-green-600/30"></div>
+</div>
+<!-- Active Development Pins -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer group">
+<div class="relative flex items-center justify-center">
+<div class="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-6 h-6 bg-primary rounded-full border-2 border-white shadow-lg flex items-center justify-center">
+<span class="w-2 h-2 bg-white rounded-full"></span>
+</div>
+</div>
+<!-- Tooltip -->
+<div class="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 bg-white p-3 rounded-xl shadow-xl w-48 invisible group-hover:visible transition-all">
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-tighter">Proposed Development</p>
+<p class="text-sm font-bold text-primary">12-Storey Mixed Use</p>
+<p class="text-[10px] text-secondary mt-1">Status: Under Review</p>
+</div>
+</div>
+<!-- Map Controls (Glassmorphism) -->
+<div class="absolute bottom-10 left-10 flex flex-col gap-2">
+<div class="bg-surface/80 backdrop-blur-xl p-1 rounded-xl shadow-lg flex flex-col">
+<button class="p-3 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="p-3 hover:bg-surface-container-high rounded-lg text-primary transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+<div class="bg-surface/80 backdrop-blur-xl p-3 rounded-xl shadow-lg text-primary">
+<span class="material-symbols-outlined">my_location</span>
+</div>
+</div>
+<!-- Data Source Badge -->
+<div class="absolute bottom-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md px-3 py-1 rounded-full shadow-sm border border-outline-variant/20">
+<p class="text-[9px] text-on-surface-variant font-medium">Data Source: City of Toronto Open Data &amp; PropTx Integration</p>
+</div>
+</div>
+<!-- Side Detail Panel (Split View) -->
+<div class="w-[420px] h-full bg-surface shadow-2xl z-10 flex flex-col border-l border-surface-container-highest">
+<div class="p-8 space-y-8 overflow-y-auto">
+<!-- Section: Layer Control -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-sm font-extrabold uppercase tracking-widest text-primary">Map Layers</h2>
+<button class="text-xs text-secondary hover:underline">Reset All</button>
+</div>
+<div class="space-y-3">
+<label class="flex items-center justify-between p-4 bg-white rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-blue-500"></div>
+<span class="text-sm font-semibold">Zoning Overlays</span>
+</div>
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-white rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<span class="text-sm font-semibold">Heritage Districts</span>
+</div>
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-white rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<span class="text-sm font-semibold">Transit Oriented Communities</span>
+</div>
+<input checked="" class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-4 bg-white rounded-xl cursor-pointer hover:bg-surface-container-low transition-colors shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-amber-500"></div>
+<span class="text-sm font-semibold">Environmental Protection</span>
+</div>
+<input class="rounded border-outline-variant text-primary focus:ring-primary w-5 h-5" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Section: Zoning Deep Dive (Selected Parcel) -->
+<section>
+<div class="mb-6">
+<h2 class="text-sm font-extrabold uppercase tracking-widest text-primary">Parcel Deep Dive</h2>
+<p class="text-xs text-on-surface-variant mt-1">Liberty Village | Block 14-A</p>
+</div>
+<div class="bg-primary-container p-6 rounded-2xl text-white relative overflow-hidden">
+<!-- Background Texture -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-[10px] text-on-primary-container font-bold uppercase tracking-tighter">Zoning Code</p>
+<h3 class="text-lg font-bold">CR 3.0 (c2.0; r2.5) SS2 (x2189)</h3>
+</div>
+<span class="material-symbols-outlined text-on-primary-container">info</span>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-6">
+<div class="bg-white/5 p-3 rounded-xl border border-white/10">
+<p class="text-[9px] text-on-primary-container uppercase tracking-widest">Max Height</p>
+<p class="text-xl font-bold">45m</p>
+</div>
+<div class="bg-white/5 p-3 rounded-xl border border-white/10">
+<p class="text-[9px] text-on-primary-container uppercase tracking-widest">Density (FSI)</p>
+<p class="text-xl font-bold">3.0x</p>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-white/10">
+<div class="flex items-center gap-2 mb-2">
+<span class="text-[10px] text-on-primary-container font-bold uppercase">Current Use</span>
+<span class="px-2 py-0.5 rounded-sm bg-tertiary-container text-on-tertiary-container text-[10px] font-bold">VERIFIED</span>
+</div>
+<p class="text-sm font-medium">Mixed-Use Residential</p>
+<p class="text-xs text-on-primary-container mt-1">Multiple commercial units at grade with 240 residential units above.</p>
+</div>
+</div>
+</div>
+<div class="mt-6 space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">history_edu</span>
+</div>
+<div>
+<p class="text-xs font-bold">Heritage Status</p>
+<p class="text-xs text-on-surface-variant">Listed but not designated (Part IV).</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">train</span>
+</div>
+<div>
+<p class="text-xs font-bold">TOC Proximity</p>
+<p class="text-xs text-on-surface-variant">350m from King-Liberty Station (Ontario Line).</p>
+</div>
+</div>
+</div>
+</section>
+<button class="w-full py-4 rounded-xl border border-outline-variant/30 text-sm font-bold text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Zoning Bylaw PDF
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface z-50 border-t border-surface-container-highest px-8 h-12 flex items-center justify-between">
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">© 2024 The Data Architect. Data powered by PropTx and TRREB. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-[10px] text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-[10px] text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="text-[10px] text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors" href="#">Licensing</a>
+<a class="text-[10px] text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+</footer>
+</body></html>

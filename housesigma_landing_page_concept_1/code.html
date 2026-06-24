@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Data Architect | Market Intelligence Curated</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-fixed": "#002110",
+                "surface-container-low": "#f6f3f2",
+                "on-secondary-fixed-variant": "#004881",
+                "surface-container-highest": "#e4e2e1",
+                "on-tertiary-container": "#4bb278",
+                "surface-variant": "#e4e2e1",
+                "on-background": "#1b1c1c",
+                "primary-fixed": "#d6e3ff",
+                "tertiary-fixed": "#91f8b8",
+                "tertiary-fixed-dim": "#74db9d",
+                "on-primary-container": "#86a0cd",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#455f88",
+                "on-secondary": "#ffffff",
+                "on-secondary-container": "#00477f",
+                "primary-fixed-dim": "#adc7f7",
+                "primary-container": "#1a365d",
+                "surface": "#fbf9f8",
+                "background": "#fbf9f8",
+                "on-surface-variant": "#43474e",
+                "on-secondary-fixed": "#001c38",
+                "on-primary-fixed-variant": "#2d476f",
+                "outline-variant": "#c4c6cf",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#00522f",
+                "inverse-primary": "#adc7f7",
+                "surface-container-high": "#eae8e7",
+                "secondary-fixed": "#d3e4ff",
+                "tertiary-container": "#003f23",
+                "tertiary": "#002713",
+                "secondary": "#1960a3",
+                "primary": "#002045",
+                "surface-container": "#f0eded",
+                "surface-bright": "#fbf9f8",
+                "error": "#ba1a1a",
+                "secondary-container": "#7db6ff",
+                "inverse-on-surface": "#f3f0f0",
+                "secondary-fixed-dim": "#a2c9ff",
+                "inverse-surface": "#303030",
+                "on-primary": "#ffffff",
+                "surface-dim": "#dcd9d9",
+                "on-surface": "#1b1c1c",
+                "on-error-container": "#93000a",
+                "outline": "#74777f",
+                "on-error": "#ffffff",
+                "surface-container-lowest": "#ffffff",
+                "on-primary-fixed": "#001b3c"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Inter"],
+                "body": ["Inter"],
+                "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .hero-gradient { background: linear-gradient(135deg, #002045 0%, #1a365d 100%); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="sticky top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold tracking-tighter text-blue-900 dark:text-blue-100 font-headline">The Data Architect</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-blue-900 dark:text-white font-bold border-b-2 border-blue-900 dark:border-blue-400 pb-1 font-sans text-sm tracking-tight" href="#">Home</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-sans text-sm font-medium tracking-tight" href="#">Buy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-sans text-sm font-medium tracking-tight" href="#">Rent</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-sans text-sm font-medium tracking-tight" href="#">Sold</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors font-sans text-sm font-medium tracking-tight" href="#">Valuations</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-lg bg-surface-container-high text-primary font-medium text-sm transition-all hover:bg-surface-container-highest shadow-sm">Free Valuation</button>
+<button class="px-4 py-2 rounded-lg hero-gradient text-white font-medium text-sm transition-all hover:opacity-90 shadow-sm">Sign Up</button>
+</div>
+</div>
+<div class="bg-slate-100/50 dark:bg-slate-800/50 h-[1px]"></div>
+</nav>
+<!-- Hero Section -->
+<header class="relative overflow-hidden pt-20 pb-32 px-6">
+<div class="max-w-4xl mx-auto text-center">
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-primary mb-6 leading-tight">
+                Real Estate Intelligence <br/>
+<span class="text-secondary">Decoded.</span>
+</h1>
+<p class="text-on-surface-variant text-lg mb-12 max-w-2xl mx-auto">Access institutional-grade data, precise valuations, and market transparency for every home in Canada.</p>
+<!-- Search Architecture -->
+<div class="relative max-w-2xl mx-auto mb-8">
+<div class="bg-surface-container-lowest rounded-full p-2 flex items-center shadow-lg shadow-on-surface/5 border border-outline-variant/20">
+<div class="pl-4 pr-3 text-primary">
+<span class="material-symbols-outlined text-3xl">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline text-lg" placeholder="Search City, Address, MLS #" type="text"/>
+</div>
+</div>
+<!-- Filters -->
+<div class="flex flex-wrap justify-center gap-3">
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-outline-variant/20 flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="text-sm font-medium">Beds</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-outline-variant/20 flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="text-sm font-medium">Baths</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant border border-outline-variant/20 flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="text-sm font-medium">Price</span>
+<span class="material-symbols-outlined text-sm">keyboard_arrow_down</span>
+</button>
+<button class="px-6 py-2 rounded-full hero-gradient text-white flex items-center gap-2">
+<span class="text-sm font-bold">Active / Sold</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Region Selector -->
+<section class="py-20 bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-10">
+<div>
+<span class="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-2 block">Coverage</span>
+<h2 class="text-3xl font-extrabold text-primary">Explore by Region</h2>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Ontario -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern Toronto skyline with CN Tower at twilight, soft purple and blue sky reflecting off glass skyscrapers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7qOFPAddkxkNB1qbfqJtp74qA-EvljpMZEN8Mxd_2LBL9KYdIW4w191aOX05A4NNhCNm3j_wmjpaqEAN0RRAXnpWS3-wdBgzGijCXP-O5zfF1W-AFNTv3r9tPWcNs8Lr1Hht4g7xJkKYBGDmGnDIetpsQfDGwi7GL9oWBYgUnhd0P3IB_uqny19PHstPiEQXKV779sbvYSRlsmdZ4SskwLI1YMWjdOsq0ihkZvCuW54Ag3HP3uxEkezjdjVOa8PBTLBI33-mmlJE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h3 class="text-2xl font-bold">Ontario</h3>
+<p class="text-white/80 text-sm">84,102 active listings</p>
+</div>
+</div>
+<!-- British Columbia -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Aerial view of Vancouver coastal mountains and modern glass residential towers overlooking deep blue water" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdQ0QzjOJ0YNShqSItTapnOcb_l_84XxFlr99cm-iAXBsqLPJjPC3lEnKaxzVuc6ii0fOPeU7qUjy_JOqgFsYQzzUV3T6b3j9gPsSUwDLT_6R3S_GdP8FfRur17YeNQEys--FcWRXB0F_mca-_AwSeSauXvKdjKuTA9fV8nYu34iYb0NurMoFRueEADogqpz75xdcSESxcuasjhJPeLfrIeOa9vR6zMUsI9EmRLX0JFK8j2Cm9bfAgEYxyT4g_Yte2Y5d93elMrbw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h3 class="text-2xl font-bold">British Columbia</h3>
+<p class="text-white/80 text-sm">31,529 active listings</p>
+</div>
+</div>
+<!-- Alberta -->
+<div class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-highest cursor-pointer">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Peaceful Calgary cityscape with snow-capped Rocky Mountains in the far background under a clear winter sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Z-oRsX1FkCgtbsg0tIGrq_Nd1ioLVr42cMZVsY5PapUKIVx8qWkt-Cl9G_7_GU3m568xK0h7Ioe-CsKRkLatR6DnFHI3GHYWVsEFzGFWingkB91nxz2DJBy137ZskfaQzqfNzKR1wIQOCqlukd_9ji_iChcQ_b1y49KFMe7oU-iBfKJ_0qbn9knokyMWzEWRiIdRl72YGBXantbyHnYwkUUAUlJpkNOEfmbZKnED88Ys_nCrKznys6qgoCADnEBwfhMFx2Gv37M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+<div class="absolute bottom-6 left-6 text-white">
+<h3 class="text-2xl font-bold">Alberta</h3>
+<p class="text-white/80 text-sm">18,443 active listings</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Market Trends Widget -->
+<section class="py-20 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="bg-surface-container-lowest rounded-3xl p-10 border border-outline-variant/10 shadow-md">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-4">
+<h2 class="text-2xl font-extrabold text-primary">Toronto Market Snapshot</h2>
+<div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-full text-xs font-bold text-on-surface-variant">
+                        UPDATED 2H AGO
+                    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-6 rounded-2xl bg-surface border border-outline-variant/20">
+<p class="text-on-surface-variant text-sm font-medium mb-1">Median Price</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-bold text-primary">$1,185,000</span>
+<span class="text-tertiary-container flex items-center font-bold text-sm mb-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 2.4%
+                            </span>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface border border-outline-variant/20">
+<p class="text-on-surface-variant text-sm font-medium mb-1">Days on Market</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-bold text-primary">18 Days</span>
+<span class="text-error flex items-center font-bold text-sm mb-1">
+<span class="material-symbols-outlined text-sm">arrow_downward</span> 4.1%
+                            </span>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface border border-outline-variant/20">
+<p class="text-on-surface-variant text-sm font-medium mb-1">Active Listings</p>
+<div class="flex items-end gap-3">
+<span class="text-3xl font-bold text-primary">4,281</span>
+<span class="text-tertiary-container flex items-center font-bold text-sm mb-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span> 12.8%
+                            </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Just Sold Carousel -->
+<section class="py-12 bg-surface">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-2 block">Recent Activity</span>
+<h2 class="text-3xl font-extrabold text-primary">Just Sold</h2>
+</div>
+<button class="text-secondary font-bold text-sm hover:underline">View All Historical Data</button>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-6 hide-scrollbar">
+<!-- Sold Card 1 -->
+<div class="flex-shrink-0 w-[320px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative aspect-[16/9]">
+<img class="w-full h-full object-cover" data-alt="Exterior of a luxury modern farmhouse with white siding and black window frames at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCTNxRdILisW9pxEcdJkLWcMIxANOZorX761lcAIEbY77lJHHBtiRLfBf9lU5bny8WeDhiXz3pf5qS-fv1nv8kqIcJsgilpTeooE1YCMtOPCnByQzl2Prz5H00MzeEQtjoj4SjBFEmZ1Stcp5UPcg_XXq0WIsjIRQ98qwtkhR17nhWhJYxgSbIhcitgP0qVH27lfd-VY4nfZHB2tGckq6ckwpgWezap5VuXO03KQNGA_XpV3ABdOjvGAIzbnIgV42vBdZ5MgD3yHM"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-white px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">Sold</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-bold text-lg text-primary">42 Admiral Road</h3>
+<span class="text-xs font-medium text-on-surface-variant">Sold: Jan 12</span>
+</div>
+<div class="mb-4">
+<span class="text-2xl font-extrabold text-primary">$3,450,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bed</span> 4</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bathtub</span> 5</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">square_foot</span> 4.2k</span>
+</div>
+</div>
+</div>
+<!-- Sold Card 2 -->
+<div class="flex-shrink-0 w-[320px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative aspect-[16/9]">
+<img class="w-full h-full object-cover" data-alt="Chic contemporary home with wood paneling and large glass windows overlooking a manicured lawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD5JLeP77JLHTdqv_YekMnX-icjLikX3IV2Pvboht63a5nG5-PyAhO6u_vs48RoNvqZUA_2yyLPt_-TNXYkRf7ox5o9AGAwhZeiXWf8HiuJG6mVse39gKaTik-_3FbWJABjcTJ8Ma3kU4bRRZox79fT7L8yYHaRjaPA9n-PitxlWdcm1PiQ3RJ_IzlwxZD1LZn17jRPj12-58hIvge5ow6-ZJwP7E9LyZR9xTrKCo3TMVCcJUAYhAZhs7_6_3fHHd0jgN0pMNGXxw"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-white px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">Sold</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-bold text-lg text-primary">158 Glen Cedar</h3>
+<span class="text-xs font-medium text-on-surface-variant">Sold: Jan 10</span>
+</div>
+<div class="mb-4">
+<span class="text-2xl font-extrabold text-primary">$2,190,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bed</span> 3</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bathtub</span> 3</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">square_foot</span> 2.8k</span>
+</div>
+</div>
+</div>
+<!-- Sold Card 3 -->
+<div class="flex-shrink-0 w-[320px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative aspect-[16/9]">
+<img class="w-full h-full object-cover" data-alt="Modern penthouse apartment interior with floor to ceiling windows showing city lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNlee0iosTOxU87mW7pjG0DPCxIMQe9KeRNcDaB08Rvys6h6vpL7chgWrxcZx8ExanPxnVkSzK1Ey8vFlJKvd4YCG9p6tKFUEG-jTt0aF2i8nC3lamxTbqvrVSElQ-JyFiKFrgjbiKhAT2uFEyKDkk6qzTZ5WIHr2YneRSN0ZZZZ27gwwAQZWBZwRTmkI285IEpcToIM8GgbScV2SZK6sKY50fKTmuGovDlHGq5hhHbxPJN_aGKPaE5LKaZA9cSiJJIuuYX7tja3c"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-white px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">Sold</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-bold text-lg text-primary">Unit 4402 - 1 Bloor E</h3>
+<span class="text-xs font-medium text-on-surface-variant">Sold: Jan 08</span>
+</div>
+<div class="mb-4">
+<span class="text-2xl font-extrabold text-primary">$1,675,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bed</span> 2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bathtub</span> 2</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">square_foot</span> 1.1k</span>
+</div>
+</div>
+</div>
+<!-- Sold Card 4 -->
+<div class="flex-shrink-0 w-[320px] bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative aspect-[16/9]">
+<img class="w-full h-full object-cover" data-alt="Luxury mediterranean style villa with limestone terrace and infinity pool overlooking ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-wJIQiEgiLFxMllvkYg0BfdcxUp5jnWSX_2iGY5SPMXyTOs2CmFes7PhGkPsslnw8D4VY-0D7MhccvLAwVFfIs-b9gjdO4mSwhKa1otP0DrtU2wY_OvpSvynRv3rPeMObmPBc6EJfXV_Oktpf7KD1uTzTE1XDtbrsNbW3RNzAc_q6kJ5tZYLA0lwUPm0uxJQSONzll8dy2VK8JzKwXeXM7W52C0wJOHV_RpkXxAbxHzZznFCDUM0GPHipcJoh-7gqRZCr3gr0Mo0"/>
+<div class="absolute top-3 left-3 bg-tertiary-container text-white px-3 py-1 rounded-sm text-xs font-bold uppercase tracking-wider">Sold</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-bold text-lg text-primary">12 Bayview Terrace</h3>
+<span class="text-xs font-medium text-on-surface-variant">Sold: Jan 05</span>
+</div>
+<div class="mb-4">
+<span class="text-2xl font-extrabold text-primary">$4,850,000</span>
+</div>
+<div class="flex gap-4 text-on-surface-variant text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bed</span> 6</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">bathtub</span> 7</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-lg">square_foot</span> 6.5k</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newly Listed Section -->
+<section class="py-20 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-secondary font-bold tracking-[0.2em] uppercase text-xs mb-2 block">New Opportunities</span>
+<h2 class="text-3xl font-extrabold text-primary">Newly Listed</h2>
+</div>
+<button class="text-secondary font-bold text-sm hover:underline">View All New Listings</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Listing 1 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10">
+<div class="relative overflow-hidden aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Wide shot of a luxury modern mansion with glass walls and professional landscaping at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOVHlRpf6vp5Rjz5GaZzHJGfu0c0USF332sJUtZuBastKi9HXj0NHj77feUrq2dQRsvlPFt76f4tCRh2Uw6kRrqb2Hn8XCbVlyDTjYW1BCHnIJKCroD7wWPzrR4aGr_8eUJDwUHa4ccb1A_SbIqR0qiNqQhysT9vCbjnk6js9UvQXoCXBakBtrPT5ID9f4wYz-NmA8pXxg4Qm0abh1F531tATCbvEPo2ho7yDK2a4tysNeGVTd19252B-YrW6zV4IT1JFOfqOJYx8"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm">Listed 1H Ago</div>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold text-primary mb-1">88 Davenport Road</h3>
+<p class="text-on-surface-variant text-sm mb-6">Yorkville, Toronto</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-primary">$1,895,000</span>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm font-medium">3<span class="material-symbols-outlined text-base">bed</span></span>
+<span class="flex items-center gap-1 text-sm font-medium">2<span class="material-symbols-outlined text-base">bathtub</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing 2 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10">
+<div class="relative overflow-hidden aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Wide shot of a luxury modern mansion with glass walls and professional landscaping at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ky62raLVwucXtSMot8e-Y_V4nLsd_4YOC3Bsu7K72qJ7vBDUmnYlRtCwvOhIoVvESHSzuGtyUMNaguZnM7nouTMIyfZ5LYE4IsYoBnPDeOi_rG2msQ4a5ZaKMiISNFlvG3tRkxA562OoA0OR_v2x6iAKvQprIngXfzRFK0qj8EgvHERIXS0oFmJSADcGK8dDaXZ6A6c2XRTZMIs3R0awRZIvKCvCSFdnLDsdUCK6iLne1gWSfG0pyUZHuNjc4_85fEusFCagaew"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm">Listed 4H Ago</div>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold text-primary mb-1">102 Forest Hill Rd</h3>
+<p class="text-on-surface-variant text-sm mb-6">Forest Hill, Toronto</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-primary">$4,250,000</span>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm font-medium">5<span class="material-symbols-outlined text-base">bed</span></span>
+<span class="flex items-center gap-1 text-sm font-medium">6<span class="material-symbols-outlined text-base">bathtub</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Listing 3 -->
+<div class="group bg-surface-container-lowest rounded-2xl overflow-hidden border border-outline-variant/10">
+<div class="relative overflow-hidden aspect-[4/3]">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Wide shot of a luxury modern mansion with glass walls and professional landscaping at twilight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcEVrCV8sIBHojccyQLMhIxrU5c-l3DKsKbabF0w8Uyk7EMbetZoKSTVGB5ykidrA3M6d75Unq7YAlNmthRHRguwrH-UuuJwSc-dJHjPBE5fnSb7SX7xt5QhYELN2mBFS-gUt6LTkela-rZI2VxN239PbBxnHyMsam0AllyOB-1CA7m78kRwyU5iFzy8xR-PeTY48AQOUNWHe1EgVy2V8c02nwMKgA2jFb3DCplcgYQATmFWy_pKa-cz4ZLAUiBklTthbrogF7xB0"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-primary px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-widest shadow-sm">Listed 6H Ago</div>
+</div>
+<div class="p-8">
+<h3 class="text-xl font-bold text-primary mb-1">Unit 1205 - 181 Fremont</h3>
+<p class="text-on-surface-variant text-sm mb-6">Financial District, Toronto</p>
+<div class="flex justify-between items-center">
+<span class="text-2xl font-extrabold text-primary">$899,000</span>
+<div class="flex gap-3 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm font-medium">1<span class="material-symbols-outlined text-base">bed</span></span>
+<span class="flex items-center gap-1 text-sm font-medium">1<span class="material-symbols-outlined text-base">bathtub</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Valuation CTA -->
+<section class="py-24 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="hero-gradient rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+<div class="relative z-10">
+<h2 class="text-4xl md:text-5xl font-extrabold text-white mb-8 tracking-tight">What is your home worth today?</h2>
+<p class="text-white/70 text-lg mb-12 max-w-xl mx-auto">Our AI-driven appraisal engine analyses thousands of local market data points to give you an accurate valuation in seconds.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-white text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container transition-colors">Get Free Valuation</button>
+<button class="border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors">Compare Market Reports</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-8 py-12 max-w-7xl mx-auto gap-4">
+<div class="flex flex-col gap-2">
+<div class="text-lg font-bold text-blue-900 dark:text-blue-100 font-headline">The Data Architect</div>
+<p class="font-sans text-xs text-slate-500 dark:text-slate-400">© 2024 The Data Architect. Market Intelligence Curated.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors opacity-80 hover:opacity-100 font-sans text-xs font-semibold" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors opacity-80 hover:opacity-100 font-sans text-xs font-semibold" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors opacity-80 hover:opacity-100 font-sans text-xs font-semibold" href="#">Market Reports</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-blue-100 transition-colors opacity-80 hover:opacity-100 font-sans text-xs font-semibold" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

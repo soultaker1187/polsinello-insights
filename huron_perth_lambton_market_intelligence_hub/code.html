@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Huron-Perth &amp; Lambton Market Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-error": "#ffffff",
+                        "surface-dim": "#dcd9d9",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed": "#002110",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#1a365d",
+                        "surface-tint": "#455f88",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e4e2e1",
+                        "tertiary-container": "#003f23",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "error": "#ba1a1a",
+                        "on-primary-container": "#86a0cd",
+                        "background": "#fbf9f8",
+                        "tertiary-fixed": "#91f8b8",
+                        "surface": "#fbf9f8",
+                        "secondary": "#1960a3",
+                        "on-surface-variant": "#43474e",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "primary": "#002045",
+                        "on-secondary-container": "#00477f",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "secondary-container": "#7db6ff",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary-container": "#4bb278",
+                        "inverse-surface": "#303030",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container": "#f0eded",
+                        "on-surface": "#1b1c1c",
+                        "tertiary-fixed-dim": "#74db9d",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary": "#002713",
+                        "primary-fixed-dim": "#adc7f7",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "surface-bright": "#fbf9f8",
+                        "outline": "#74777f",
+                        "inverse-primary": "#adc7f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(251, 249, 248, 0.8);
+            backdrop-filter: blur(16px);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #002045 0%, #1a365d 100%);
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+    </style>
+</head>
+<body class="flex flex-row overflow-hidden">
+<!-- SideNavBar (The Anchor) -->
+<aside class="hidden md:flex flex-col h-screen py-6 bg-surface-container-low dark:bg-surface-dim docked full-height left-0 w-64 shrink-0 transition-transform">
+<div class="px-6 mb-10">
+<h1 class="font-headline font-black text-primary dark:text-on-primary-container text-xl leading-tight">Ontario Intelligence</h1>
+<p class="font-body text-label-sm text-on-surface-variant opacity-70">Since 1989</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 py-3 mx-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all px-4 font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">terminal</span>
+<span>Terminal</span>
+</a>
+<a class="flex items-center gap-3 py-3 mx-2 bg-secondary-container text-on-secondary-container rounded-lg px-4 font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Asset Audit</span>
+</a>
+<a class="flex items-center gap-3 py-3 mx-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all px-4 font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Portfolio</span>
+</a>
+<a class="flex items-center gap-3 py-3 mx-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all px-4 font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">speed</span>
+<span>Market Velocity</span>
+</a>
+<a class="flex items-center gap-3 py-3 mx-2 text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high rounded-lg transition-all px-4 font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">layers</span>
+<span>Zoning Layers</span>
+</a>
+</nav>
+<div class="px-4 mt-auto border-t border-outline-variant/20 pt-6">
+<button class="w-full py-3 px-4 bg-primary text-on-primary rounded-lg font-bold text-sm shadow-sm transition-transform active:scale-95 mb-4">
+                Request Advisory
+            </button>
+<div class="space-y-1">
+<a class="flex items-center gap-3 py-2 px-4 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Support</span>
+</a>
+<a class="flex items-center gap-3 py-2 px-4 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all font-body text-label-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 h-screen overflow-y-auto no-scrollbar relative flex flex-col">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center w-full px-8 h-16 bg-surface dark:bg-primary docked full-width top-0 z-50 transition-colors shadow-sm">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold text-primary dark:text-on-primary-fixed uppercase tracking-tight">Regional Intelligence Hub</span>
+<nav class="hidden lg:flex items-center gap-6">
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Toronto</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Peel</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">York</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Durham</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-secondary dark:text-secondary-fixed-dim border-b-2 border-secondary" href="#">Halton</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline-variant hover:text-primary transition-colors" href="#">Niagara</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary dark:text-primary-fixed font-bold bg-surface-container-low dark:bg-primary-container px-4 py-2 rounded-full text-sm">
+                    (905) 830-9111
+                </button>
+<button class="text-on-surface-variant text-sm font-semibold hover:text-primary transition-colors">
+                    Regional Selection
+                </button>
+</div>
+</header>
+<!-- Hero Section: The Curator's Lens -->
+<section class="relative px-8 pt-12 pb-24 overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-end">
+<div class="flex-1 space-y-6">
+<div class="inline-flex items-center gap-2 bg-tertiary-container px-3 py-1 rounded-sm text-on-tertiary-container text-xs font-bold tracking-widest uppercase">
+                        Institutional Grade
+                    </div>
+<h2 class="text-5xl md:text-7xl font-black text-primary tracking-tighter leading-none">
+                        Huron-Perth &amp; <br/>Lambton Hub.
+                    </h2>
+<p class="text-on-surface-variant text-lg max-w-xl font-body leading-relaxed">
+                        Mapping the Western agricultural and industrial heartlands. Delivering deep data benchmarks for Sarnia, Stratford, and Goderich with institutional precision since 1989.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<div class="bg-surface-container-high px-6 py-4 rounded-xl flex-1 min-w-[200px]">
+<span class="block text-on-surface-variant text-xs uppercase tracking-widest mb-1">Industrial Yields</span>
+<span class="text-2xl font-black text-primary">+8.4% YoY</span>
+</div>
+<div class="bg-surface-container-high px-6 py-4 rounded-xl flex-1 min-w-[200px]">
+<span class="block text-on-surface-variant text-xs uppercase tracking-widest mb-1">Agri-Business Value</span>
+<span class="text-2xl font-black text-primary">$4.2B AUM</span>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/3 group cursor-pointer">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-low p-4 shadow-sm border border-outline-variant/10">
+<img class="w-full aspect-square object-cover rounded-lg group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated digital heat map of Southwestern Ontario including Sarnia and Stratford, rendered in a professional architectural style with glowing node points and data overlays. The color palette features deep navy, cobalt blue, and vibrant lime green accents on a clean light grey base. The lighting is clinical and high-key, conveying high-end market intelligence and institutional data curation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnblXAjIKlk9N4K9XhO4Gx6jfb7bJZ39m72_FA1v14D_QLpgZG7KZaxt4pMXpnsToOa4WUMKCYfpyWCheBAip2KxGvsA9A4mg5wtvtlOggYYsGVsLlMgAiUmRAbZEy3a9mca_z05iVfZIQmnXt4MT4vVgv1xFPXchLUy6t_gbnVgFixqNLuBqd2y727oksv-IEgGnpyMpG-J0qodOMraiSaRGrg0OU5fWyWKznIWC_viqkYwF83ADKY_eKxPce8WAaX4tRly1uN4o"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="mt-4 flex justify-between items-center">
+<span class="text-label-sm font-bold text-primary">Interactive Map Preview</span>
+<span class="material-symbols-outlined text-primary">open_in_new</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Abstract background shape -->
+<div class="absolute top-0 right-0 -z-10 w-1/2 h-full opacity-5 pointer-events-none">
+
+</div>
+</section>
+<!-- Bento Intelligence Grid -->
+<section class="bg-surface-container-low px-8 py-20 relative">
+<div class="max-w-7xl mx-auto">
+<div class="mb-12 flex justify-between items-end">
+<div>
+<span class="text-label-md font-bold text-secondary uppercase tracking-widest block mb-2">Portfolio Analytics</span>
+<h3 class="text-4xl font-bold text-primary">Western Heartlands Index</h3>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                        View Full Dataset <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Large Feature: Sarnia Industrial -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<h4 class="text-3xl font-black text-primary mb-4">Sarnia Industrial Corridors</h4>
+<p class="text-on-surface-variant max-w-md font-body">Petrochemical logistical nodes and deep-water terminal asset performance. Predictive 2026 trajectories indicate a tightening of high-yield vacancy rates.</p>
+</div>
+<div class="mt-8 relative h-48 overflow-hidden rounded-lg bg-surface-container">
+<div class="absolute inset-0 opacity-20">
+
+</div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="space-y-1">
+<span class="text-xs font-bold text-on-surface-variant uppercase">Volatility</span>
+<div class="h-2 w-32 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[15%]"></div>
+</div>
+</div>
+<span class="text-4xl font-black text-primary">Stable</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-4xl text-outline-variant opacity-30">factory</span>
+</div>
+</div>
+<!-- Side Stat: Stratford -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-xl p-8 flex flex-col border-l-4 border-secondary shadow-sm">
+<span class="text-label-sm font-black text-secondary tracking-widest uppercase mb-4">Stratford Hub</span>
+<h4 class="text-2xl font-bold text-primary mb-2">Tech-Agri Fusion</h4>
+<p class="text-on-surface-variant text-sm font-body mb-8">Autonomous farming R&amp;D centers driving 12% valuation surges in surrounding class-A farmland.</p>
+<div class="mt-auto space-y-4">
+<div class="flex justify-between border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant text-sm">Median Acreage</span>
+<span class="font-bold text-primary">$32.4K</span>
+</div>
+<div class="flex justify-between border-b border-surface-container-high pb-2">
+<span class="text-on-surface-variant text-sm">Absorption Rate</span>
+<span class="font-bold text-primary">High</span>
+</div>
+</div>
+</div>
+<!-- Bottom Stat: Goderich -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-8 flex flex-col justify-center">
+<h4 class="text-2xl font-bold mb-2">Goderich Port Strategy</h4>
+<p class="text-on-primary-container text-sm leading-relaxed mb-6">Strategic infrastructure upgrades at the Port of Goderich are anchoring long-term regional stability.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-xs font-bold tracking-widest uppercase">Benchmark Leader 2024</span>
+</div>
+</div>
+<!-- Predictive Data -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 flex items-center gap-8 border border-outline-variant/10">
+<div class="flex-1">
+<h4 class="text-xl font-bold text-primary mb-2">2026 Asset Projections</h4>
+<p class="text-on-surface-variant text-sm font-body mb-4">Institutional data via PropTx &amp; TRREB indicate a shift toward high-tech storage assets across the Lambton corridor.</p>
+<button class="px-5 py-2 bg-secondary text-white rounded-lg text-sm font-bold shadow-md hover:bg-on-secondary-fixed-variant transition-colors">
+                                Access 2026 Whitepaper
+                            </button>
+</div>
+<div class="hidden sm:block w-1/3">
+<img class="rounded-lg object-cover w-full h-32 grayscale hover:grayscale-0 transition-all duration-500" data-alt="A clean, minimalist 3D rendering of architectural bar graphs rising from a polished white surface. The bars are accented in deep blue and emerald green. The lighting is soft and professional, emphasizing growth and data precision. The image follows a high-end financial editorial style suitable for real estate market forecasting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_pl8wn4fOXLjYdUWzS2BozBCubvWH6C7_g8KFdyybI3l9ZjXt_1GK_gipGTSGcetbA71yPQPDe-1EwuS4wAEfCJks9KA0c6Kh1DdoWKI6UM1eApwDvzoUjVxzzv4iobOTTQvpQICpWxU6R3ciAuT8bHynciKI7CMDWbekfAEoGAXlH19_pwN8hLh9KUjKNulMkIZ8a8TrENYm8xdmgjXxunYYvnY5Hdq5-TPKQHpfAzdqOxInaUt03gKeFMbrdDVrSJwRloprQUo"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA & Map Section -->
+<section class="px-8 py-24 bg-surface relative overflow-hidden">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+<div class="flex-1">
+<h3 class="text-4xl font-black text-primary mb-6 leading-tight">Institutional Precision.<br/>Regional Mastery.</h3>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">location_on</span>
+</div>
+<div>
+<h5 class="font-bold text-primary">Sarnia Operation Center</h5>
+<p class="text-on-surface-variant text-sm">Direct market oversight of industrial logistical corridors.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">agriculture</span>
+</div>
+<div>
+<h5 class="font-bold text-primary">Agricultural Valuations</h5>
+<p class="text-on-surface-variant text-sm">Proprietary benchmarks for Southwestern farm asset classes.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+<div>
+<h5 class="font-bold text-primary">Direct Advisory</h5>
+<p class="text-on-surface-variant text-sm">Schedule a call with our principal data architect.</p>
+</div>
+</div>
+</div>
+<div class="mt-12">
+<a class="inline-flex items-center gap-4 bg-primary text-on-primary px-8 py-5 rounded-full text-lg font-black hover:bg-primary-container transition-all group" href="tel:9058309111">
+                            (905) 830-9111
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">phone_in_talk</span>
+</a>
+</div>
+</div>
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-video bg-surface-container rounded-2xl overflow-hidden shadow-2xl relative">
+<div class="absolute inset-0 bg-black/5 z-10 pointer-events-none"></div>
+<div class="w-full h-full grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" data-location="Ontario" style="">
+<img class="w-full h-full object-cover" data-alt="A detailed, professional-grade top-down satellite map view of the Lambton and Huron region, showing coastal outlines of Lake Huron and the Sarnia port. The map features subtle vector overlays of industrial zones and agricultural districts in refined muted colors like slate blue and sage green. The style is that of a modern geographic information system used for high-level real estate planning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCugjVtdq6k9iIUssJSGvgcBWImIvtICVvt6Y311e7UOn_MgnFRisMkAnxsHQMwaY7vQ9SOwFhPa0gLTIdf8SaYTVH7huImI7YfT_lRycriwtpfWnPnl7xVYAvyNZbjLzCyhqv6cFpSaS4WcP3XmyrDFuJURETHCwwZm2CUhObP3mIwXzTtGVLLN5IyPGeZGejW6M1C88eqRzUc8RlWxCRlbFwagqVN9B8_kvyMYWzX2MIMaYqhK9p-C0fCXgl7ATVz3otp3cm-7Lo"/>
+</div>
+<!-- UI Overlay on Map -->
+<div class="absolute bottom-6 left-6 right-6 glass-panel p-6 rounded-xl z-20 shadow-lg border border-white/20">
+<div class="flex justify-between items-center mb-4">
+<span class="text-xs font-bold text-primary tracking-widest uppercase">Live Regional Pulse</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></div>
+<span class="text-[10px] font-bold text-on-tertiary-container">ONLINE</span>
+</div>
+</div>
+<div class="flex gap-8">
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase mb-1">Active Listings</span>
+<span class="text-xl font-black text-primary">142</span>
+</div>
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase mb-1">Market Sentiment</span>
+<span class="text-xl font-black text-primary">Bullish</span>
+</div>
+<div>
+<span class="block text-[10px] text-on-surface-variant uppercase mb-1">Avg. Yield</span>
+<span class="text-xl font-black text-primary">6.8%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-8 px-12 mt-auto flex flex-col md:flex-row justify-between items-center gap-4 bg-surface-container-highest dark:bg-surface-container-lowest transition-opacity duration-300">
+<div class="flex flex-col md:flex-row items-center gap-6">
+<span class="font-headline font-bold text-on-surface text-lg">Regional Intelligence Hub</span>
+<p class="font-body text-label-xs text-on-surface-variant max-w-md">© 2024 Regional Intelligence Hub. Institutional data via PropTx &amp; TRREB. Established 1989.</p>
+</div>
+<nav class="flex gap-6">
+<a class="font-body text-label-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Protocol</a>
+<a class="font-body text-label-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Data Citations</a>
+<a class="font-body text-label-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Access</a>
+<a class="font-body text-label-xs text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Architect</a>
+</nav>
+</footer>
+</main>
+<!-- Floating Interaction (Contextual FAB) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-[100] group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform">chat_bubble</span>
+</button>
+<script>
+        // Micro-interactions and data visualization triggers
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+    </script>
+</body></html>

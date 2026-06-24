@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ajax Municipal Intelligence Hub | Polsinello Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#dae2fd",
+                    "outline-variant": "#45464d",
+                    "on-primary": "#283044",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "background": "#051424",
+                    "secondary-fixed-dim": "#bcc7de",
+                    "surface": "#051424",
+                    "surface-container-high": "#1c2b3c",
+                    "on-tertiary": "#00354a",
+                    "inverse-on-surface": "#233143",
+                    "on-primary-container": "#798098",
+                    "on-primary-fixed": "#131b2e",
+                    "surface-bright": "#2c3a4c",
+                    "outline": "#909097",
+                    "primary-container": "#0f172a",
+                    "surface-tint": "#bec6e0",
+                    "surface-dim": "#051424",
+                    "on-surface": "#d4e4fa",
+                    "primary": "#bec6e0",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "error-container": "#93000a",
+                    "surface-container-low": "#0d1c2d",
+                    "surface-container-highest": "#273647",
+                    "on-tertiary-container": "#008abb",
+                    "primary-fixed-dim": "#bec6e0",
+                    "on-secondary-container": "#aeb9d0",
+                    "tertiary-container": "#001a27",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed": "#001e2c",
+                    "on-secondary-fixed-variant": "#3c475a",
+                    "on-secondary": "#263143",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#c4e7ff",
+                    "secondary-container": "#3e495d",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "surface-variant": "#273647",
+                    "on-surface-variant": "#c6c6cd",
+                    "secondary-fixed": "#d8e3fb",
+                    "inverse-surface": "#d4e4fa",
+                    "inverse-primary": "#565e74",
+                    "tertiary": "#7bd0ff",
+                    "surface-container-lowest": "#010f1f",
+                    "secondary": "#bcc7de",
+                    "on-secondary-fixed": "#111c2d",
+                    "surface-container": "#122131",
+                    "on-background": "#d4e4fa"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-lg": ["IBM Plex Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["IBM Plex Sans"],
+                    "headline-lg": ["IBM Plex Sans"],
+                    "body-md": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .terminal-glow {
+            box-shadow: 0 0 15px rgba(190, 198, 224, 0.05);
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #051424;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+        .ticker-wrap {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker {
+            display: inline-block;
+            animation: ticker 30s linear infinite;
+        }
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary/30">
+<!-- Top Navigation Shell -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto bg-surface/80 backdrop-blur-xl shadow-sm shadow-on-surface/5">
+<div class="flex items-center gap-8">
+<span class="text-headline-sm font-black text-primary tracking-tight">Polsinello Insights</span>
+<div class="hidden md:flex gap-6">
+<a class="font-headline text-label-md tracking-wider uppercase text-primary border-b-2 border-primary pb-1" href="#">Market Intel</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Developer Tools</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-sm text-label-sm text-primary opacity-60">Since 1989</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-all">notifications</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-primary transition-all">settings</span>
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden border border-outline/20">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a high-level financial analyst with a neutral expression, wearing a sleek charcoal suit. The lighting is dramatic and cool-toned, reflecting a modern corporate terminal aesthetic. Behind the subject, a blurred background of high-density data monitors creates a sense of technological authority and deep market expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-VzC7sIW9-g3yuEl_EVJ-J6Mj1ZRC7ZoVi4FHIKtXAFwmSIBsZDyxNA8CMzsB4ptpwP_IHGGr2DtR05cWC3gfyW5s6IUbUYPl7lKTKHpzRx05T0PCVcSWePe8zmu5ynlo92DvfQe7msjIIInOboDnbq7gzcsLlAZWfFx1f9tor6xgCwncEuO8qmC7fQUEr6rZvpNpg7jOiVsoxWxGPHVJithQ2ZQ3bavzTqHtQT-6S3TcGgY5dtaukH7XFw3NtJcHTQ5TK3MN7fw"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar Shell (Desktop) -->
+<aside class="fixed left-0 top-0 h-full hidden lg:flex flex-col p-4 z-40 bg-surface-container-low w-72 pt-24">
+<div class="mb-8 px-4">
+<h2 class="text-headline-sm font-black text-primary">Polsinello</h2>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-widest">Institutional Intelligence</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 bg-primary-container text-on-primary-container rounded-lg px-4 py-3 font-semibold transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body-md">Market Intel</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-body text-body-md">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-body text-body-md">Developer Tools</span>
+</a>
+</div>
+<div class="mt-auto pt-6 border-t border-outline/10 px-4">
+<button class="w-full bg-primary text-on-primary font-bold py-3 rounded-lg mb-6 hover:opacity-90 transition-all">
+                Upgrade to Pro
+            </button>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-on-surface-variant text-label-md py-2 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span> Support
+                </a>
+<a class="flex items-center gap-3 text-on-surface-variant text-label-md py-2 hover:text-error transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span> Sign Out
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-24 pb-12 px-6 md:px-8 max-w-[1600px] mx-auto">
+<!-- Header & Market Ticker -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface leading-tight">Ajax, Ontario</h1>
+<p class="text-tertiary font-label-md tracking-widest uppercase">Municipal Intelligence Hub // Node 0402</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container px-4 py-2 border border-outline/20">
+<p class="text-label-sm text-outline">REPORT TIMESTAMP</p>
+<p class="font-label-md text-on-surface">2024.10.27 | 14:32:01 EST</p>
+</div>
+</div>
+</div>
+<div class="w-full bg-surface-container-lowest border-y border-outline/10 py-2 ticker-wrap">
+<div class="ticker flex gap-12 font-label-sm text-label-sm items-center">
+<span class="text-primary">SNLR: 58.2% (STABLE)</span>
+<span class="text-outline">|</span>
+<span class="text-tertiary">MEDIAN: $984,500 (+2.1% YOY)</span>
+<span class="text-outline">|</span>
+<span class="text-primary">DOM: 14 DAYS</span>
+<span class="text-outline">|</span>
+<span class="text-error">INVENTORY: 1.4 MONTHS</span>
+<span class="text-outline">|</span>
+<span class="text-primary">DISCOVERY BAY: AVG $1.85M</span>
+<span class="text-outline">|</span>
+<span class="text-tertiary">TRANSIT INDEX: 84/100</span>
+</div>
+</div>
+</header>
+<!-- Ajax Market Pulse Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter mb-12">
+<!-- Core Pulse Card -->
+<div class="md:col-span-2 lg:col-span-2 glass-panel p-6 flex flex-col relative overflow-hidden">
+
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Market Pulse</h3>
+<p class="text-label-sm text-outline">REAL-TIME SNLR MONITORING</p>
+</div>
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-5xl font-bold tracking-tighter">58.2%</span>
+<span class="text-primary-fixed-dim font-label-md">SNLR</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-8 max-w-sm">
+                        Balanced market conditions persist as sales-to-new-listings ratio stabilizes below the 60% threshold.
+                    </p>
+<div class="grid grid-cols-3 gap-4 border-t border-outline/10 pt-6">
+<div>
+<p class="text-label-sm text-outline">NEW LISTINGS</p>
+<p class="font-label-md text-on-surface">342</p>
+</div>
+<div>
+<p class="text-label-sm text-outline">SALES (MTD)</p>
+<p class="font-label-md text-on-surface">199</p>
+</div>
+<div>
+<p class="text-label-sm text-outline">MOI</p>
+<p class="font-label-md text-primary">1.4</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Price Benchmark Card -->
+<div class="glass-panel p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Median Price</h3>
+<p class="text-label-sm text-outline mb-6">ALL PROPERTY TYPES</p>
+<div class="mb-8">
+<p class="text-4xl font-bold tracking-tighter">$984,500</p>
+<div class="flex items-center gap-2 text-tertiary mt-1">
+<span class="material-symbols-outlined text-sm">arrow_upward</span>
+<span class="font-label-md">+2.1% (30-DAY)</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-body-md">
+<span class="text-outline">Detached</span>
+<span class="font-semibold">$1.18M</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-outline">Semi-Detached</span>
+<span class="font-semibold">$910K</span>
+</div>
+<div class="flex justify-between items-center text-body-md">
+<span class="text-outline">Condo Apt</span>
+<span class="font-semibold">$645K</span>
+</div>
+</div>
+</div>
+<!-- Infrastructure Signal -->
+<div class="glass-panel p-6 bg-tertiary-container/10 border-tertiary/20">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-tertiary">train</span>
+<h3 class="font-headline-md text-headline-md text-tertiary">DRT Impact</h3>
+</div>
+<p class="text-body-md text-on-surface-variant mb-6">
+                    Analysis of Durham Region Transit expansion indicates a <span class="text-on-surface font-semibold">+4.2% premium</span> on residential parcels within 800m of new BRT nodes.
+                </p>
+<div class="w-full bg-surface-container-highest h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[84%]"></div>
+</div>
+<p class="text-label-sm text-outline mt-2 text-right">GROWTH INDEX: 84.2</p>
+</div>
+</section>
+<!-- Neighborhood Profiles -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-lg text-headline-lg">Strategic Neighborhoods</h2>
+<div class="h-[1px] flex-grow mx-8 bg-outline/10"></div>
+<button class="text-label-md font-label-md text-primary flex items-center gap-2 hover:gap-3 transition-all">
+                    VIEW ALL SECTORS <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Discovery Bay -->
+<div class="group cursor-pointer overflow-hidden rounded-xl border border-outline/10 hover:border-primary/40 transition-all">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic aerial view of the Discovery Bay waterfront in Ajax, Ontario. The image captures luxurious modern homes with floor-to-ceiling windows overlooking the serene, deep blue waters of Lake Ontario. The sun is setting, casting a warm golden glow over the lush green parks and clean architectural lines of the neighborhood, embodying a high-end, exclusive residential atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiCBkwlPStkt1dUyByNnxtq7LeSxRdfffhhffuRExOH4NxYG1WLMegXMmfrakLAVhe7p7EheFU0BN97oyvSTHDCm3Q22riT_V18COa-8Tok7gCG2Fs4AvStAyCLY3SlyrpQ8sdvHs5Et1tZFgn_Zp6-FiitULcZcf3qg2Vo2AGEqjpkYykVMDViLpNXrf-W5dhjUXcw5NIeO5gXLWw4Jw06A5mCYgxaVI3UxGICMs8wQPcA9jo2OdkuCIpV7M6VPCqFDwCNHrS_Yg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-primary/20 text-primary px-3 py-1 text-label-sm rounded-full backdrop-blur-md border border-primary/30">WATERFRONT LUXURY</span>
+<h4 class="text-3xl font-bold mt-2">Discovery Bay</h4>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low">
+<p class="text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            A premier waterfront community characterized by high-asset-value single-family dwellings and extensive recreational trail integration.
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container px-4 py-3 rounded-lg">
+<p class="text-label-sm text-outline">AVG LISTING</p>
+<p class="text-xl font-bold text-on-surface">$1,850,000</p>
+</div>
+<div class="bg-surface-container px-4 py-3 rounded-lg">
+<p class="text-label-sm text-outline">DEMAND SCORE</p>
+<p class="text-xl font-bold text-tertiary">9.2/10</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Central Ajax -->
+<div class="group cursor-pointer overflow-hidden rounded-xl border border-outline/10 hover:border-primary/40 transition-all">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A dynamic wide-angle street-level view of Central Ajax showing modern mixed-use developments and transit infrastructure. The scene includes the Ajax GO Station with sleek commuter trains in the background and new mid-rise residential buildings featuring glass balconies and contemporary brickwork. The lighting is bright and energetic morning sun, highlighting a vibrant, growing urban hub." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzxBQ1_VmhrRp_D-27VrWmrTlPlk_-fJ-U5juSfZhMo0cGaFykyY-MfALqLYhYhcNwiKmF746kXZkGfKowk6n0MNr-aXLFfy9yk_KjHCYrOPiBb7TWinEyA2h3yVDpmlcZbyGcr1cWQezMASkCCDFg60w_4JUMBDg2D03lTy29N_ld-oWIDZGHULTsZm3rXTvRPfvQPZuTvAETEhioTzB6ZMqSwhOOv8vWy3UH6f7xb9HiBTI2pPoOaoUyZDuVfsATMljphP0KFFg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-tertiary/20 text-tertiary px-3 py-1 text-label-sm rounded-full backdrop-blur-md border border-tertiary/30">TRANSIT-ORIENTED GROWTH</span>
+<h4 class="text-3xl font-bold mt-2">Central Ajax</h4>
+</div>
+</div>
+<div class="p-6 bg-surface-container-low">
+<p class="text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                            The urban core benefiting from Durham Region Transit (DRT) densification and high-velocity residential turnaround near major transit arteries.
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container px-4 py-3 rounded-lg">
+<p class="text-label-sm text-outline">AVG LISTING</p>
+<p class="text-xl font-bold text-on-surface">$845,000</p>
+</div>
+<div class="bg-surface-container px-4 py-3 rounded-lg">
+<p class="text-label-sm text-outline">CAP APPRECIATION</p>
+<p class="text-xl font-bold text-primary">+6.8%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Academic Intelligence & Infrastructure -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Schools Section -->
+<section class="lg:col-span-2 glass-panel overflow-hidden">
+<div class="p-6 border-b border-outline/10 flex justify-between items-center bg-surface-container-high/50">
+<div>
+<h2 class="font-headline-md text-headline-md">Top Ajax Schools</h2>
+<p class="text-label-sm text-outline">EQAO ACADEMIC RANKINGS</p>
+</div>
+<span class="material-symbols-outlined text-outline">school</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container">
+<tr class="font-label-sm text-label-sm text-outline">
+<th class="px-6 py-4">INSTITUTION</th>
+<th class="px-6 py-4">EQAO MATH</th>
+<th class="px-6 py-4">EQAO LITERACY</th>
+<th class="px-6 py-4">CATCHMENT RADIUS</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline/10 font-body-md">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-semibold">Vimy Ridge Public School</td>
+<td class="px-6 py-4"><span class="text-primary">88%</span></td>
+<td class="px-6 py-4"><span class="text-primary">92%</span></td>
+<td class="px-6 py-4 text-outline">North Central</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-semibold">Alexander Graham Bell</td>
+<td class="px-6 py-4"><span class="text-primary">84%</span></td>
+<td class="px-6 py-4"><span class="text-primary">89%</span></td>
+<td class="px-6 py-4 text-outline">West Ajax</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-semibold">Cadence Public School</td>
+<td class="px-6 py-4"><span class="text-tertiary">79%</span></td>
+<td class="px-6 py-4"><span class="text-tertiary">85%</span></td>
+<td class="px-6 py-4 text-outline">South Central</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-4 font-semibold">Eagle Ridge Public</td>
+<td class="px-6 py-4"><span class="text-primary">86%</span></td>
+<td class="px-6 py-4"><span class="text-primary">90%</span></td>
+<td class="px-6 py-4 text-outline">Northeast</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Infrastructure Sidebar -->
+<section class="glass-panel p-6 flex flex-col">
+<div class="mb-6">
+<h2 class="font-headline-md text-headline-md">Impact Analysis</h2>
+<p class="text-label-sm text-outline">DURHAM TRANSIT EXPANSION</p>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="p-4 bg-surface-container-low border border-outline/10 rounded">
+<div class="flex justify-between mb-2">
+<span class="text-body-md font-semibold">Harwood Avenue BRT</span>
+<span class="text-primary font-label-md">IN PROGRESS</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">Expected completion: Q3 2025. Proximity impact: +5.2% forecast.</p>
+</div>
+<div class="p-4 bg-surface-container-low border border-outline/10 rounded">
+<div class="flex justify-between mb-2">
+<span class="text-body-md font-semibold">Kingston Rd Corridor</span>
+<span class="text-tertiary font-label-md">PLANNING</span>
+</div>
+<p class="text-label-sm text-on-surface-variant">Density rezoning sanctioned for 12,000 new units by 2030.</p>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline/10">
+<div class="flex items-center gap-4 text-error">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+<p class="text-label-sm font-label-sm leading-tight">SUPPLY CRUNCH: ACTIVE LISTINGS ARE 18% BELOW 5-YEAR SEASONAL AVERAGE.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-surface-container-low mt-12 border-t border-outline/5">
+<div class="flex flex-col items-center md:items-start">
+<span class="text-label-md font-bold text-primary">Polsinello Insights</span>
+<p class="font-label text-label-sm text-on-surface-variant">© 2024 Polsinello Insights. Since 1989. All rights reserved.</p>
+</div>
+<div class="flex gap-8 flex-wrap justify-center">
+<a class="font-label text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all" href="#">Privacy Policy</a>
+<a class="font-label text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all" href="#">Terms of Service</a>
+<a class="font-label text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all" href="#">API Documentation</a>
+<a class="font-label text-label-sm text-on-surface-variant hover:text-secondary hover:underline underline-offset-4 transition-all" href="#">Contact Analyst</a>
+</div>
+</footer>
+<script>
+        // Micro-interactions for terminal effect
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.addEventListener('mouseenter', () => {
+                panel.classList.add('terminal-glow');
+            });
+            panel.addEventListener('mouseleave', () => {
+                panel.classList.remove('terminal-glow');
+            });
+        });
+
+        // Simple live-clock simulation
+        setInterval(() => {
+            const timeElements = document.querySelectorAll('.font-label-md.text-on-surface');
+            timeElements.forEach(el => {
+                if(el.innerText.includes('|')) {
+                    const now = new Date();
+                    const dateStr = now.toISOString().split('T')[0].replace(/-/g, '.');
+                    const timeStr = now.toTimeString().split(' ')[0];
+                    el.innerText = `${dateStr} | ${timeStr} EST`;
+                }
+            });
+        }, 1000);
+    </script>
+</body></html>

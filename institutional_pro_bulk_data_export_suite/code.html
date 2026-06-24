@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Data Export | Institutional Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "tertiary-fixed": "#dae2fd",
+                    "surface-container": "#eceef0",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "inverse-primary": "#abc7ff",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary-fixed-variant": "#00458f",
+                    "primary": "#00346f",
+                    "on-error": "#ffffff",
+                    "primary-fixed": "#d7e2ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-container": "#d5e3fc",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed": "#d5e3fc",
+                    "on-primary-container": "#9bbdff",
+                    "tertiary-fixed-dim": "#bec6e0",
+                    "tertiary": "#2e354a",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#424751",
+                    "on-surface": "#191c1e",
+                    "surface": "#f7f9fb",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#004a99",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "outline-variant": "#c2c6d3",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "secondary": "#515f74",
+                    "primary-fixed-dim": "#abc7ff",
+                    "on-primary-fixed": "#001b3f",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary-fixed-variant": "#3f465c",
+                    "outline": "#737783",
+                    "on-tertiary-fixed": "#131b2e",
+                    "on-tertiary-container": "#b5bcd6",
+                    "tertiary-container": "#444c61",
+                    "surface-tint": "#255dad",
+                    "on-secondary-container": "#57657a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-padding": "24px",
+                    "stack-compact": "8px",
+                    "table-cell-padding": "8px 12px",
+                    "unit": "4px",
+                    "gutter": "16px",
+                    "stack-default": "16px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-mono": ["JetBrains Mono"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "table-header": ["Inter"],
+                    "headline-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "table-header": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .pro-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+        .pro-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .pro-scrollbar::-webkit-scrollbar-thumb { background: #c2c6d3; border-radius: 2px; }
+        .pro-scrollbar::-webkit-scrollbar-thumb:hover { background: #737783; }
+        
+        .mapping-node::after {
+            content: "";
+            position: absolute;
+            right: -16px;
+            top: 50%;
+            width: 12px;
+            height: 1px;
+            background: #c2c6d3;
+        }
+        
+        .active-mapping {
+            border-left: 2px solid #00346f;
+            background-color: #f2f4f6;
+        }
+
+        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface border-b border-outline-variant flex justify-between items-center w-full px-container-padding h-16">
+<div class="flex items-center gap-8">
+<h1 class="text-headline-sm font-headline-sm font-bold text-primary">Institutional Pro</h1>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant hover:bg-surface-container-low px-3 py-1 transition-colors duration-200 font-body-md" href="#">Market Analytics</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low px-3 py-1 transition-colors duration-200 font-body-md" href="#">Portfolio</a>
+<a class="text-primary font-bold border-b-2 border-primary px-3 py-1 font-body-md" href="#">Bulk Export</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative flex items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-on-surface-variant mr-2 text-[20px]">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48 placeholder:text-on-surface-variant" placeholder="Search datasets..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors duration-200">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant bg-surface-container-high ml-2 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close-up professional portrait of a data architect in a modern, glass-walled office environment. The lighting is crisp and natural, highlighting a clean, sophisticated atmosphere. The aesthetic is corporate yet contemporary, focusing on professional reliability and technical expertise. Subtle reflections of data screens are visible in the background glass." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1NgerInwIbxwXqHV7E2saXXZR4kAAKfitXFuJ6LnzfU_yYS65RAsCE19NwgTM8Kad4ef60w_c1VGZKkCVGQOMkD2jijFIVmoU3tP45-f0qdemG_KpcBU_TlBcSxYc7fdsyDOjHHvd9xsrxx6BEVmZCrIbqeosuGZS3dvA8bmveRo86W2KCaWy-BiUuVfIlZ7uWuJKZ3uxzBXfoHDFE4VslKBcGmmUZTn1hUfPIPIcHpukcA4NFL-37vcVn-uiPz_85Kt1eGqPFuU"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-16 bottom-0 w-64 bg-surface-container-low border-r border-outline-variant flex flex-col z-40">
+<div class="p-6 flex flex-col gap-1 border-b border-outline-variant">
+<span class="text-headline-sm font-black text-primary">Data Architect</span>
+<span class="text-body-sm text-on-surface-variant">Pro Dashboard</span>
+</div>
+<nav class="flex-1 py-4 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-body-sm">Market Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-body-sm">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 bg-secondary-container text-on-secondary-container border-l-4 border-primary font-semibold transition-all duration-150" href="#">
+<span class="material-symbols-outlined">export_notes</span>
+<span class="font-body-sm">Bulk Export</span>
+</a>
+</nav>
+<div class="mt-auto py-4 border-t border-outline-variant flex flex-col gap-1">
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-3 text-on-surface-variant hover:bg-surface-container-high transition-all duration-150" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-body-sm">Admin</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 mt-16 p-container-padding min-h-screen">
+<!-- Workspace Header -->
+<section class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface tracking-tight">Bulk Data Export</h2>
+<div class="flex items-center gap-4 mt-2">
+<div class="flex items-center gap-1.5 text-body-sm text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-primary"></span>
+<span>2 Active Tasks</span>
+</div>
+<div class="flex items-center gap-1.5 text-body-sm text-on-surface-variant">
+<span class="h-2 w-2 rounded-full bg-outline"></span>
+<span>5 Scheduled Today</span>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-lg flex items-center gap-2 font-headline-sm transition-all hover:bg-primary-container hover:shadow-md active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                New Export Task
+            </button>
+</section>
+<!-- Configuration Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Step 1: Data Source -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-stack-default">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm h-full">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">database</span>
+                            1. Select Data Source
+                        </h3>
+</div>
+<div class="space-y-3">
+<label class="group relative flex items-center gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors active-mapping">
+<input checked="" class="w-4 h-4 text-primary focus:ring-primary border-outline" name="source" type="radio"/>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Active Listings - GTA</span>
+<span class="text-body-sm text-on-surface-variant">Real-time MLS data for Greater Toronto</span>
+</div>
+</label>
+<label class="group relative flex items-center gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline" name="source" type="radio"/>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Sold History 2020-2024</span>
+<span class="text-body-sm text-on-surface-variant">Historical transaction records</span>
+</div>
+</label>
+<label class="group relative flex items-center gap-4 p-4 border border-outline-variant rounded-lg cursor-pointer hover:bg-surface-container transition-colors">
+<input class="w-4 h-4 text-primary focus:ring-primary border-outline" name="source" type="radio"/>
+<div class="flex flex-col">
+<span class="font-body-md font-semibold">Zoning &amp; Development</span>
+<span class="text-body-sm text-on-surface-variant">Municipal planning applications</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Step 2: Schema Configuration -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-stack-default">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+                            2. Schema Configuration
+                        </h3>
+<span class="text-body-sm text-on-surface-variant italic">Drag fields to include in export</span>
+</div>
+<div class="flex gap-8 items-start">
+<!-- Source Fields -->
+<div class="flex-1 space-y-2">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase mb-2 block">Source Fields</span>
+<div class="space-y-1">
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded flex items-center justify-between group hover:border-primary transition-colors cursor-grab">
+<span class="text-body-md">Property ID</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded flex items-center justify-between group hover:border-primary transition-colors cursor-grab">
+<span class="text-body-md">Listing Price</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">drag_indicator</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded flex items-center justify-between group hover:border-primary transition-colors cursor-grab opacity-50">
+<span class="text-body-md">Broker Information</span>
+<span class="material-symbols-outlined text-outline-variant">lock</span>
+</div>
+<div class="bg-surface-container-low border border-outline-variant p-3 rounded flex items-center justify-between group hover:border-primary transition-colors cursor-grab">
+<span class="text-body-md">Lot Dimensions</span>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary">drag_indicator</span>
+</div>
+</div>
+</div>
+<!-- Connector Visual -->
+<div class="flex flex-col justify-center items-center py-10 gap-4">
+<span class="material-symbols-outlined text-outline-variant">double_arrow</span>
+</div>
+<!-- Export Fields -->
+<div class="flex-1 space-y-2">
+<span class="font-table-header text-table-header text-on-surface-variant uppercase mb-2 block">Export Destination Fields</span>
+<div class="space-y-1 min-h-[160px] border-2 border-dashed border-outline-variant rounded-lg p-2 bg-surface-bright">
+<div class="bg-primary-container text-on-primary-container p-3 rounded flex items-center justify-between">
+<span class="text-body-md font-semibold">property_id</span>
+<button class="material-symbols-outlined text-on-primary-container/70 hover:text-white">close</button>
+</div>
+<div class="bg-primary-container text-on-primary-container p-3 rounded flex items-center justify-between">
+<span class="text-body-md font-semibold">asking_price_cad</span>
+<button class="material-symbols-outlined text-on-primary-container/70 hover:text-white">close</button>
+</div>
+<div class="bg-primary-container text-on-primary-container p-3 rounded flex items-center justify-between">
+<span class="text-body-md font-semibold">sq_footage_calculated</span>
+<button class="material-symbols-outlined text-on-primary-container/70 hover:text-white">close</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Advanced Filters & Frequency -->
+<div class="col-span-12 lg:col-span-7">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm h-full">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">filter_list</span>
+                        3. Filter &amp; Frequency
+                    </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-4">
+<div>
+<label class="text-body-sm font-bold text-on-surface mb-1.5 block">Region</label>
+<select class="w-full bg-surface-bright border border-outline-variant rounded px-3 py-2 text-body-md focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+<option>Greater Toronto Area (All)</option>
+<option>York Region</option>
+<option>Peel Region</option>
+<option>Halton Region</option>
+</select>
+</div>
+<div>
+<label class="text-body-sm font-bold text-on-surface mb-1.5 block">Date Range</label>
+<div class="flex items-center gap-2">
+<input class="w-full bg-surface-bright border border-outline-variant rounded px-3 py-2 text-body-md" type="date"/>
+<span class="text-outline">to</span>
+<input class="w-full bg-surface-bright border border-outline-variant rounded px-3 py-2 text-body-md" type="date"/>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border border-outline-variant">
+<div class="flex items-center justify-between mb-4">
+<span class="font-body-md font-bold">Scheduled Export</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="space-y-3">
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 px-3 border border-primary bg-primary text-on-primary rounded text-body-sm font-semibold">Daily</button>
+<button class="flex-1 py-1.5 px-3 border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded text-body-sm transition-colors">Weekly</button>
+<button class="flex-1 py-1.5 px-3 border border-outline-variant text-on-surface-variant hover:bg-surface-container-high rounded text-body-sm transition-colors">Monthly</button>
+</div>
+<div class="flex items-center gap-2 text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+                                    Next run: Tomorrow, 04:00 AM UTC
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Output Format -->
+<div class="col-span-12 lg:col-span-5">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm h-full">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary">output</span>
+                        4. Output Format
+                    </h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center p-4 border-2 border-primary bg-secondary-container text-on-secondary-container rounded-lg group transition-all">
+<span class="material-symbols-outlined text-[32px] mb-2">drive_file</span>
+<span class="font-body-md font-bold">CSV</span>
+<span class="text-[10px] uppercase tracking-widest opacity-70">Flat File</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 border border-outline-variant hover:border-primary hover:bg-surface-container-low rounded-lg group transition-all">
+<span class="material-symbols-outlined text-[32px] mb-2 text-on-surface-variant group-hover:text-primary">data_object</span>
+<span class="font-body-md font-bold">JSON</span>
+<span class="text-[10px] uppercase tracking-widest opacity-70">Hierarchical</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 border border-outline-variant hover:border-primary hover:bg-surface-container-low rounded-lg group transition-all">
+<span class="material-symbols-outlined text-[32px] mb-2 text-on-surface-variant group-hover:text-primary">cloud_upload</span>
+<span class="font-body-md font-bold">S3 Bucket</span>
+<span class="text-[10px] uppercase tracking-widest opacity-70">Direct Sync</span>
+</button>
+<button class="flex flex-col items-center justify-center p-4 border border-outline-variant hover:border-primary hover:bg-surface-container-low rounded-lg group transition-all">
+<span class="material-symbols-outlined text-[32px] mb-2 text-on-surface-variant group-hover:text-primary">storage</span>
+<span class="font-body-md font-bold">PostgreSQL</span>
+<span class="text-[10px] uppercase tracking-widest opacity-70">Database Link</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Task History Section -->
+<section class="mt-gutter">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Export Task History
+                    </h3>
+<div class="flex gap-2">
+<div class="flex items-center gap-2 bg-surface-container px-3 py-1.5 rounded-full text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">filter_alt</span>
+                            Status: All
+                        </div>
+<button class="p-1.5 text-on-surface-variant hover:bg-surface-container rounded transition-colors">
+<span class="material-symbols-outlined">refresh</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto pro-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase">Task Name</th>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase">Source Dataset</th>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase">Status</th>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase">Record Count</th>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase">Last Run</th>
+<th class="px-6 py-3 font-table-header text-table-header text-on-surface-variant uppercase text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- In Progress -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-primary">GTA_Residential_Weekly_Full</span>
+<span class="text-body-sm text-on-surface-variant">Scheduled #129</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-md">Active Listings - GTA</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-2 text-primary font-semibold text-body-sm">
+<div class="animate-spin h-3 w-3 border-2 border-primary border-t-transparent rounded-full"></div>
+                                        Processing (64%)
+                                    </div>
+</td>
+<td class="px-6 py-4 font-label-mono text-label-mono">--</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Now</td>
+<td class="px-6 py-4 text-right">
+<button class="text-error hover:underline text-body-sm font-semibold">Cancel</button>
+</td>
+</tr>
+<!-- Completed -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-on-surface">Sold_History_Q1_2024</span>
+<span class="text-body-sm text-on-surface-variant">Ad-hoc Export</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-md">Sold History 2020-2024</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-on-primary-fixed-variant font-semibold text-body-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                                        Completed
+                                    </div>
+</td>
+<td class="px-6 py-4 font-label-mono text-label-mono">1,420,551</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">2h ago</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-primary hover:text-primary-container p-1 rounded hover:bg-secondary-container transition-colors" title="Download CSV">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Failed -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-on-surface">Zoning_App_Audit_Log</span>
+<span class="text-body-sm text-on-surface-variant">Daily Sync</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-md">Zoning &amp; Development</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-error font-semibold text-body-sm">
+<span class="material-symbols-outlined text-[18px]">error</span>
+                                        Failed (S3 Timeout)
+                                    </div>
+</td>
+<td class="px-6 py-4 font-label-mono text-label-mono">0</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">4h ago</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:underline text-body-sm font-semibold">Retry Task</button>
+</td>
+</tr>
+<!-- Completed 2 -->
+<tr class="hover:bg-surface-container transition-colors group">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-body-md font-semibold text-on-surface">Global_Market_Inventory</span>
+<span class="text-body-sm text-on-surface-variant">Monthly Snapshot</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-body-md">Inventory Analytics</span>
+</td>
+<td class="px-6 py-4">
+<div class="flex items-center gap-1.5 text-on-primary-fixed-variant font-semibold text-body-sm">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                                        Completed
+                                    </div>
+</td>
+<td class="px-6 py-4 font-label-mono text-label-mono">854,200</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">Yesterday</td>
+<td class="px-6 py-4 text-right">
+<div class="flex justify-end gap-3">
+<button class="text-primary hover:text-primary-container p-1 rounded hover:bg-secondary-container transition-colors">
+<span class="material-symbols-outlined">download</span>
+</button>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer / Pagination -->
+<div class="px-6 py-4 bg-surface-bright flex items-center justify-between border-t border-outline-variant">
+<span class="text-body-sm text-on-surface-variant">Showing 4 of 24 tasks</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container transition-colors text-body-sm disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container transition-colors text-body-sm">Next</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Status Bar (Export Progress) -->
+<div class="fixed bottom-0 left-64 right-0 bg-surface border-t border-outline-variant px-container-padding py-3 flex items-center justify-between z-50">
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<div class="flex flex-col w-full">
+<div class="flex justify-between text-body-sm mb-1">
+<span class="font-bold text-primary">Exporting: GTA_Residential_Weekly_Full</span>
+<span class="font-label-mono">64% • 1.2M rows...</span>
+</div>
+<div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-1000 ease-linear" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6 ml-8">
+<div class="text-body-sm text-on-surface-variant flex gap-2">
+<span class="font-bold">ETA:</span>
+<span class="font-label-mono">00:04:12</span>
+</div>
+<button class="text-error hover:bg-error-container/20 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</main>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('input[name="source"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                document.querySelectorAll('label[class*="active-mapping"]').forEach(l => l.classList.remove('active-mapping'));
+                if (e.target.checked) {
+                    e.target.closest('label').classList.add('active-mapping');
+                }
+            });
+        });
+
+        // Toggle mobile nav (mockup)
+        function toggleNav() {
+            console.log('Toggle navigation clicked');
+        }
+    </script>
+</body></html>

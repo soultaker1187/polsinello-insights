@@ -1,0 +1,442 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>The Data Architect | Durham Region Market Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+        .data-grid-bg {
+            background-image: radial-gradient(#cbd5e1 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+        @keyframes pulse-sync {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.95); }
+        }
+        .sync-pulse {
+            animation: pulse-sync 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#adc6ff",
+                "on-error-container": "#93000a",
+                "surface": "#f8f9ff",
+                "on-primary-fixed": "#131b2e",
+                "inverse-on-surface": "#eaf1ff",
+                "on-primary-container": "#7c839b",
+                "surface-container-low": "#eff4ff",
+                "on-tertiary-fixed-variant": "#005236",
+                "primary": "#000000",
+                "secondary-fixed": "#d8e2ff",
+                "secondary": "#0058be",
+                "primary-fixed": "#dae2fd",
+                "outline": "#76777d",
+                "on-tertiary-container": "#009668",
+                "surface-tint": "#565e74",
+                "tertiary-fixed": "#6ffbbe",
+                "background": "#f8f9ff",
+                "surface-container-highest": "#d3e4fe",
+                "on-primary-fixed-variant": "#3f465c",
+                "on-surface": "#0b1c30",
+                "secondary-container": "#2170e4",
+                "surface-variant": "#d3e4fe",
+                "surface-dim": "#cbdbf5",
+                "tertiary-container": "#002113",
+                "on-tertiary-fixed": "#002113",
+                "on-secondary": "#ffffff",
+                "on-error": "#ffffff",
+                "inverse-primary": "#bec6e0",
+                "surface-container-high": "#dce9ff",
+                "error": "#ba1a1a",
+                "on-surface-variant": "#45464d",
+                "error-container": "#ffdad6",
+                "tertiary": "#000000",
+                "on-primary": "#ffffff",
+                "on-secondary-container": "#fefcff",
+                "surface-container": "#e5eeff",
+                "surface-bright": "#f8f9ff",
+                "tertiary-fixed-dim": "#4edea3",
+                "on-tertiary": "#ffffff",
+                "outline-variant": "#c6c6cd",
+                "on-secondary-fixed": "#001a42",
+                "on-secondary-fixed-variant": "#004395",
+                "primary-fixed-dim": "#bec6e0",
+                "primary-container": "#131b2e",
+                "on-background": "#0b1c30",
+                "inverse-surface": "#213145"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+            },
+            "spacing": {
+                "sm": "8px",
+                "gutter": "20px",
+                "md": "16px",
+                "lg": "24px",
+                "container-max": "1280px",
+                "xs": "4px",
+                "xl": "48px",
+                "base": "4px"
+            },
+            "fontFamily": {
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "body-sm": ["Inter"],
+                "body-md": ["Inter"],
+                "data-mono": ["JetBrains Mono"],
+                "headline-lg": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "data-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Bar -->
+<nav class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-md">
+<span class="font-display-lg text-headline-lg font-bold text-primary">The Data Architect</span>
+<div class="hidden md:flex items-center gap-sm px-sm py-1 bg-surface-container-high rounded text-data-mono text-[10px] uppercase tracking-widest text-secondary font-bold border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary sync-pulse"></span>
+                    Live Sync: PropTx Data
+                </div>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Market Data</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">AI Appraisals</a>
+<a class="font-body-md text-body-md text-secondary font-bold border-b-2 border-secondary cursor-pointer" href="#">Regional Insights</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">TRREB Analytics</a>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden lg:flex items-center bg-surface-container rounded-lg px-md py-xs border border-outline-variant">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-sm w-48" placeholder="Search Durham Boards..." type="text">
+</div>
+<button class="bg-primary text-on-primary px-lg py-xs font-bold rounded hover:opacity-90 transition-opacity">Sign In</button>
+</div>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-lg py-xl">
+<!-- Hero Section: Oshawa & Pickering Focus -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-lg mb-xl">
+<div class="md:col-span-7 flex flex-col justify-center space-y-md">
+<div class="inline-flex items-center gap-sm text-secondary font-data-mono text-data-mono uppercase tracking-widest">
+<span class="material-symbols-outlined">trending_up</span>
+                    Expansion Corridor Active
+                </div>
+<h1 class="font-display-lg text-display-lg text-on-background leading-tight">
+                    Durham Regional <br>
+<span class="text-secondary">Intelligence Hub</span>
+</h1>
+<p class="text-on-surface-variant max-w-xl text-body-md">
+                    Institutional-grade analytics for the Oshawa-Pickering growth axis. Real-time listing density and absorption metrics powered by the Repliers API and PropTx synchronization engine.
+                </p>
+<div class="flex flex-wrap gap-md pt-sm">
+<div class="bg-surface-container-lowest p-md border border-outline-variant rounded flex-1 min-w-[180px] shadow-lg">
+<span class="block text-data-mono text-body-sm text-outline uppercase">Oshawa Growth</span>
+<span class="block text-headline-lg font-bold text-primary">+14.2%</span>
+<span class="text-tertiary-container font-data-mono text-[11px] px-1 bg-tertiary-fixed rounded inline-block mt-1">YOY VALUE INC.</span>
+</div>
+<div class="bg-surface-container-lowest p-md border border-outline-variant rounded flex-1 min-w-[180px] shadow-lg">
+<span class="block text-data-mono text-body-sm text-outline uppercase">Pickering MOI</span>
+<span class="block text-headline-lg font-bold text-primary">1.8</span>
+<span class="text-on-error-container font-data-mono text-[11px] px-1 bg-error-container rounded inline-block mt-1">CRITICAL INVENTORY</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="absolute -inset-2 bg-gradient-to-tr from-secondary/10 to-transparent rounded-xl -z-10 blur-xl group-hover:opacity-100 transition-opacity opacity-0"></div>
+<div class="w-full aspect-[4/3] rounded border border-outline-variant overflow-hidden relative shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A sophisticated architectural visualization of modern high-rise development in Oshawa, featuring sleek glass buildings and clean urban planning. The scene is set during a bright blue-sky day with crisp lighting, emphasizing corporate efficiency and modern growth. High-fidelity textures and a minimalist color palette of deep grays, blues, and bright whites align with a professional market intelligence aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDip8TnIAj-3akU2qoEKxhfU9FGJvXsn-4B9ppWsJHO3lMzhg1eMN1GvI67C2Ok84x-AUvCMndPCnyzeIxTWYvUCrynYzUIv1vjEiXbfrytaUU9e7-wPt7j3YLN-i6GZbtMl9gftPKUwBs35Ku_j-vWza3C-Ee_hz4QJeE_pbAch6oUWXMtSmAvLg7u2qkLTt7ZpqQPaXIAeGL4EpY7yLi_N9Pq4Vb4eaa8Th-NYzBWwnpG6gI22v8tlCDuSYsXY3mMcPrApUG4Sok">
+<div class="absolute top-md right-md flex flex-col gap-xs">
+<div class="bg-primary/90 text-white px-sm py-xs text-data-mono text-[10px] backdrop-blur uppercase">Live Heatmap</div>
+<div class="bg-secondary text-white px-sm py-xs text-data-mono text-[10px] backdrop-blur uppercase flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">sensors</span> Active TRREB Pulse
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Market Velocity & Innovation Corridor -->
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-md mb-xl">
+<!-- Market Velocity Module -->
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-lowest border border-outline-variant p-lg flex flex-col shadow-lg">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Market Velocity</h2>
+<p class="text-data-mono text-body-sm text-outline">Inventory Absorption Analytics (L30D)</p>
+</div>
+<span class="material-symbols-outlined text-secondary">speed</span>
+</div>
+<div class="flex-grow flex flex-col gap-md">
+<div class="h-32 w-full bg-surface-container-low rounded relative overflow-hidden flex items-end px-md gap-1">
+<!-- Simulated Bar Chart -->
+<div class="w-full bg-secondary h-[40%]"></div>
+<div class="w-full bg-secondary h-[60%]"></div>
+<div class="w-full bg-secondary h-[45%]"></div>
+<div class="w-full bg-secondary h-[85%]"></div>
+<div class="w-full bg-secondary h-[70%]"></div>
+<div class="w-full bg-secondary h-[95%] opacity-80"></div>
+<div class="w-full bg-secondary h-[80%]"></div>
+<div class="w-full bg-primary h-[98%] group relative cursor-help">
+<div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 bg-primary text-white text-[9px] px-1 hidden group-hover:block whitespace-nowrap">Peak Absorption</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="border-l-2 border-secondary pl-md">
+<span class="block text-body-sm text-outline">Absorption Rate</span>
+<span class="block font-bold text-headline-lg">74.2%</span>
+</div>
+<div class="border-l-2 border-outline-variant pl-md">
+<span class="block text-body-sm text-outline">Avg. DOM</span>
+<span class="block font-bold text-headline-lg">11 Days</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant italic border-t border-outline-variant pt-md mt-auto">
+                        Velocity indicates a seller-controlled environment across Whitby and Ajax residential segments.
+                    </p>
+</div>
+</div>
+<!-- Pickering Innovation Corridor Impact -->
+<div class="md:col-span-2 bg-primary text-white p-lg relative overflow-hidden">
+<div class="relative z-10">
+<div class="inline-block px-sm py-1 bg-tertiary-container text-tertiary-fixed text-[10px] font-data-mono uppercase mb-sm">Industrial Synergy</div>
+<h3 class="font-headline-lg text-headline-lg mb-sm">Pickering Innovation Corridor</h3>
+<p class="text-body-sm text-on-primary-container opacity-90 max-w-md">
+                        Tracking $1.2B in infrastructure investment impact on surrounding residential property values within a 5km radius.
+                    </p>
+<div class="flex gap-lg mt-md">
+<div>
+<span class="block text-[10px] font-data-mono text-on-primary-container uppercase">Premium Delta</span>
+<span class="text-headline-lg-mobile font-bold text-tertiary-fixed">+8.4%</span>
+</div>
+<div>
+<span class="block text-[10px] font-data-mono text-on-primary-container uppercase">Investor Density</span>
+<span class="text-headline-lg-mobile font-bold">High</span>
+</div>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 opacity-20 transform translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-[160px]" style="font-variation-settings: 'wght' 100">hub</span>
+</div>
+</div>
+<!-- Top Performing Schools Ajax -->
+<div class="md:col-span-1 bg-surface-container-lowest border border-outline-variant p-md">
+<h4 class="font-bold text-body-md border-b border-outline-variant pb-xs mb-sm">Ajax Top Schools</h4>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-body-sm font-semibold">Vimy Ridge P.S.</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">8.9</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm">Alexander Graham Bell</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">8.4</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm">Cadbury P.S.</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">8.1</span>
+</div>
+</div>
+</div>
+<!-- Top Performing Schools Whitby -->
+<div class="md:col-span-1 bg-surface-container-lowest border border-outline-variant p-md">
+<h4 class="font-bold text-body-md border-b border-outline-variant pb-xs mb-sm">Whitby Top Schools</h4>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="text-body-sm font-semibold">Jack Miner P.S.</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">9.1</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm">Fallingbrook P.S.</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">8.7</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-body-sm">Ormiston P.S.</span>
+<span class="bg-surface-container px-sm rounded text-data-mono text-xs">8.3</span>
+</div>
+</div>
+</div>
+</div>
+<!-- High-Density Data Table: Market Activity -->
+<section class="mb-xl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-md gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Board Pulse Analytics</h2>
+<p class="text-body-sm text-outline">Granular transaction logs synchronized from PropTx / TRREB</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-md py-xs bg-surface-container border border-outline-variant text-body-sm font-data-mono hover:bg-surface-container-high transition-colors">EXPORT CSV</button>
+<button class="px-md py-xs bg-surface-container border border-outline-variant text-body-sm font-data-mono hover:bg-surface-container-high transition-colors">API ACCESS</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">Municipality</th>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">Type</th>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">Avg Sale Price</th>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">New List</th>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">AI Appraisal Δ</th>
+<th class="p-md font-data-mono text-[11px] uppercase text-outline">Status</th>
+</tr>
+</thead>
+<tbody class="text-body-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md font-semibold">Oshawa Central</td>
+<td class="p-md">Detached</td>
+<td class="p-md font-data-mono">$842,500</td>
+<td class="p-md">42</td>
+<td class="p-md text-tertiary-container font-bold">+2.4%</td>
+<td class="p-md"><span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold uppercase rounded-full">Synchronized</span><div class="flex items-center gap-1 mt-1 text-[9px] text-outline font-data-mono"><span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim"></span>FUB LOGGED</div></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md font-semibold">Pickering City Centre</td>
+<td class="p-md">Condo</td>
+<td class="p-md font-data-mono">$615,200</td>
+<td class="p-md">118</td>
+<td class="p-md text-tertiary-container font-bold">+5.1%</td>
+<td class="p-md"><span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold uppercase rounded-full">Synchronized</span></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md font-semibold">Whitby Shores</td>
+<td class="p-md">Detached</td>
+<td class="p-md font-data-mono">$1,050,000</td>
+<td class="p-md">15</td>
+<td class="p-md text-on-surface-variant font-bold">-0.8%</td>
+<td class="p-md"><span class="px-2 py-0.5 bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase rounded-full">Stale (3m)</span></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-low transition-colors group">
+<td class="p-md font-semibold">Ajax Northwest</td>
+<td class="p-md">Townhouse</td>
+<td class="p-md font-data-mono">$789,900</td>
+<td class="p-md">29</td>
+<td class="p-md text-tertiary-container font-bold">+1.2%</td>
+<td class="p-md"><span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold uppercase rounded-full">Synchronized</span></td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="p-md font-semibold">Clarington South</td>
+<td class="p-md">Detached</td>
+<td class="p-md font-data-mono">$745,000</td>
+<td class="p-md">54</td>
+<td class="p-md text-tertiary-container font-bold">+3.7%</td>
+<td class="p-md"><span class="px-2 py-0.5 bg-secondary/10 text-secondary text-[10px] font-bold uppercase rounded-full">Synchronized</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- PropTx Map Integration Placeholder -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-lg h-[500px]">
+<div class="lg:col-span-2 relative border border-outline-variant bg-surface-container-low rounded overflow-hidden">
+<div class="absolute inset-0 z-0 grayscale opacity-80" data-location="Durham Region, Ontario">
+<img class="w-full h-full object-cover" data-alt="A sophisticated digital map of Durham Region, Ontario, rendered in a professional grayscale style. The map features subtle overlays representing various municipality boundaries and property density points in a corporate aesthetic. Minimalist iconography for landmarks is visible, and the overall lighting is even and bright, consistent with a modern data-driven interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzFM_juoPIWIJjEyg1kbBT26rgb67c6ZJfTdhggq6KXNs5kdQQy9gbNiSbw5H3tmNbvYuUZesOs1LuEaIINrTdabnV0LELtXQc5A512oiuAQ4yX1sK63tDgebMkXkpTbdlsCXKQBQAfHTMCF57gKE44asKIKiW7c85WGxbgKhsnLGXS96E3O-17_w7Yabe1lkEX03Iwtr7ohNk1wwKJnp7mEsVFIBeJnCdpubiPQeDSGj2kJaI1Q-kj7HybkWBC2XnomdwJn4nXyk">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface/40 to-transparent pointer-events-none"></div>
+<div class="absolute top-md left-md z-10 glass-panel p-md border border-outline-variant flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-body-sm font-bold">Detached Hotspots</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-body-sm font-bold">Innovation Impact Zone</span>
+</div>
+</div>
+<!-- Interactive Pins Mockup -->
+<div class="absolute top-[40%] left-[30%] w-4 h-4 bg-secondary rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform"></div>
+<div class="absolute top-[60%] left-[70%] w-4 h-4 bg-secondary rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform"></div>
+<div class="absolute top-[25%] left-[55%] w-4 h-4 bg-secondary rounded-full border-2 border-white shadow-lg cursor-pointer hover:scale-125 transition-transform"></div>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant p-lg flex flex-col shadow-lg">
+<h3 class="font-headline-lg text-headline-lg mb-md">Asset Density</h3>
+<div class="space-y-lg flex-grow">
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="font-data-mono">DETACHED</span>
+<span class="font-bold">1,402 Units</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[65%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="font-data-mono">CONDO / APT</span>
+<span class="font-bold">894 Units</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[42%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="font-data-mono">TOWNHOUSE</span>
+<span class="font-bold">512 Units</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[28%]"></div>
+</div>
+</div>
+<div class="pt-md border-t border-outline-variant">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-secondary">info</span>
+<p class="text-body-sm text-on-surface-variant">Data includes all firm sales recorded by member boards in the Durham jurisdiction as of 06:00 EST today.</p>
+</div>
+</div>
+</div>
+<button class="w-full py-md bg-secondary text-white font-bold rounded mt-auto hover:opacity-90 transition-opacity">Request Full Regional Report</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-low border-t border-outline-variant mt-xl">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="flex flex-col gap-xs items-center md:items-start">
+<span class="font-display-lg text-headline-lg-mobile font-bold text-primary">The Data Architect</span>
+<p class="font-data-mono text-data-mono text-on-surface-variant text-center md:text-left">
+                    © 2024 The Data Architect. Real-time listing data provided by Repliers API.
+                </p><p class="font-data-mono text-[10px] text-outline mt-2 uppercase tracking-tighter">Data provided by PropTx and TRREB. Information is deemed reliable but not guaranteed. The trademarks REALTOR®, REALTORS® and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA).</p>
+</div>
+<div class="flex gap-lg">
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-data-mono text-data-mono text-primary underline transition-opacity duration-200" href="#">Market Index</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Board Sync Status</a>
+</div>
+</div>
+</footer>
+<!-- Contextual FAB (Hidden on this specific hub page as per shell visibility mandate, but included if user navigates to specific listing) -->
+<!-- Determined suppression because this is an 'Intelligence Hub' dashboard -->
+
+
+</body></html>

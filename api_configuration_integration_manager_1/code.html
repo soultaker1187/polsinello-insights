@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Institutional Pro | API Integration Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#00477f",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#002110",
+                        "surface": "#fbf9f8",
+                        "secondary-fixed": "#d3e4ff",
+                        "primary": "#002045",
+                        "tertiary-container": "#003f23",
+                        "on-error": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "surface-tint": "#455f88",
+                        "inverse-surface": "#303030",
+                        "tertiary-fixed-dim": "#74db9d",
+                        "surface-variant": "#e4e2e1",
+                        "secondary-container": "#7db6ff",
+                        "on-background": "#1b1c1c",
+                        "on-surface-variant": "#43474e",
+                        "on-surface": "#1b1c1c",
+                        "outline": "#74777f",
+                        "on-primary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-primary-fixed": "#001b3c",
+                        "background": "#fbf9f8",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary-container": "#1a365d",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "tertiary-fixed": "#91f8b8",
+                        "outline-variant": "#c4c6cf",
+                        "surface-dim": "#dcd9d9",
+                        "tertiary": "#002713",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary-fixed": "#001c38",
+                        "inverse-on-surface": "#f3f0f0",
+                        "surface-bright": "#fbf9f8",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#86a0cd",
+                        "on-tertiary-container": "#4bb278",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "display": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(251, 249, 248, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+        .mask-fade-bottom {
+            mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen flex overflow-hidden">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-surface-container-low border-r border-outline-variant transition-all duration-150 ease-in-out shrink-0">
+<div class="p-6">
+<span class="font-headline text-headline-sm font-black text-primary tracking-tighter">Institutional Pro</span>
+<div class="mt-8 flex items-center space-x-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">architecture</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface">Data Architect</p>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant">Pro Dashboard</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1 mt-4">
+<a class="flex items-center space-x-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-body-sm font-medium">Market Analytics</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-body-sm font-medium">Portfolio</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">export_notes</span>
+<span class="text-body-sm font-medium">Bulk Export</span>
+</a>
+<div class="pt-4 pb-2 px-3">
+<span class="text-[10px] font-bold text-outline uppercase tracking-wider">System</span>
+</div>
+<a class="flex items-center space-x-3 px-3 py-3 rounded-lg bg-secondary-container text-on-secondary-container border-l-4 border-primary font-semibold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="text-body-sm">Admin & APIs</span>
+</a>
+<a class="flex items-center space-x-3 px-3 py-3 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-body-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="p-6 mt-auto">
+<div class="bg-surface-container p-4 rounded-xl">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] font-bold text-primary">API UPTIME</span>
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+</div>
+<div class="h-1 w-full bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed-dim w-[99.8%]"></div>
+</div>
+<p class="text-[10px] mt-2 text-on-surface-variant">99.85% (Last 30 Days)</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 relative h-screen overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="h-16 flex justify-between items-center w-full px-8 bg-surface border-b border-outline-variant shrink-0 z-20">
+<div class="flex items-center space-x-4">
+<span class="text-headline-sm font-bold text-primary">Integration Manager</span>
+<div class="h-4 w-[1px] bg-outline-variant mx-2"></div>
+<div class="flex items-center space-x-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+<span class="text-body-sm font-medium">Secure Environment</span>
+</div>
+</div>
+<div class="flex items-center space-x-6">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">notifications</span>
+<span class="absolute -top-1 -right-1 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">help_outline</span>
+<div class="flex items-center space-x-3 pl-4 border-l border-outline-variant">
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface leading-none">Admin Dev</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Superuser</p>
+</div>
+<span class="material-symbols-outlined text-[32px] text-primary">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Dynamic Canvas -->
+<div class="flex-1 overflow-y-auto p-8 custom-scrollbar bg-surface relative">
+<!-- Global Health & Search Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+<div class="max-w-md w-full relative">
+<div class="flex items-center bg-surface-container-lowest rounded-full px-5 py-3 shadow-sm border border-outline-variant/10 focus-within:ring-2 ring-primary/10 transition-all">
+<span class="material-symbols-outlined text-primary mr-3">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md w-full placeholder:text-on-surface-variant/50" placeholder="Search API keys, endpoints, or sync logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-low px-4 py-2 rounded-lg flex items-center space-x-3">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold text-outline-variant uppercase leading-none mb-1">Status</span>
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span class="text-label-md font-semibold text-primary">All Systems Nominal</span>
+</div>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-6 py-3 rounded-xl flex items-center space-x-2 transition-all shadow-lg shadow-primary/10">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span class="text-body-md font-bold">New Integration</span>
+</button>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Main Integration Stack (Repliers & Follow Up Boss) -->
+<div class="col-span-12 lg:col-span-8 space-y-8">
+<!-- Repliers API Card (Primary Content) -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 shadow-sm overflow-hidden relative group">
+<div class="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-[120px]">database</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div class="flex items-center space-x-4">
+<div class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[32px]">hub</span>
+</div>
+<div>
+<h3 class="text-headline-sm font-bold text-primary">Repliers API</h3>
+<p class="text-body-sm text-on-surface-variant">PropTx Real Estate Feed Integration</p>
+</div>
+</div>
+<div class="flex space-x-2">
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-[10px] font-bold uppercase">Active</span>
+<span class="bg-surface-container-high text-primary px-3 py-1 rounded-sm text-[10px] font-bold uppercase">v2.4.1</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="p-4 rounded-xl bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all">
+<p class="text-[10px] font-bold text-outline uppercase mb-1">Health Score</p>
+<p class="text-headline-sm font-bold text-primary">99.2%</p>
+<div class="h-1 w-full bg-outline-variant mt-2 rounded-full">
+<div class="h-full bg-tertiary-fixed-dim w-[92%]"></div>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all">
+<p class="text-[10px] font-bold text-outline uppercase mb-1">Sync Latency</p>
+<p class="text-headline-sm font-bold text-primary">124ms</p>
+<p class="text-[10px] text-tertiary-fixed-dim mt-2 font-medium">Optimal Performance</p>
+</div>
+<div class="p-4 rounded-xl bg-surface-container-low border border-transparent hover:border-outline-variant/30 transition-all">
+<p class="text-[10px] font-bold text-outline uppercase mb-1">Monthly Req.</p>
+<p class="text-headline-sm font-bold text-primary">1.2M / 5M</p>
+<p class="text-[10px] text-on-surface-variant mt-2">24% Quota Used</p>
+</div>
+</div>
+<div class="space-y-4">
+<label class="block">
+<span class="text-[11px] font-bold text-outline uppercase tracking-wide">Primary Production Key</span>
+<div class="mt-1 flex items-center space-x-2">
+<div class="flex-1 bg-surface-container-high px-4 py-3 rounded-lg font-mono text-sm text-primary flex justify-between items-center group/key cursor-pointer">
+<span>••••••••••••••••••••••••••••••••</span>
+<span class="material-symbols-outlined text-[18px] opacity-0 group-hover/key:opacity-100 transition-opacity">visibility</span>
+</div>
+<button class="p-3 bg-surface-container hover:bg-outline-variant/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+</button>
+<button class="p-3 bg-surface-container hover:bg-outline-variant/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[20px]">refresh</span>
+</button>
+</div>
+</label>
+</div>
+<div class="mt-8 flex justify-end space-x-4">
+<button class="text-secondary text-label-md font-bold hover:underline">View Endpoint Documentation</button>
+<button class="bg-primary text-white px-6 py-2 rounded-lg font-bold text-body-sm shadow-md">Configure Sync Logic</button>
+</div>
+</div>
+</div>
+<!-- Follow Up Boss Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/10 shadow-sm relative overflow-hidden group">
+<div class="relative z-10 flex flex-col md:flex-row gap-8 items-start">
+<div class="shrink-0">
+<div class="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center shadow-lg shadow-secondary/20">
+<span class="material-symbols-outlined text-white text-[32px]">handshake</span>
+</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-headline-sm font-bold text-primary">Follow Up Boss CRM</h3>
+<p class="text-body-sm text-on-surface-variant">Lead & Interaction Syncing</p>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="text-[10px] font-bold text-error uppercase">Sync Interrupted</span>
+</div>
+</div>
+<div class="bg-error-container/20 p-4 rounded-lg mb-6 border border-error-container/30">
+<div class="flex items-start space-x-3">
+<span class="material-symbols-outlined text-error text-[20px]">warning</span>
+<div>
+<p class="text-body-sm font-bold text-on-error-container">Webhook Secret Mismatch</p>
+<p class="text-[11px] text-on-error-container/80">Last failed attempt: 2 minutes ago. Authentication with the CRM endpoint failed due to an expired signature.</p>
+</div>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-error text-white px-5 py-2 rounded-lg font-bold text-body-sm hover:bg-on-error-container transition-colors">Re-authenticate Now</button>
+<button class="bg-surface-container-high text-primary px-5 py-2 rounded-lg font-bold text-body-sm">Audit Sync Logs</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Mapbox Integration Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 shadow-sm">
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-on-primary-fixed-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]">map</span>
+</div>
+<h4 class="text-body-md font-bold text-primary">Mapbox GL SDK</h4>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-[10px] font-bold text-outline uppercase mb-2">Tile Loads (Daily)</p>
+<div class="flex justify-between text-body-sm mb-1">
+<span class="text-on-surface-variant">42.8k / 50k</span>
+<span class="font-bold text-primary">85%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary-container w-[85%]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-[11px] text-on-surface-variant font-medium">Public Token Active</span>
+<button class="text-[11px] font-bold text-primary uppercase border-b border-primary hover:border-transparent transition-all">Rotate Key</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">cloud_sync</span>
+</div>
+<h4 class="text-body-md font-bold text-primary">Open Data Feeds</h4>
+</div>
+<div class="flex items-center space-x-2 text-body-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+<span>3/3 Municipalities Connected</span>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] font-medium">Toronto_OBD</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] font-medium">Vancouver_Gis</span>
+<span class="bg-surface-container px-2 py-1 rounded text-[10px] font-medium">Montreal_Open</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar Content (Health Monitoring & Global Controls) -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- Secure Toggle Section -->
+<div class="bg-primary text-white rounded-xl p-6 shadow-xl shadow-primary/20 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[100px]">lock</span>
+</div>
+<div class="relative z-10">
+<h4 class="text-label-md font-bold uppercase tracking-widest mb-4 opacity-80">Security Control</h4>
+<div class="flex items-center justify-between p-4 bg-white/10 rounded-lg border border-white/10 mb-4">
+<div>
+<p class="text-body-md font-bold">API Key Masking</p>
+<p class="text-[11px] opacity-70">Hide sensitive strings in UI</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tertiary-fixed-dim"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-white/10 rounded-lg border border-white/10">
+<div>
+<p class="text-body-md font-bold">Sandbox Mode</p>
+<p class="text-[11px] opacity-70">Force testing endpoints</p>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-white/20 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Health Monitor Feed -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm flex flex-col h-[500px]">
+<div class="p-6 border-b border-outline-variant/10 flex justify-between items-center">
+<h4 class="text-body-md font-bold text-primary">Live Activity Log</h4>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer">download</span>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar mask-fade-bottom">
+<!-- Log Item -->
+<div class="flex space-x-3">
+<div class="shrink-0 w-8 h-8 rounded-full bg-tertiary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-primary leading-tight">Repliers Property Sync</p>
+<p class="text-[10px] text-on-surface-variant">Batch #8293 processed successfully (2,401 units)</p>
+<p class="text-[9px] text-outline mt-1 font-mono">14:22:10 UTC</p>
+</div>
+</div>
+<!-- Log Item -->
+<div class="flex space-x-3">
+<div class="shrink-0 w-8 h-8 rounded-full bg-error-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-error text-[16px]">error</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-primary leading-tight">Follow Up Boss CRM</p>
+<p class="text-[10px] text-error font-medium">Auth Failure: Invalid Webhook Secret</p>
+<p class="text-[9px] text-outline mt-1 font-mono">14:18:45 UTC</p>
+</div>
+</div>
+<!-- Log Item -->
+<div class="flex space-x-3">
+<div class="shrink-0 w-8 h-8 rounded-full bg-secondary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[16px]">info</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-primary leading-tight">Mapbox Vector Cache</p>
+<p class="text-[10px] text-on-surface-variant">Purged 1,240 stale geometry tiles</p>
+<p class="text-[9px] text-outline mt-1 font-mono">13:55:01 UTC</p>
+</div>
+</div>
+<!-- Log Item -->
+<div class="flex space-x-3">
+<div class="shrink-0 w-8 h-8 rounded-full bg-tertiary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-primary leading-tight">Open Data Vancouver</p>
+<p class="text-[10px] text-on-surface-variant">New zoning delta detected & mapped</p>
+<p class="text-[9px] text-outline mt-1 font-mono">13:30:12 UTC</p>
+</div>
+</div>
+<!-- Log Item -->
+<div class="flex space-x-3">
+<div class="shrink-0 w-8 h-8 rounded-full bg-tertiary-fixed-dim/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+</div>
+<div>
+<p class="text-[11px] font-bold text-primary leading-tight">Global Health Check</p>
+<p class="text-[10px] text-on-surface-variant">Standard ping: All responsive</p>
+<p class="text-[9px] text-outline mt-1 font-mono">13:00:00 UTC</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Usage Analytics Card -->
+<div class="bg-surface-container-high rounded-xl p-6">
+<h4 class="text-label-md font-bold text-primary mb-4">COST PROJECTION</h4>
+<div class="space-y-4">
+<div class="flex justify-between items-end">
+<span class="text-[24px] font-black text-primary">$412.18</span>
+<span class="text-[10px] text-tertiary-fixed-dim font-bold mb-1">▼ 12% vs last mo.</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-[10px] text-on-surface-variant">Projected monthly burn</span>
+</div>
+<button class="w-full mt-2 bg-surface-container-lowest border border-outline-variant/30 py-2 rounded font-bold text-[10px] uppercase text-primary hover:bg-surface transition-colors">Adjust Billing Thresholds</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Meta -->
+<footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center text-[11px] text-on-surface-variant">
+<div class="flex items-center space-x-6 mb-4 md:mb-0">
+<p>© 2024 Institutional Pro • Data Architect Division</p>
+<a class="hover:text-primary" href="#">API Security Policy</a>
+<a class="hover:text-primary" href="#">System Compliance</a>
+</div>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[14px]">terminal</span>
+<span class="font-mono">CLI-Sync Version: 1.0.8-prod</span>
+</div>
+</footer>
+</div>
+<!-- Ambient Background Decoration -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/5 blur-[100px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none"></div>
+</main>
+<!-- Mobile Navigation Toggle (Bottom Bar for small screens) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface-container-low border-t border-outline-variant z-50 flex justify-around items-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<span class="material-symbols-outlined text-on-surface-variant">analytics</span>
+<span class="material-symbols-outlined text-on-surface-variant">account_balance_wallet</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</div>
+<script>
+        // Simple micro-interactions for UI feedback
+        document.querySelectorAll('.group/key').forEach(keyContainer => {
+            keyContainer.addEventListener('click', function() {
+                const textSpan = this.querySelector('span:first-child');
+                const icon = this.querySelector('.material-symbols-outlined');
+                
+                if (textSpan.innerText.includes('•')) {
+                    textSpan.innerText = 'rpl_live_99k28d_as9201f_x0012l';
+                    icon.innerText = 'visibility_off';
+                } else {
+                    textSpan.innerText = '••••••••••••••••••••••••••••••••';
+                    icon.innerText = 'visibility';
+                }
+            });
+        });
+    </script>
+</body></html>

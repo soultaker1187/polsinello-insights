@@ -1,0 +1,42 @@
+# Developer Hand-off Specification: The Data Architect
+
+## 1. Project Overview
+'The Data Architect' is an institutional-grade real estate platform for the Ontario market, powered by the **Repliers API** (TRREB MLS® feed). The platform provides professional-grade discovery, predictive analytics, and proprietary AI valuations.
+
+## 2. Core Data Engine: Repliers API
+All property data—Active, Sold, and Historical—must be sourced via the Repliers API to ensure real-time accuracy and institutional trust.
+- **Sync Logic:** Implement a sub-second sync for the "Live Sync" indicators shown on the frontend.
+- **Data Points:** Ingest Listing Price, Sold Price (Historical), Beds/Baths, Sqft, Lot Dimensions, and Brokerage Information.
+
+## 3. Search Infrastructure: Discovery Engine
+- **Search Core:** Elasticsearch or Algolia for high-concurrency, full-text search.
+- **Geospatial Indexing:** PostgreSQL with the **PostGIS** extension.
+- **Query Types:** 
+  - Bounding Box: For map-based discovery.
+  - Radial: "Properties within 1km of this school."
+  - Complex Filters: Price range, Bed/Bath count, Property Type, and Sold vs. Active status.
+
+## 4. Proprietary AI Appraisal Engine
+The "Brain" of the platform, as designed in {{DATA:SCREEN:SCREEN_78}}.
+- **Inputs:** 
+  - Recent Comparables (Repliers Sold Data).
+  - Neighborhood Velocity (SNLR, Months of Inventory).
+  - Macro Data (BoC Interest Rates).
+  - Zoning/Land Use (Municipal Open Data).
+- **Output:** A predicted value with a confidence score (98% target) and a "Market Heat" index.
+
+## 5. Third-Party Integrations
+- **CRM Sync:** Bi-directional sync with **Follow Up Boss (FUB)**.
+  - Webhook listener for new lead inquiries.
+  - Lead activity tracking (Saves, Views) pushed to FUB.
+- **Geospatial Overlays:** Mapbox or Google Maps with custom GeoJSON layers for Ontario Zoning.
+- **Notifications:** Twilio for SMS and SendGrid for high-fidelity property alerts.
+
+## 6. Security & Governance
+- **Access Control:** Institutional IP Whitelisting as managed in {{DATA:SCREEN:SCREEN_36}}.
+- **Compliance:** Full adherence to TRREB VOW/IDX policies and Canadian data residency requirements.
+
+---
+
+**Next Steps:**
+Use this document as the primary reference for backend engineering and API orchestration.

@@ -1,0 +1,360 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Haliburton Investment Analytics | The Data Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "on-error-container": "#93000a",
+                    "surface": "#f8f9ff",
+                    "on-primary-fixed": "#131b2e",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-container": "#7c839b",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "primary": "#000000",
+                    "secondary-fixed": "#d8e2ff",
+                    "secondary": "#0058be",
+                    "primary-fixed": "#dae2fd",
+                    "outline": "#76777d",
+                    "on-tertiary-container": "#009668",
+                    "surface-tint": "#565e74",
+                    "tertiary-fixed": "#6ffbbe",
+                    "background": "#f8f9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#2170e4",
+                    "surface-variant": "#d3e4fe",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary-container": "#002113",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#bec6e0",
+                    "surface-container-high": "#dce9ff",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#45464d",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#000000",
+                    "on-primary": "#ffffff",
+                    "on-secondary-container": "#fefcff",
+                    "surface-container": "#e5eeff",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#ffffff",
+                    "outline-variant": "#c6c6cd",
+                    "on-secondary-fixed": "#001a42",
+                    "on-secondary-fixed-variant": "#004395",
+                    "primary-fixed-dim": "#bec6e0",
+                    "primary-container": "#131b2e",
+                    "on-background": "#0b1c30",
+                    "inverse-surface": "#213145"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "gutter": "20px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "xl": "48px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "data-mono": ["JetBrains Mono"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "data-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+        }
+        .gradient-mesh {
+            background-color: #f8f9ff;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed-variant">
+<!-- TopNavBar -->
+<header class="w-full sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex justify-between items-center px-lg py-sm max-w-container-max mx-auto h-20">
+<div class="font-display-lg text-headline-lg font-bold text-primary">The Data Architect</div>
+<nav class="hidden md:flex gap-lg items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">Market Data</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">AI Appraisals</a>
+<a class="font-body-md text-body-md text-secondary font-bold border-b-2 border-secondary transition-colors duration-200 cursor-pointer" href="#">Regional Insights</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors duration-200 cursor-pointer" href="#">TRREB Analytics</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-low border-none rounded-full px-lg py-xs text-body-sm focus:ring-2 focus:ring-secondary-container w-64" placeholder="Search Region..." type="text">
+<span class="material-symbols-outlined absolute right-3 top-1.5 text-outline text-[20px]">search</span>
+</div>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-body-md font-bold active:opacity-80 transition-opacity">Sign In</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen gradient-mesh">
+<!-- Hero Section -->
+<section class="relative pt-xl pb-32 overflow-hidden border-b border-outline-variant">
+<div class="max-w-container-max mx-auto px-lg grid grid-cols-1 lg:grid-cols-12 gap-xl items-center">
+<div class="lg:col-span-7 z-10">
+<div class="inline-flex items-center gap-sm bg-tertiary-container/10 px-md py-xs rounded-full mb-md">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[18px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-data-mono text-data-mono text-on-tertiary-container uppercase tracking-widest">Real-Time Regional Alpha</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-lg leading-tight tracking-tighter">
+                        Haliburton: The Next Frontier in <span class="text-secondary">Recreational Investment.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-xl">Leverage the Repliers API to access institutional-grade analytics on short-term rental yields and infrastructure-driven appreciation in the Haliburton Highlands and surrounding lakefront centres. Discover your ideal recreational neighbourhood.</p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary px-xl py-md rounded-lg font-bold flex items-center justify-center gap-sm hover:shadow-lg transition-all">Request Private Portfolio Access <span class="material-symbols-outlined text-[20px]">lock_open</span></button>
+<button class="border border-outline-variant bg-white text-primary px-xl py-md rounded-lg font-bold hover:bg-surface-container-low transition-all">
+                            View 2024 Map Yields
+                        </button>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="bg-white p-sm rounded-xl shadow-2xl border border-outline-variant transform lg:rotate-2">
+<div class="aspect-[3/2] rounded-lg overflow-hidden relative mb-md">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-resolution aerial photograph of a luxury contemporary lakefront estate in a premier Haliburton neighbourhood. The architecture features vast glass walls and dark cedar siding, reflecting a sophisticated recreational centre aesthetic. The overall aesthetic captures the essence of high-value investment properties with a modern corporate edge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx91vG70LgduiRC_I0sCOR68jwV4RfC4_tQdhPoTurduN88KEhkzSa6vaua2T9UZeLfqky0iqF3euF3kw1xedXL77NQqZfGGcApPa1zG5uVAVsxc7qg1oJxkVdGFnbdTXucgRqO_xtsAAuHqZg1XMxPCtGOw2h9x6emBrsRffYTbbnWCC2KxTatk40kPYRo1NPdidPdlImzsyZa_y5t-kO7F1nHEGM5QPwtxNuFUCKw59pgwj545mm4OG7nJVxwoskuuoE_SqNvk4">
+<div class="absolute top-4 right-4 bg-primary text-white px-md py-xs rounded-full flex items-center gap-xs">
+<span class="w-2 h-2 bg-tertiary-fixed-dim rounded-full animate-pulse"></span>
+<span class="font-data-mono text-[10px] uppercase tracking-tighter">Live Sync: Active</span>
+</div>
+</div>
+<div class="p-md space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<p class="font-data-mono text-data-mono text-on-surface-variant">AI APPRAISAL VALUE</p>
+<h3 class="font-display-lg text-headline-lg">$3,450,000 CAD</h3>
+</div>
+<div class="text-right">
+<p class="font-data-mono text-data-mono text-tertiary-fixed-dim">+14.2% YOY</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant"></div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-sm rounded-lg">
+<span class="font-data-mono text-[11px] block text-outline">STR YIELD</span>
+<span class="font-bold text-body-md">8.4% Net</span>
+</div>
+<div class="bg-surface-container-low p-sm rounded-lg">
+<span class="font-data-mono text-[11px] block text-outline">FIBER STATUS</span>
+<span class="font-bold text-body-md">Gigabit Ready</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Analytics Grid (Bento) -->
+<section class="py-xl max-w-container-max mx-auto px-lg">
+<div class="mb-xl text-center lg:text-left">
+<h2 class="font-display-lg text-headline-lg mb-sm">The Haliburton Edge</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Quantifying the impact of infrastructure and remote-work shifts.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg auto-rows-[240px]">
+<!-- Main Investment Card -->
+<div class="md:col-span-8 md:row-span-2 bento-card bg-white border border-outline-variant rounded-xl p-xl flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[24px]">signal_cellular_alt</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg">Infrastructure Lift</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Impact of High-Speed Internet Expansion</p>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant max-w-xl mb-xl">
+                            Our proprietary engine tracks the rollout of gigabit-capable fiber networks. In 2024, properties within "Connected Zones" commanded a **19% premium** in secondary market valuation compared to disconnected counterparts, directly correlating with high-income remote worker demand.
+                        </p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-lg border border-outline-variant/30 flex items-center justify-between">
+<div class="space-y-1">
+<span class="font-data-mono text-data-mono text-outline block">NETWORK COVERAGE 2024</span>
+<div class="h-2 w-48 bg-outline-variant rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[72%]"></div>
+</div>
+</div>
+<div class="text-right">
+<span class="font-display-lg text-headline-lg text-secondary">72.4%</span>
+</div>
+</div>
+</div>
+<!-- Yield Stats Card -->
+<div class="md:col-span-4 bento-card bg-primary text-on-primary rounded-xl p-xl relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-data-mono text-data-mono text-on-primary-container block mb-md">RENTAL PERFORMANCE</span>
+<h3 class="font-display-lg text-headline-lg mb-xs">Short-Term Yields</h3>
+<p class="font-body-sm opacity-80">Haliburton ranks top 3 in Ontario for net ROI on lakefront rentals.</p>
+<div class="mt-lg">
+<span class="text-display-lg font-bold">$12.5k</span>
+<span class="font-data-mono text-data-mono block opacity-60">Avg. Peak Weekly Rate</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 rotate-12">receipt_long</span>
+</div>
+<!-- Proprietary Appraisal CTA Card -->
+<div class="md:col-span-4 bento-card bg-surface-container-highest border border-outline-variant rounded-xl p-xl">
+<h3 class="font-headline-lg text-headline-lg mb-md">AI Appraisal</h3>
+<p class="font-body-sm text-on-surface-variant mb-xl">
+                        Get an instant, data-backed valuation for any Haliburton parcel using current Repliers API trends.
+                    </p>
+<div class="space-y-md">
+<input class="w-full bg-white border-outline-variant rounded-lg px-md py-sm focus:ring-secondary" placeholder="Enter Property Address" type="text">
+<button class="w-full bg-secondary text-on-secondary py-sm rounded-lg font-bold hover:bg-secondary-container transition-colors">Generate Valuation</button>
+</div>
+</div>
+<!-- Geographic Density Map Card -->
+<div class="md:col-span-6 bento-card bg-white border border-outline-variant rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full grayscale opacity-40 group-hover:opacity-60 transition-opacity" data-location="Haliburton County, Ontario" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDwXqQ9CvCo08BbmXNj2h8DgkoL6G3Zoa-9OaadbW8DxJtV4Erf078EhiUuOJxoV85GIZeEL9EeT6KvJhEF-jSNFLCA7fvbUcH0aEwk67ZBKxJwtFVaZKpLUfiIbf7BmiImnukxGvqg72STmSfmxPtMtJMrqbwbOrfrAOtpnvbZRkuovbC0jn8X46s_Ob3JiIO0SkSfHTxpPm3kTZUNvVatz5tBdDinYvRiaNf2wTgGcryZpOum0eM7X7jIAjdXKXldnBPizOYPX98')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent"></div>
+</div>
+<div class="relative z-10 p-xl h-full flex flex-col justify-end">
+<h3 class="font-headline-lg text-headline-lg">Market Heatmap</h3>
+<p class="font-body-sm text-on-surface-variant">Lakefront transaction density index.</p>
+<div class="flex gap-sm mt-md">
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-sm py-xs rounded font-data-mono text-[11px]">HOT MARKET</span>
+<span class="bg-secondary/10 text-secondary px-sm py-xs rounded font-data-mono text-[11px]">SUPPLY CRUNCH</span>
+</div>
+</div>
+</div>
+<!-- Rapid Sync Feed -->
+<div class="md:col-span-6 bento-card bg-white border border-outline-variant rounded-xl p-xl flex flex-col">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-lg text-headline-lg">Feed Intelligence</h3>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim">sync</span>
+<span class="font-data-mono text-[11px] text-outline uppercase">Repliers Live</span>
+</div>
+</div>
+<div class="space-y-md overflow-hidden flex-1">
+<div class="flex gap-md border-b border-outline-variant pb-sm last:border-0">
+<div class="bg-surface-container-low p-xs rounded font-data-mono text-secondary text-[11px]">10:24 AM</div>
+<div>
+<p class="font-body-sm font-bold">Sold: Kennisis Lake Estate</p>
+<p class="font-body-sm text-outline">108.4% of listing price. Fiber connected.</p>
+</div>
+</div>
+<div class="flex gap-md border-b border-outline-variant pb-sm last:border-0">
+<div class="bg-surface-container-low p-xs rounded font-data-mono text-secondary text-[11px]">09:15 AM</div>
+<div>
+<p class="font-body-sm font-bold">New Listing: Drag Lake</p>
+<p class="font-body-sm text-outline">Projected 7.2% cap rate. AI appraised.</p>
+</div>
+</div>
+<div class="flex gap-md border-b border-outline-variant pb-sm last:border-0">
+<div class="bg-surface-container-low p-xs rounded font-data-mono text-secondary text-[11px]">Yesterday</div>
+<div>
+<p class="font-body-sm font-bold">Trend Shift: Haliburton Lake</p>
+<p class="font-body-sm text-outline">Remote-work demand increased +4.2% MoM.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter & CTA -->
+<section class="py-xl bg-surface-container-low mt-xl">
+<div class="max-w-4xl mx-auto px-lg text-center">
+<h2 class="font-display-lg text-headline-lg mb-md">Stay Ahead of the Market</h2>
+<p class="font-body-md text-on-surface-variant mb-xl">
+                    Subscribe to our weekly Intelligence Memo. No fluff—just raw data, yield shifts, and infrastructure alerts for Haliburton property investors.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<input class="flex-1 rounded-lg border-outline-variant px-lg py-md focus:ring-secondary" placeholder="Professional Email Address" type="email">
+<button class="bg-primary text-on-primary px-xl py-md rounded-lg font-bold">Join Exclusive Investor List</button>
+</div>
+<p class="font-data-mono text-[11px] text-outline mt-md uppercase tracking-wider">Join 1,200+ Regional Investors</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-low border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-center px-lg max-w-container-max mx-auto gap-md">
+<div class="font-display-lg text-headline-lg-mobile font-bold text-primary">The Data Architect</div>
+<div class="flex flex-wrap justify-center gap-lg">
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Terms of Service</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Privacy Policy</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Market Index</a>
+<a class="font-data-mono text-data-mono text-on-surface-variant hover:text-secondary transition-opacity duration-200" href="#">Board Sync Status</a>
+</div>
+<p class="font-data-mono text-data-mono text-on-surface-variant text-center md:text-right">© 2024 The Data Architect. Real-time listing data provided by Repliers API. The trademarks REALTOR®, REALTORS®, and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA) and identify real estate professionals who are members of CREA. Data provided by PropTx.</p>
+</div>
+</footer>
+<script>
+        // Micro-interactions and subtle hover effects
+        document.querySelectorAll('.bento-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transition = 'transform 0.5s ease';
+                    icon.style.transform = 'scale(1.1) rotate(-5deg)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                }
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-secondary-container');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-secondary-container');
+            });
+        }
+    </script>
+
+
+</body></html>

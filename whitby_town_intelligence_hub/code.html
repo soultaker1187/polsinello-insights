@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polsinello Insights | Whitby Town Intelligence Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+        .terminal-glow:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(123, 208, 255, 0.3);
+            border-color: #7bd0ff;
+        }
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #051424;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 2px;
+        }
+        .data-grid-pattern {
+            background-image: radial-gradient(circle, #1e293b 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#7bd0ff",
+                        "on-primary-container": "#798098",
+                        "on-background": "#d4e4fa",
+                        "error": "#ffb4ab",
+                        "primary-container": "#0f172a",
+                        "surface-container-low": "#0d1c2d",
+                        "secondary-container": "#3e495d",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "surface": "#051424",
+                        "primary": "#bec6e0",
+                        "inverse-primary": "#565e74",
+                        "surface-container-lowest": "#010f1f",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-container": "#001a27",
+                        "on-error": "#690005",
+                        "secondary": "#bcc7de",
+                        "on-tertiary-container": "#008abb",
+                        "on-surface": "#d4e4fa",
+                        "on-secondary-fixed": "#111c2d",
+                        "surface-dim": "#051424",
+                        "surface-bright": "#2c3a4c",
+                        "surface-container-high": "#1c2b3c",
+                        "on-tertiary-fixed": "#001e2c",
+                        "surface-tint": "#bec6e0",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "tertiary-fixed": "#c4e7ff",
+                        "primary-fixed": "#dae2fd",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-highest": "#273647",
+                        "on-secondary-container": "#aeb9d0",
+                        "on-tertiary": "#00354a",
+                        "surface-container": "#122131",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "on-primary": "#283044",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "on-surface-variant": "#c6c6cd",
+                        "surface-variant": "#273647",
+                        "inverse-on-surface": "#233143",
+                        "inverse-surface": "#d4e4fa",
+                        "outline": "#909097",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed": "#d8e3fb",
+                        "error-container": "#93000a",
+                        "background": "#051424",
+                        "outline-variant": "#45464d",
+                        "on-secondary": "#263143"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["IBM Plex Sans"],
+                        "body": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-tertiary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto bg-surface/80 dark:bg-surface/80 backdrop-blur-xl shadow-sm shadow-on-surface/5 border-b border-outline-variant/20">
+<div class="flex items-center gap-8">
+<span class="text-headline-sm font-black text-primary dark:text-primary-fixed tracking-tight font-headline">Polsinello Insights</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-headline text-label-md tracking-wider uppercase text-primary dark:text-primary-fixed-dim border-b-2 border-primary dark:border-primary-fixed-dim pb-1 transition-all duration-300 ease-in-out hover:opacity-90" href="#">Market Intel</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors pb-1 transition-all duration-300 ease-in-out hover:opacity-90" href="#">Portfolio</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors pb-1 transition-all duration-300 ease-in-out hover:opacity-90" href="#">Analytics</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant dark:text-outline hover:text-primary dark:hover:text-primary-fixed transition-colors pb-1 transition-all duration-300 ease-in-out hover:opacity-90" href="#">Developer Tools</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-label-sm font-mono text-tertiary hidden lg:block">SINCE 1989</span>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-highest/10 transition-colors rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-highest/10 transition-colors rounded">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-secondary-container overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a senior financial analyst in a modern, glass-walled office overlooking a futuristic city skyline. The lighting is moody and low-key with sharp blue highlights. The aesthetic is clean, corporate, and authoritative, matching a dark mode UI design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmyqLELV9gKRvW8WhKl9x4nUitNMIoLx-Co7MLbAdqpM8Dr8BC9dzw_X610Q_siHwKzz_eazr6vGMGlUa3W1U7nSYgSmHHPiwT3PoKgFwRDXXCBJgm4A4EpWZOztGPfcdTJ4Nefv9VmC5ZKFUM-43COXxl2HClfj3zw9Gagpm6zKjm1joEdB0Fe5Jr2f1ZFd3MlrDDfdiaz0VsrMuxqlNxxIhoqmqhBnlmdergsPml9sW5D8x5QX9265u8SLtArLCRO-EJlz-fYvc"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 z-40 w-72 bg-surface-container-low border-r border-outline-variant/10 pt-24 hidden xl:flex">
+<div class="px-4 mb-8">
+<h2 class="text-headline-sm font-black text-primary dark:text-primary-fixed font-headline uppercase tracking-tighter">Polsinello</h2>
+<p class="text-xs font-mono text-outline uppercase tracking-[0.2em]">Institutional Intelligence</p>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-3 bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-lg px-4 py-3 font-semibold transition-all scale-[0.99] duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body text-body-md">Market Intel</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="domain">domain</span>
+<span class="font-body text-body-md">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-body text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-3 hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="font-body text-body-md">Developer Tools</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4 pt-4 border-t border-outline-variant/20">
+<button class="w-full bg-tertiary text-on-tertiary font-bold py-3 px-4 rounded-lg hover:opacity-90 transition-opacity font-mono text-xs uppercase">
+                Upgrade to Pro
+            </button>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-2 hover:underline underline-offset-4 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+<span class="font-label text-label-sm uppercase">Support</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant dark:text-outline px-4 py-2 hover:underline underline-offset-4 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="font-label text-label-sm uppercase">Sign Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="xl:ml-72 pt-24 min-h-screen relative overflow-hidden">
+<!-- Background Animation -->
+
+<div class="max-w-[1440px] mx-auto px-8 py-8 relative z-10">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<div class="flex items-center gap-2 text-tertiary mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-mono text-label-sm tracking-widest uppercase">WHITBY HUB / DURHAM REGION</span>
+</div>
+<h1 class="font-headline text-[48px] font-bold leading-tight tracking-tight text-on-background">Whitby Town Intelligence</h1>
+<p class="text-on-surface-variant max-w-2xl mt-4 font-body text-body-lg">
+                            Institutional-grade analysis for the Whitby municipality. Real-time property trajectories, institutional school rankings, and transit-oriented development impact assessments.
+                        </p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex gap-4">
+<div class="bg-surface-container-high/50 p-4 border border-outline-variant/30 rounded-lg backdrop-blur-sm">
+<p class="font-mono text-label-sm text-outline mb-1">MARKET PULSE</p>
+<p class="font-headline text-headline-md text-tertiary">$1.05M <span class="text-sm font-normal text-on-surface-variant">MEDIAN</span></p>
+</div>
+<div class="bg-surface-container-high/50 p-4 border border-outline-variant/30 rounded-lg backdrop-blur-sm">
+<p class="font-mono text-label-sm text-outline mb-1">INVENTORY</p>
+<p class="font-headline text-headline-md text-error">1.8 <span class="text-sm font-normal text-on-surface-variant">MONTHS</span></p>
+</div>
+</div>
+<p class="text-[10px] font-mono text-outline uppercase">Last Updated: <span id="current-time">2024-05-24 09:12 EST</span></p>
+</div>
+</div>
+</header>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-min">
+<!-- Whitby Market Pulse Chart Card -->
+<div class="md:col-span-8 glass-panel rounded-xl p-8 border border-outline-variant/30 relative overflow-hidden group">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="font-headline text-headline-md mb-1">Market Trajectory</h3>
+<p class="text-on-surface-variant font-body text-body-md">12-Month Performance Index: Single Family Residential</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-mono border border-tertiary/20 rounded-full">LIVE DATA</span>
+</div>
+</div>
+<!-- Simulated Terminal Chart Area -->
+<div class="h-64 w-full flex items-end gap-2 border-l border-b border-outline-variant/20 relative">
+<div class="absolute inset-0 data-grid-pattern opacity-20 pointer-events-none"></div>
+<!-- Simple bar viz for terminal aesthetic -->
+<div class="flex-1 bg-tertiary/20 h-[60%] group-hover:h-[65%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/20 h-[55%] group-hover:h-[60%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/20 h-[70%] group-hover:h-[75%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/30 h-[85%] group-hover:h-[90%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/40 h-[75%] group-hover:h-[80%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/30 h-[90%] group-hover:h-[95%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/50 h-[80%] group-hover:h-[85%] transition-all duration-700"></div>
+<div class="flex-1 bg-tertiary/60 h-[95%] group-hover:h-[100%] transition-all duration-700"></div>
+<div class="absolute -left-8 top-0 h-full flex flex-col justify-between text-[10px] font-mono text-outline">
+<span>$1.2M</span>
+<span>$1.0M</span>
+<span>$0.8M</span>
+</div>
+</div>
+<div class="flex justify-between mt-4 font-mono text-[10px] text-outline px-2">
+<span>JUN 23</span>
+<span>SEP 23</span>
+<span>DEC 23</span>
+<span>MAR 24</span>
+<span>MAY 24</span>
+</div>
+</div>
+<!-- GO Transit Impact Card -->
+<div class="md:col-span-4 bg-surface-container-highest border border-outline-variant/30 rounded-xl p-8 relative overflow-hidden flex flex-col justify-between">
+<div class="absolute -right-12 -top-12 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="train">train</span>
+</div>
+<div>
+<div class="flex items-center gap-2 text-tertiary mb-4">
+<span class="material-symbols-outlined text-lg" data-icon="speed">speed</span>
+<span class="font-mono text-label-md uppercase tracking-widest">Infrastructure Impact</span>
+</div>
+<h3 class="font-headline text-headline-md mb-4 leading-tight">GO Transit Expansion</h3>
+<p class="text-on-surface-variant font-body text-body-md mb-6 leading-relaxed">
+                            Lakeshore East extension analysis suggests a +4.2% premium for residential assets within a 1.2km radius of Whitby GO station. 15-minute two-way all-day service confirmed for 2026.
+                        </p>
+</div>
+<div class="p-4 bg-surface-container-low border border-outline-variant/30 rounded">
+<div class="flex justify-between items-center text-[10px] font-mono mb-2">
+<span class="text-outline uppercase">Projection Confidence</span>
+<span class="text-tertiary">92.4%</span>
+</div>
+<div class="h-1 bg-surface-variant w-full rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[92.4%]"></div>
+</div>
+</div>
+</div>
+<!-- Neighborhood Spotlights (Bento items) -->
+<div class="md:col-span-6 h-[400px] rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A moody, cinematic photograph of Brooklin, Ontario's heritage downtown area at twilight. The scene features historic Victorian brick buildings with elegant architecture, soft warm light glowing from streetlamps and windows. The atmosphere is sophisticated and quiet, with a professional architectural photography style utilizing deep blacks and subtle blue tones." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC-jP2PAoZ9T2Vx-XTTFRfXUFAbR9fbVZvNo8Q5EfeM7OFOoDui2BN3ED8wgE7qyp2bnC-3rmAVmJidQWsp6y-2A_gM9KI-Q0HyzMKxABGr-0EbsJL6X6jcsYm1q6bbuPI01HI386o3V9cqpwxpv1qW4_XtoINsFJzzY8r1kp3DLYk9chrgKqeZr_zWZh0pOOUIX8buHtCernmgiTnxfsjXgzbJk6-TTVmrUFJNSAn7rHqotvdJ4Q6pux9vZzVsKRdr024S0MF9vro')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center gap-2 text-secondary mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="history_edu">history_edu</span>
+<span class="font-mono text-label-sm uppercase tracking-widest">Neighborhood Spotlight</span>
+</div>
+<h4 class="font-headline text-[32px] font-bold text-on-background mb-2">Brooklin</h4>
+<p class="text-on-surface-variant font-body text-body-md max-w-md line-clamp-2">
+                            Heritage preservation district with consistent appreciation. Focus on master-planned luxury developments.
+                        </p>
+<button class="mt-6 flex items-center gap-2 text-on-background font-mono text-xs uppercase border-b border-on-background pb-1 hover:text-tertiary hover:border-tertiary transition-colors">
+                            Deep Dive Data <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="md:col-span-6 h-[400px] rounded-xl overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A striking aerial view of Whitby Shores waterfront during the golden hour. The photograph shows modern luxury condominiums and green pathways along the dark blue water of Lake Ontario. The aesthetic is high-contrast, professional real estate photography with a deep, moody atmosphere and clean horizontal lines." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAabOzZFqACulxPLaFid1X6ab-IIkLJlUkObRUEaHIKovR5MeqWwsJFh7o32-MMUVQ2QBGIzyxTVu8-EPqNU6jYYetLc7e3UqIEPcK5dxKlhCJseuFJ_Vj2rPY2Pu4dXC_IV4r0S71QwR0Hrgxc6ZfBPEfotCAiauuCjJOrd2Uw9qLpCkJPNYZxXEdB1ZRkMzvAXVWWY-qwskZfRTwBSjIkF7oRM1b5bJ6uO_1PMexZ6_YBfV8RlpsZYgRk2j3J0hFSH4iEZm2uTN0')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full">
+<div class="flex items-center gap-2 text-secondary mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="water">water</span>
+<span class="font-mono text-label-sm uppercase tracking-widest">Growth Corridor</span>
+</div>
+<h4 class="font-headline text-[32px] font-bold text-on-background mb-2">Whitby Shores</h4>
+<p class="text-on-surface-variant font-body text-body-md max-w-md line-clamp-2">
+                            Waterfront rejuvenation zone. Inventory supply limited by geography, driving premium valuation spikes.
+                        </p>
+<button class="mt-6 flex items-center gap-2 text-on-background font-mono text-xs uppercase border-b border-on-background pb-1 hover:text-tertiary hover:border-tertiary transition-colors">
+                            Deep Dive Data <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Education Performance Rankings Table -->
+<div class="md:col-span-12 glass-panel border border-outline-variant/30 rounded-xl overflow-hidden">
+<div class="p-8 border-b border-outline-variant/10 flex justify-between items-center">
+<div>
+<h3 class="font-headline text-headline-md">Institutional Performance</h3>
+<p class="text-on-surface-variant font-body text-body-sm uppercase tracking-wider mt-1">Secondary Education Rankings (Whitby Zone)</p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-high px-4 py-2 rounded font-mono text-[10px] text-outline flex items-center gap-2 hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> EXPORT CSV
+                            </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body">
+<thead>
+<tr class="bg-surface-container-high/30 font-mono text-label-sm text-outline border-b border-outline-variant/20">
+<th class="px-8 py-4 font-normal">INSTITUTION</th>
+<th class="px-8 py-4 font-normal">PROVINCIAL PERCENTILE</th>
+<th class="px-8 py-4 font-normal">STEM RATING</th>
+<th class="px-8 py-4 font-normal">CATCHMENT RADIUS</th>
+<th class="px-8 py-4 font-normal">5Y TREND</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-tertiary/5 transition-colors group">
+<td class="px-8 py-6">
+<span class="block font-bold text-on-background">Sinclair SS</span>
+<span class="text-xs text-outline font-mono">NORTH WHITBY</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-2 py-1 bg-tertiary/10 text-tertiary rounded text-[10px] font-bold">TOP 4%</span>
+</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">8.9/10</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">3.2km</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-mono">+1.2</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-tertiary/5 transition-colors group">
+<td class="px-8 py-6">
+<span class="block font-bold text-on-background">Donald A. Wilson</span>
+<span class="text-xs text-outline font-mono">WEST WHITBY</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-2 py-1 bg-tertiary/10 text-tertiary rounded text-[10px] font-bold">TOP 7%</span>
+</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">8.4/10</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">2.8km</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="trending_flat">trending_flat</span>
+<span class="text-xs font-mono">STABLE</span>
+</div>
+</td>
+</tr>
+<tr class="hover:bg-tertiary/5 transition-colors group">
+<td class="px-8 py-6">
+<span class="block font-bold text-on-background">Anderson CVI</span>
+<span class="text-xs text-outline font-mono">CENTRAL WHITBY</span>
+</td>
+<td class="px-8 py-6">
+<span class="px-2 py-1 bg-surface-container-highest text-outline rounded text-[10px] font-bold uppercase">TOP 15%</span>
+</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">7.8/10</td>
+<td class="px-8 py-6 font-mono text-sm text-on-surface-variant">2.1km</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-xs font-mono">+0.4</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<!-- Terminal Feed micro-interaction component -->
+<section class="max-w-[1440px] mx-auto px-8 py-12">
+<div class="glass-panel border border-outline-variant/30 rounded-xl p-6 font-mono text-[11px]">
+<div class="flex items-center gap-2 mb-4 border-b border-outline-variant/10 pb-4">
+<span class="w-2 h-2 rounded-full bg-error animate-pulse"></span>
+<span class="text-error uppercase tracking-widest">Live Intel Stream</span>
+</div>
+<div class="space-y-3 opacity-80" id="terminal-stream">
+<div class="flex gap-4">
+<span class="text-outline">09:12:44</span>
+<span class="text-tertiary">[TRANSIT]</span>
+<span class="text-on-background">GO Metrolinx updates electrification schedule for Lakeshore East line.</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline">08:55:01</span>
+<span class="text-secondary">[MARKET]</span>
+<span class="text-on-background">New listing indexed in Whitby Shores: $1.85M CAD (Detached, 4BDR).</span>
+</div>
+<div class="flex gap-4">
+<span class="text-outline">08:22:15</span>
+<span class="text-on-surface-variant">[DATA]</span>
+<span class="text-on-background">Census release: Whitby population growth outpacing regional average by 1.8%.</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="xl:ml-72 bg-surface dark:bg-surface border-t border-outline-variant/10">
+<div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="text-label-md font-bold text-primary dark:text-primary-fixed uppercase tracking-wider font-headline">Polsinello Insights</span>
+<p class="font-label text-label-sm text-on-surface-variant dark:text-outline text-center md:text-left">
+                    © 2024 Polsinello Insights. Since 1989. All rights reserved.
+                </p>
+</div>
+<div class="flex gap-8">
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200 uppercase tracking-widest" href="#">Privacy Policy</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200 uppercase tracking-widest" href="#">Terms of Service</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200 uppercase tracking-widest" href="#">API Documentation</a>
+<a class="font-label text-label-sm text-on-surface-variant dark:text-outline hover:text-secondary dark:hover:text-secondary-fixed-dim hover:underline underline-offset-4 transition-opacity duration-200 uppercase tracking-widest" href="#">Contact Analyst</a>
+</div>
+</div>
+</footer>
+<script>
+        // Update the timestamp live
+        function updateTimestamp() {
+            const now = new Date();
+            const dateStr = now.toISOString().split('T')[0];
+            const timeStr = now.toTimeString().split(' ')[0];
+            document.getElementById('current-time').textContent = `${dateStr} ${timeStr} EST`;
+        }
+        setInterval(updateTimestamp, 1000);
+        updateTimestamp();
+
+        // Simple animation logic for the terminal feed
+        const stream = document.getElementById('terminal-stream');
+        const items = [
+            { cat: '[MARKET]', text: 'New zoning application submitted for Dundas St W corridor.', color: 'text-secondary' },
+            { cat: '[SCHOOLS]', text: 'Sinclair SS extracurricular rating increased to 9.2.', color: 'text-tertiary' },
+            { cat: '[INFRA]', text: 'Whitby harbour revitalization Phase 2 funding approved.', color: 'text-on-surface-variant' }
+        ];
+
+        let index = 0;
+        setInterval(() => {
+            const now = new Date();
+            const timeStr = now.toTimeString().split(' ')[0];
+            const item = items[index % items.length];
+            
+            const div = document.createElement('div');
+            div.className = 'flex gap-4 opacity-0 transition-opacity duration-500';
+            div.innerHTML = `
+                <span class="text-outline">${timeStr}</span>
+                <span class="${item.color}">${item.cat}</span>
+                <span class="text-on-background">${item.text}</span>
+            `;
+            
+            stream.prepend(div);
+            setTimeout(() => div.classList.remove('opacity-0'), 100);
+            
+            if (stream.children.length > 5) {
+                stream.lastElementChild.remove();
+            }
+            index++;
+        }, 8000);
+    </script>
+</body></html>

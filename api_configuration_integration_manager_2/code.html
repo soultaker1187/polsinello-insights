@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Integration Manager | The Data Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#fefcff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#3f465c",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "surface-container": "#e5eeff",
+                    "tertiary-container": "#002113",
+                    "secondary-fixed": "#d8e2ff",
+                    "primary": "#000000",
+                    "surface": "#f8f9ff",
+                    "surface-variant": "#d3e4fe",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-tint": "#565e74",
+                    "inverse-surface": "#213145",
+                    "on-primary-fixed": "#131b2e",
+                    "background": "#f8f9ff",
+                    "outline": "#76777d",
+                    "on-primary": "#ffffff",
+                    "secondary": "#0058be",
+                    "on-secondary-fixed-variant": "#004395",
+                    "on-surface-variant": "#45464d",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#2170e4",
+                    "on-background": "#0b1c30",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#adc6ff",
+                    "primary-container": "#131b2e",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-primary": "#bec6e0",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed": "#001a42",
+                    "inverse-on-surface": "#eaf1ff",
+                    "tertiary": "#000000",
+                    "primary-fixed-dim": "#bec6e0",
+                    "surface-container-high": "#dce9ff",
+                    "surface-dim": "#cbdbf5",
+                    "tertiary-fixed": "#6ffbbe",
+                    "outline-variant": "#c6c6cd",
+                    "on-tertiary-container": "#009668",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#7c839b",
+                    "surface-bright": "#f8f9ff",
+                    "primary-fixed": "#dae2fd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "xs": "4px",
+                    "gutter": "20px",
+                    "lg": "24px",
+                    "xl": "48px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Hanken Grotesk"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "data-mono": ["JetBrains Mono"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "data-mono": ["13px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-40 border-b border-[#1b1c1c]/5 bg-[#fbf9f8] shadow-[0_12px_32px_rgba(27,28,28,0.04)] flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-lg font-black tracking-tighter text-[#1a365d] uppercase">The Data Architect</span>
+<nav class="hidden md:flex gap-6 items-center h-full">
+<a class="font-inter text-sm font-medium tracking-tight text-[#43474e] hover:bg-[#f6f3f2] transition-colors px-3 py-2 rounded" href="#">Network</a>
+<a class="font-inter text-sm font-medium tracking-tight text-[#43474e] hover:bg-[#f6f3f2] transition-colors px-3 py-2 rounded" href="#">Logs</a>
+<a class="font-inter text-sm font-medium tracking-tight text-[#43474e] hover:bg-[#f6f3f2] transition-colors px-3 py-2 rounded" href="#">Docs</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined text-[#43474e] cursor-pointer p-2 hover:bg-[#f6f3f2] rounded-full transition-all">search</span>
+</div>
+<span class="material-symbols-outlined text-[#43474e] cursor-pointer p-2 hover:bg-[#f6f3f2] rounded-full transition-all" data-icon="settings">settings</span>
+<span class="material-symbols-outlined text-[#43474e] cursor-pointer p-2 hover:bg-[#f6f3f2] rounded-full transition-all" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 border-r border-[#1b1c1c]/5 bg-[#f6f3f2] flex flex-col p-4 gap-y-2 overflow-y-auto">
+<div class="mb-6 px-2 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-white font-bold">SA</div>
+<div>
+<p class="font-inter text-sm font-semibold tracking-wide text-[#002045]">Infrastructure</p>
+<p class="text-xs text-[#43474e] opacity-70 uppercase tracking-widest">Operational Center</p>
+</div>
+</div>
+<nav class="flex-grow flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#43474e] opacity-70 hover:bg-white/50 transition-all font-inter text-sm font-semibold tracking-wide rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="database">database</span>
+<span>Indexing</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#43474e] opacity-70 hover:bg-white/50 transition-all font-inter text-sm font-semibold tracking-wide rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="psychology">psychology</span>
+<span>AI Models</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 bg-white text-[#002045] shadow-sm font-inter text-sm font-semibold tracking-wide rounded-lg translate-x-1" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="rss_feed">rss_feed</span>
+<span>Data Feeds</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#43474e] opacity-70 hover:bg-white/50 transition-all font-inter text-sm font-semibold tracking-wide rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span>Security</span>
+</a>
+</nav>
+<button class="mt-4 mb-8 bg-on-background text-white font-inter text-sm font-semibold py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-base">rocket_launch</span>
+            Deploy Instance
+        </button>
+<div class="mt-auto pt-4 border-t border-[#1b1c1c]/5">
+<a class="flex items-center gap-3 px-3 py-2 text-[#43474e] opacity-70 hover:bg-white/50 transition-all text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="monitor_heart">monitor_heart</span>
+<span>Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#43474e] opacity-70 hover:bg-white/50 transition-all text-sm font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="help">help</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 pt-16 min-h-screen">
+<div class="max-w-container-max mx-auto p-8">
+<!-- Breadcrumb & Header -->
+<div class="mb-10">
+<nav aria-label="Breadcrumb" class="flex items-center gap-2 text-on-surface-variant font-body-sm mb-2">
+<a class="hover:text-secondary transition-colors" href="#">Settings</a>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+<span class="text-on-surface font-medium">Integrations</span>
+</nav>
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Integration Settings</h1>
+<div class="flex gap-3">
+<button class="px-4 py-2 border border-outline-variant text-on-surface font-medium rounded-lg hover:bg-surface-container-low transition-all">Export Log</button>
+<button class="px-4 py-2 bg-secondary text-white font-medium rounded-lg hover:opacity-90 shadow-sm transition-all">Save Changes</button>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Section 1: Repliers Data Feed -->
+<div class="col-span-12 lg:col-span-8">
+<section class="bg-white border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-xl text-on-surface">Repliers API Feed</h2>
+<p class="text-on-surface-variant text-body-sm">Manage your MLS data synchronization engine.</p>
+</div>
+</div>
+<span class="flex items-center gap-1.5 px-3 py-1 bg-tertiary-container/10 text-on-tertiary-container font-data-mono text-xs rounded-full border border-on-tertiary-container/20">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                                Live Sync Active
+                            </span>
+</div>
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="space-y-2">
+<label class="text-body-sm font-semibold text-on-surface-variant">Repliers API Key</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-data-mono focus:ring-2 focus:ring-secondary focus:border-transparent outline-none" type="password" value="rep_live_7x8h2k9l3m1n5p0q"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-on-surface transition-colors" data-icon="visibility">visibility</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-body-sm font-semibold text-on-surface-variant">API Secret</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 font-data-mono focus:ring-2 focus:ring-secondary focus:border-transparent outline-none" type="password" value="shhh_9y2v5r1w0x4z"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-on-surface transition-colors" data-icon="content_copy">content_copy</span>
+</div>
+</div>
+</div>
+<div class="bg-surface p-4 rounded-lg mb-6 border border-outline-variant/50 grid grid-cols-3 gap-4">
+<div class="text-center md:text-left">
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest mb-1">Monthly API Calls</p>
+<p class="font-data-mono text-xl text-on-surface">1,284,502 <span class="text-xs text-on-tertiary-container font-sans">(-2%)</span></p>
+</div>
+<div class="text-center md:text-left border-x border-outline-variant/30 px-4">
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest mb-1">Avg Latency</p>
+<p class="font-data-mono text-xl text-on-surface">84ms</p>
+</div>
+<div class="text-center md:text-left">
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest mb-1">Data Health</p>
+<p class="font-data-mono text-xl text-on-tertiary-container">99.98%</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-6 py-2.5 bg-on-background text-white rounded-lg font-medium hover:opacity-90 active:scale-95 transition-all" id="testRepliers">
+<span class="material-symbols-outlined text-lg" data-icon="bolt">bolt</span>
+                                Test Connection
+                            </button>
+<div class="hidden items-center gap-2 text-on-tertiary-container font-medium animate-in fade-in slide-in-from-left-4" id="testResult">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                                Success: Connected to TRREB Feed
+                            </div>
+</div>
+</section>
+</div>
+<!-- Section 2: CRM Sync -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<section class="bg-white border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+</div>
+<div>
+<h2 class="font-headline-lg text-lg text-on-surface">CRM Sync</h2>
+<p class="text-on-surface-variant text-xs">Follow Up Boss Integration</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">FUB API Key</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded px-3 py-2 text-sm font-data-mono" type="password" value="fub_88321x_dev_key"/>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface rounded-lg">
+<div>
+<p class="text-sm font-semibold">Live Lead Sync</p>
+<p class="text-xs text-on-surface-variant">Push AI valuations to FUB</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant rounded-full peer peer-focus:ring-4 peer-focus:ring-secondary/20 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="space-y-1.5 pt-2">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Webhook URL</label>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-low border border-outline-variant rounded px-3 py-2 text-xs font-data-mono text-outline" readonly="" type="text" value="https://api.data-architect.ai/webhooks/fub/102938"/>
+<button class="p-2 border border-outline-variant rounded hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Security & IP -->
+<section class="bg-inverse-surface text-white border border-white/10 rounded-xl p-lg shadow-xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-tertiary-fixed-dim" data-icon="security">security</span>
+<h2 class="font-headline-lg text-lg">Security Protocol</h2>
+</div>
+<div class="space-y-4">
+<div>
+<p class="text-xs text-white/60 font-bold uppercase tracking-widest mb-2">Whitelisted IPs</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white/10 rounded text-xs font-data-mono flex items-center gap-2">
+                                        192.168.1.1 
+                                        <span class="material-symbols-outlined text-sm cursor-pointer hover:text-error transition-colors">close</span>
+</span>
+<span class="px-2 py-1 bg-white/10 rounded text-xs font-data-mono flex items-center gap-2">
+                                        45.12.8.201 
+                                        <span class="material-symbols-outlined text-sm cursor-pointer hover:text-error transition-colors">close</span>
+</span>
+<button class="px-2 py-1 border border-dashed border-white/30 rounded text-xs hover:border-white/60 transition-all">+ Add IP</button>
+</div>
+</div>
+<div class="pt-4 border-t border-white/10">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 bg-error text-white rounded-lg text-sm font-semibold hover:bg-error/90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined text-lg">history_edu</span>
+                                    Rotate Global Keys
+                                </button>
+<p class="text-[10px] text-white/40 mt-2 text-center">Warning: This will invalidate all active sessions immediately.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Section 4: Valuation Engine -->
+<div class="col-span-12">
+<section class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="grid md:grid-cols-2">
+<div class="p-lg border-b md:border-b-0 md:border-r border-outline-variant">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+</div>
+<h2 class="font-headline-lg text-xl text-on-surface">Valuation Engine</h2>
+</div>
+<p class="text-on-surface-variant text-body-sm mb-6">Configure the underlying Repliers AI appraisal parameters and internal orchestration tokens.</p>
+<div class="space-y-4">
+<div class="space-y-1.5">
+<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Internal Master Token</label>
+<div class="flex gap-2">
+<input class="flex-grow bg-surface-container-low border border-outline-variant rounded-lg px-4 py-3 text-sm font-data-mono" type="text" value="arch_mt_v2_f8a2-c9d3-4e1b-9076"/>
+<button class="px-4 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all">Regenerate</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/30">
+<p class="text-xs text-on-surface-variant font-medium">Confidence Threshold</p>
+<p class="text-lg font-data-mono">0.85</p>
+</div>
+<div class="p-3 bg-surface rounded-lg border border-outline-variant/30">
+<p class="text-xs text-on-surface-variant font-medium">Auto-Audit Rate</p>
+<p class="text-lg font-data-mono">1/500</p>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg relative overflow-hidden">
+<div class="absolute inset-0 opacity-10">
+
+</div>
+<div class="relative z-10">
+<h3 class="font-headline-lg text-lg mb-4">Engine Telemetry</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm">Appraisal Throughput</span>
+<span class="font-data-mono text-sm">450/min</span>
+</div>
+<div class="w-full bg-outline-variant/30 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 65%"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm">AI Response Consistency</span>
+<span class="font-data-mono text-sm">98.2%</span>
+</div>
+<div class="w-full bg-outline-variant/30 h-1.5 rounded-full overflow-hidden">
+<div class="bg-on-tertiary-container h-full" style="width: 98.2%"></div>
+</div>
+<div class="mt-6 p-4 bg-white/50 border border-white rounded-lg backdrop-blur-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="info">info</span>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                                    Current engine version <strong>v4.2-alpha</strong> is using optimized weights for the Greater Toronto Area market segment. Synchronization interval set to 15 minutes.
+                                                </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+<script>
+        document.getElementById('testRepliers').addEventListener('click', function() {
+            const btn = this;
+            const originalContent = btn.innerHTML;
+            const result = document.getElementById('testResult');
+            
+            btn.disabled = true;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Testing...`;
+            result.classList.add('hidden');
+
+            setTimeout(() => {
+                btn.disabled = false;
+                btn.innerHTML = originalContent;
+                result.classList.remove('hidden');
+                
+                // Optional: Flash success
+                result.classList.add('shimmer');
+                setTimeout(() => result.classList.remove('shimmer'), 2000);
+            }, 1800);
+        });
+
+        // Simple interactive hover effects for inputs
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('ring-2', 'ring-secondary/10');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('ring-2', 'ring-secondary/10');
+            });
+        });
+    </script>
+</body></html>

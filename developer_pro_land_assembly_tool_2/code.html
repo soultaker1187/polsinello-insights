@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Polsinello Insights | Developer Pro - Land Assembly Tool</title>
+<!-- Google Fonts: Inter for High-Density UI -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#455f88",
+                    "primary": "#002045",
+                    "on-tertiary-fixed-variant": "#00522f",
+                    "surface-container-high": "#eae8e7",
+                    "tertiary": "#002713",
+                    "on-error": "#ffffff",
+                    "on-background": "#1b1c1c",
+                    "secondary": "#1960a3",
+                    "on-tertiary-container": "#4bb278",
+                    "on-secondary-fixed-variant": "#004881",
+                    "surface-container-low": "#f6f3f2",
+                    "on-secondary": "#ffffff",
+                    "inverse-primary": "#adc7f7",
+                    "on-surface-variant": "#43474e",
+                    "inverse-surface": "#303030",
+                    "on-secondary-container": "#00477f",
+                    "inverse-on-surface": "#f3f0f0",
+                    "surface-variant": "#e4e2e1",
+                    "error": "#ba1a1a",
+                    "surface-bright": "#fbf9f8",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "tertiary-fixed-dim": "#74db9d",
+                    "secondary-container": "#7db6ff",
+                    "on-tertiary-fixed": "#002110",
+                    "surface-container": "#f0eded",
+                    "secondary-fixed": "#d3e4ff",
+                    "tertiary-container": "#003f23",
+                    "on-primary-fixed": "#001b3c",
+                    "surface-dim": "#dcd9d9",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e4e2e1",
+                    "on-surface": "#1b1c1c",
+                    "outline-variant": "#c4c6cf",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "on-primary-container": "#86a0cd",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-secondary-fixed": "#001c38",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "background": "#fbf9f8",
+                    "tertiary-fixed": "#91f8b8",
+                    "primary-container": "#1a365d",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface": "#fbf9f8",
+                    "outline": "#74777f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "display": ["Inter"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Hide scrollbars for a clean terminal look */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Custom subtle scanline effect for "Institutional Terminal" aesthetic */
+        .terminal-overlay {
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.02) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.01));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopNavBar Implementation -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-4 max-w-[1920px] mx-auto bg-surface/80 backdrop-blur-xl shadow-sm shadow-on-surface/5">
+<div class="flex items-center gap-8">
+<h1 class="text-headline-sm font-black text-primary tracking-tight">Polsinello Insights</h1>
+<nav class="hidden md:flex gap-6">
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Market Intel</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Portfolio</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-on-surface-variant hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="font-headline text-label-md tracking-wider uppercase text-primary border-b-2 border-primary pb-1" href="#">Developer Tools</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 px-4 py-1.5 bg-surface-container rounded-full text-label-md font-bold text-primary">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+                Developer Pro
+            </div>
+<div class="text-label-md font-bold text-primary px-3 py-1 border border-primary/20 rounded">Since 1989</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-high/50 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high/50 rounded-full transition-all duration-300">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional corporate headshot of a senior real estate developer in a high-end architectural studio setting. The lighting is soft and natural, emphasizing competence and intelligence. The background features blurred architectural blueprints and minimalist furniture, maintaining a clean light-mode aesthetic aligned with institutional professional standards." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA79f6ap4MS3l7E1f5g17eozRgl0xBOTNnn8l5V1jTQ6Zst0H7CAQ9lTBOm6g7VxrCKexU-0vfgjshkopCQzGNXVjU4zdxpoCn9Kz9F4IZ_IAONKFU1g0w0ln5B4AROrg_AV0BvJUiFcAh6bSGkKFTXQ47Qm_aUU6NXqrItG-ZGFCAdlh3hAglMqtdItjkmOnoakakw3ofJZ9wupWLC3AocIRVxntX72xDWUxYwM236-4i6vpKl1rRyh1Egk-pKrejKVt-9tElvVE"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar Implementation -->
+<aside class="fixed left-0 top-0 h-full flex flex-col p-4 z-40 bg-surface-container-low w-72 pt-24 hidden lg:flex">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3 mb-1">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">domain</span>
+</div>
+<div>
+<div class="text-headline-sm font-black text-primary leading-none">Polsinello</div>
+<div class="text-label-sm text-on-surface-variant font-medium">Institutional Intelligence</div>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body text-body-md">Market Intel</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">domain</span>
+<span class="font-body text-body-md">Portfolio</span>
+</a>
+<a class="flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-body text-body-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 bg-secondary-container text-on-secondary-container rounded-lg px-4 py-3 font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-body text-body-md">Developer Tools</span>
+</a>
+</nav>
+<div class="mt-auto space-y-4">
+<div class="bg-primary-container p-4 rounded-xl text-on-primary-container relative overflow-hidden group">
+<div class="relative z-10">
+<div class="text-label-md font-bold text-white mb-1">Pro Access Active</div>
+<div class="text-body-sm opacity-80 mb-3">Institutional grade tools since 1989.</div>
+<button class="w-full py-2 bg-surface-bright text-primary rounded-lg font-bold text-label-md hover:bg-white transition-colors">
+                        Upgrade to Pro
+                    </button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[80px]">architecture</span>
+</div>
+</div>
+<div class="space-y-1">
+<button class="w-full flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined">help</span>
+<span class="font-body text-body-md">Support</span>
+</button>
+<button class="w-full flex items-center gap-3 text-on-surface-variant px-4 py-3 hover:bg-surface-container-high rounded-lg transition-colors">
+<span class="material-symbols-outlined text-error">logout</span>
+<span class="font-body text-body-md">Sign Out</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-0 lg:ml-72 pt-20 h-screen flex flex-col overflow-hidden">
+<!-- Tool Header & Filters -->
+<section class="px-8 py-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface">
+<div>
+<h2 class="text-headline-md font-black text-primary tracking-tight">Land Assembly Tool</h2>
+<p class="text-body-md text-on-surface-variant">Identify and evaluate high-potential development clusters.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border-none rounded-full px-6 py-2.5 pr-10 text-label-md font-semibold text-primary focus:ring-2 focus:ring-primary shadow-sm">
+<option>Zoning Type: All</option>
+<option>Residential High Density</option>
+<option>Mixed-Use Commercial</option>
+<option>Institutional</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 pointer-events-none text-primary">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border-none rounded-full px-6 py-2.5 pr-10 text-label-md font-semibold text-primary focus:ring-2 focus:ring-primary shadow-sm">
+<option>Lot Size Min: 5,000 sqft</option>
+<option>10,000 sqft</option>
+<option>0.5 Acre</option>
+<option>1.0 Acre+</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 pointer-events-none text-primary">expand_more</span>
+</div>
+<button class="bg-primary text-white flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-label-md hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]">filter_alt</span>
+                    Run Analysis
+                </button>
+</div>
+</section>
+<!-- Tool Content Area (Bento Layout) -->
+<section class="flex-1 px-8 pb-8 flex flex-col lg:flex-row gap-6 min-h-0 overflow-hidden">
+<!-- Map View: Dominant Component -->
+<div class="flex-[3] relative rounded-2xl overflow-hidden bg-surface-container shadow-inner border border-outline-variant/10">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A sophisticated architectural site map of an urban downtown core, showing precisely delineated property parcels. The visual style is institutional and technical, using a palette of slate greys, crisp whites, and deep navys. Several adjacent lots are highlighted with a glowing green overlay to signify a potential land assembly site, with subtle data callouts floating above them in a clean, professional sans-serif font." data-location="Toronto Downtown" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDVnHxSxUr0dYdZooAJPdHGaOzv3WsgEO7FStLDP0cHz36KkjkhwJ4IlDSpoiqmbQFfQhDk7Yb2pDQeh8CuN3el61OPs18WrzjgcO6p-8vF9YHY0tRhinraf49ijhxqfkAc2yB2nqpr1sMnq4l8zNk5TMqmjesHNtE4PHjW64HhO8ZxNbohK9FcR8G169FKQ-Gp8AU863AM4ZcbWZsZK62U_MrOQXXJa8Saqm5J3VDYjbbrBV2ZKBHvd58RIdfQwh_ellu6AFlI0Mw')"></div>
+<!-- Map UI Overlays -->
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<div class="glass-panel p-2 rounded-lg flex flex-col gap-1 shadow-lg border border-white/40">
+<button class="p-2 hover:bg-white rounded-md transition-colors"><span class="material-symbols-outlined">add</span></button>
+<button class="p-2 hover:bg-white rounded-md transition-colors"><span class="material-symbols-outlined">remove</span></button>
+<div class="h-px bg-outline-variant/20 mx-1"></div>
+<button class="p-2 hover:bg-white rounded-md transition-colors"><span class="material-symbols-outlined">layers</span></button>
+</div>
+</div>
+<!-- Legend / Status -->
+<div class="absolute bottom-6 left-6 glass-panel px-4 py-3 rounded-xl flex items-center gap-6 shadow-xl border border-white/50">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim shadow-[0_0_8px_rgba(116,219,157,0.8)]"></div>
+<span class="text-label-sm font-bold text-primary">Active Assembly</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<span class="text-label-sm font-bold text-primary">Market Target</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-outline"></div>
+<span class="text-label-sm font-bold text-primary">Unavailable</span>
+</div>
+</div>
+<!-- Map Search Float -->
+<div class="absolute top-6 right-6 w-80">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary group-focus-within:text-secondary transition-colors">search</span>
+<input class="w-full bg-white/90 backdrop-blur-md border-none rounded-full py-3.5 pl-12 pr-6 text-body-md shadow-2xl focus:ring-2 focus:ring-primary/20 transition-all" placeholder="Search parcels or precincts..." type="text"/>
+</div>
+</div>
+</div>
+<!-- Pro-forma Side Panel -->
+<div class="flex-[1.2] flex flex-col gap-6 overflow-y-auto no-scrollbar">
+<!-- Assembly Stats Card -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-outline-variant/5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-label-md font-black text-primary tracking-widest uppercase">Assembly Pro-forma</h3>
+<span class="bg-tertiary-container text-tertiary-fixed px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-tighter">Verified Data</span>
+</div>
+<div class="space-y-6">
+<div>
+<div class="text-label-sm text-on-surface-variant mb-1 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">expand</span>
+                                Total GFA Potential
+                            </div>
+<div class="text-headline-sm font-black text-primary">142,500 <span class="text-label-md font-normal text-on-surface-variant">sqft</span></div>
+<div class="w-full h-1 bg-surface-container-high rounded-full mt-2 overflow-hidden">
+<div class="w-3/4 h-full bg-secondary rounded-full"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="text-label-sm text-on-surface-variant mb-1">Buy-out Est.</div>
+<div class="text-title-lg font-bold text-primary">$18.4M</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl">
+<div class="text-label-sm text-on-surface-variant mb-1">Price / FSI</div>
+<div class="text-title-lg font-bold text-primary">$129</div>
+</div>
+</div>
+<div>
+<div class="text-label-sm text-on-surface-variant mb-1">Projected ROI (10yr)</div>
+<div class="flex items-end gap-2">
+<div class="text-headline-md font-black text-on-tertiary-container">24.8%</div>
+<span class="text-tertiary-fixed-dim material-symbols-outlined mb-2" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2 leading-relaxed">Based on current market absorption for R-4 High Density residential units within the central corridor.</p>
+</div>
+</div>
+<button class="w-full mt-8 py-3.5 bg-primary-container text-on-primary-container rounded-xl font-black text-label-md hover:bg-primary transition-all shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">description</span>
+                        Generate Full Report
+                    </button>
+</div>
+<!-- Parcel List -->
+<div class="flex-1 bg-surface-container-low rounded-2xl p-6">
+<div class="flex items-center justify-between mb-4">
+<h4 class="text-label-sm font-black text-primary tracking-widest uppercase">Target Parcels (4)</h4>
+<button class="text-secondary text-label-sm font-bold hover:underline">Edit Selection</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-primary font-bold">01</div>
+<div class="flex-1 min-w-0">
+<div class="text-label-md font-bold text-primary truncate">142 Jarvis St.</div>
+<div class="text-label-sm text-on-surface-variant">5,200 sqft · Owner Occupied</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">$4.2M</div>
+<div class="text-label-sm text-on-tertiary-container font-bold">Stable</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-primary font-bold">02</div>
+<div class="flex-1 min-w-0">
+<div class="text-label-md font-bold text-primary">144 Jarvis St.</div>
+<div class="text-label-sm text-on-surface-variant">4,800 sqft · Corporate</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">$3.9M</div>
+<div class="text-label-sm text-error font-bold">Hold</div>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-3 rounded-lg border border-outline-variant/10">
+<div class="w-10 h-10 rounded bg-surface-container flex items-center justify-center text-primary font-bold">03</div>
+<div class="flex-1 min-w-0">
+<div class="text-label-md font-bold text-primary">148 Jarvis St.</div>
+<div class="text-label-sm text-on-surface-variant">6,100 sqft · Estate Sale</div>
+</div>
+<div class="text-right">
+<div class="text-label-md font-bold text-primary">$5.5M</div>
+<div class="text-label-sm text-on-tertiary-container font-bold">High</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Implementation -->
+<footer class="fixed bottom-0 w-full z-40 bg-surface/90 backdrop-blur-md">
+<div class="max-w-[1920px] mx-auto py-4 px-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-outline-variant/10">
+<div class="flex items-center gap-4">
+<span class="font-label text-label-sm font-bold text-primary">© 2024 Polsinello Insights. Since 1989. All rights reserved.</span>
+<div class="hidden md:block h-4 w-px bg-outline-variant/30"></div>
+<div class="flex gap-4">
+<a class="font-label text-label-sm text-on-surface-variant hover:underline underline-offset-4 transition-colors" href="#">Privacy Policy</a>
+<a class="font-label text-label-sm text-on-surface-variant hover:underline underline-offset-4 transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 text-label-sm text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+                    Terminal: Live Market Data Active
+                </div>
+<div class="flex gap-6">
+<a class="font-label text-label-sm text-on-surface-variant hover:text-secondary transition-colors" href="#">API Documentation</a>
+<a class="font-label text-label-sm text-primary font-bold hover:underline underline-offset-4 transition-colors" href="#">Contact Analyst</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- FAB for Contextual Action (Suppressed on details but active here for main assembly discovery) -->
+<button class="fixed right-10 bottom-24 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center group hover:scale-110 transition-all z-50">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">add_location_alt</span>
+<div class="absolute right-16 bg-primary text-white px-3 py-1.5 rounded-lg text-label-sm font-bold whitespace-nowrap opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
+            New Analysis
+        </div>
+</button>
+<div class="terminal-overlay fixed inset-0 z-[100] opacity-30"></div>
+<script>
+        // Simple Interaction logic for active state navigation
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // In a real app this handles routing. 
+                // For this demo we just toggle styles.
+            });
+        });
+        
+        // Handle map interaction simulation
+        const map = document.querySelector('[data-location]');
+        if(map) {
+            map.addEventListener('mouseenter', () => {
+                map.style.transition = 'transform 8s ease-out';
+                map.style.transform = 'scale(1.05)';
+            });
+            map.addEventListener('mouseleave', () => {
+                map.style.transform = 'scale(1)';
+            });
+        }
+    </script>
+</body></html>

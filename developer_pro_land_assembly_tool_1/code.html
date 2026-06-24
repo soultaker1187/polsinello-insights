@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Developer Pro | Land Assembly &amp; Feasibility</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dcd9d9",
+                        "tertiary-fixed": "#91f8b8",
+                        "on-tertiary-fixed-variant": "#00522f",
+                        "on-secondary-fixed": "#001c38",
+                        "secondary": "#1960a3",
+                        "on-tertiary-fixed": "#002110",
+                        "background": "#fbf9f8",
+                        "primary": "#002045",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "inverse-surface": "#303030",
+                        "outline": "#74777f",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "inverse-on-surface": "#f3f0f0",
+                        "secondary-container": "#7db6ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#74db9d",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#003f23",
+                        "on-tertiary-container": "#4bb278",
+                        "on-secondary-container": "#00477f",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-container": "#86a0cd",
+                        "tertiary": "#002713",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#adc7f7",
+                        "on-secondary-fixed-variant": "#004881",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "primary-fixed-dim": "#adc7f7",
+                        "outline-variant": "#c4c6cf",
+                        "surface-tint": "#455f88",
+                        "surface-container-highest": "#e4e2e1",
+                        "surface-bright": "#fbf9f8",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "surface": "#fbf9f8",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-container": "#1a365d",
+                        "surface-container-high": "#eae8e7",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-variant": "#e4e2e1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fbf9f8; color: #1b1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-panel { backdrop-filter: blur(16px); background-color: rgba(251, 249, 248, 0.85); }
+        .tonal-shift-bg { background-color: #f6f3f2; }
+    </style>
+</head>
+<body class="overflow-hidden">
+<!-- Top Navigation Bar (Shared Component Implementation) -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm">
+<nav class="flex justify-between items-center w-full px-6 py-3 max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-blue-900 dark:text-white">Developer Pro</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-sans text-sm font-medium tracking-tight text-blue-700 dark:text-blue-300 border-b-2 border-blue-700 dark:border-blue-300 pb-1" href="#">Market Intel</a>
+<a class="font-sans text-sm font-medium tracking-tight text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="#">Portfolio</a>
+<a class="font-sans text-sm font-medium tracking-tight text-slate-500 dark:text-slate-400 hover:text-blue-900 dark:hover:text-white transition-colors" href="#">Zoning Tools</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-primary opacity-60">search</span>
+<input class="bg-surface-container border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search GTA Assemblies..." type="text"/>
+</div>
+<button class="bg-primary hover:bg-primary-container text-white px-5 py-2 rounded-full text-sm font-semibold transition-all scale-95 duration-200 ease-in-out">Analyze ROI</button>
+<div class="flex gap-2 text-primary">
+<span class="material-symbols-outlined p-2 hover:bg-slate-100 rounded-full cursor-pointer transition-all">notifications</span>
+<span class="material-symbols-outlined p-2 hover:bg-slate-100 rounded-full cursor-pointer transition-all">settings</span>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/20">
+<img alt="Developer Profile" data-alt="professional portrait of a real estate developer in a suit with a modern office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi8dWjufFfl2PFZvlukKayEk5OUQaiW6tOWKpnbudD-3vfKGbBY-bJ7dx3WhpfbMgYh58lqrlPXO4xiR_JQJB3SxQR-0Z59edlDQzO6DR9cRUUslpmJ7GCpODSROeAB1MBi_srSWc63cn3vrGq0_w1jkWit-nlfUg9fWNMjhJSnZV4jaDwkUcVG4IhMqyWxzFOifq9rDcvoZ5veHXiEBy6Wn7sJXc-Bulz6GCBuMZEmk5WZlTqt8rk4ibMgeA0g-Dln2YDTjy-x4I"/>
+</div>
+</div>
+</nav>
+</header>
+<div class="flex h-screen pt-16">
+<!-- Sidebar Navigation (Shared Component Implementation) -->
+<aside class="hidden lg:flex flex-col h-full w-64 border-r border-slate-200/20 dark:border-slate-800/20 bg-slate-50 dark:bg-slate-950 py-6 gap-2">
+<div class="px-6 mb-6">
+<h2 class="text-lg font-black text-blue-900 dark:text-blue-100">Pro Terminal</h2>
+<p class="text-[10px] uppercase tracking-[0.2em] font-semibold text-slate-500">High-Density Focus</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="bg-blue-50 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-lg px-4 py-3 flex items-center gap-3 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">map</span>
+<span class="font-sans text-xs uppercase tracking-widest font-semibold">Map Discovery</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">calculate</span>
+<span class="font-sans text-xs uppercase tracking-widest font-semibold">ROI Modeler</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+<span class="font-sans text-xs uppercase tracking-widest font-semibold">Zoning Overlay</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">domain</span>
+<span class="font-sans text-xs uppercase tracking-widest font-semibold">My Assemblies</span>
+</a>
+<a class="text-slate-500 dark:text-slate-400 px-4 py-3 flex items-center gap-3 hover:bg-slate-100 dark:hover:bg-slate-900 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span class="font-sans text-xs uppercase tracking-widest font-semibold">Market Data</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full bg-primary-container text-on-primary-container py-3 rounded-xl flex items-center justify-center gap-2 font-bold hover:brightness-110 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                    New Analysis
+                </button>
+</div>
+</aside>
+<!-- Main Content: Map Interface -->
+<main class="flex-1 relative flex overflow-hidden">
+<!-- Map Canvas (Discovery Map) -->
+<div class="absolute inset-0 bg-surface-container">
+<div class="w-full h-full grayscale-[0.2] opacity-90 contrast-125" data-alt="high-resolution satellite view of downtown Toronto urban grid with building footprints and green spaces" data-location="Toronto, Ontario" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDRG4FhOUGWWDw6dYPdVKmORcUOygmSZNIaRr75Va2aLBdhQ69MIMinRjJon2ZkN-R-MkWG1_LnXTQ8pZukx7p1D2nIQxjkxhUyaqwDW3vhVwthJOrq8s0ZDAAQ9htlSiEE-kCNhVcQIwlHYEkghGyX2ubg0if4LUOIEslB0EJ94gqMRhR-CzmRUPYtn7JRfYkecCkoSBGu5ZcVeSDI6Aef0OtSC1yTn1rBUCiMHJMjT-VRjsxIVeiQKb7HN5O97nUM05mu8oubdbE'); background-size: cover; background-position: center;">
+<!-- Overlay Hotspots -->
+<div class="absolute top-[40%] left-[35%] w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
+<!-- Assembly Pins -->
+<div class="absolute top-[45%] left-[42%] flex flex-col items-center group cursor-pointer">
+<div class="bg-primary text-white px-3 py-1 rounded-full text-xs font-bold shadow-xl border border-white/20 scale-100 group-hover:scale-110 transition-transform">
+                            Score: 94
+                        </div>
+<div class="w-4 h-4 bg-primary border-4 border-white rounded-full shadow-lg"></div>
+</div>
+<div class="absolute top-[38%] left-[55%] flex flex-col items-center group cursor-pointer opacity-80 hover:opacity-100">
+<div class="bg-secondary text-white px-3 py-1 rounded-full text-xs font-bold shadow-xl border border-white/20">
+                            Score: 78
+                        </div>
+<div class="w-4 h-4 bg-secondary border-4 border-white rounded-full shadow-lg"></div>
+</div>
+</div>
+<!-- Floating Map Tools -->
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<div class="glass-panel p-2 rounded-xl flex flex-col gap-1 shadow-lg border border-white/40">
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary"><span class="material-symbols-outlined">add</span></button>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary"><span class="material-symbols-outlined">remove</span></button>
+<hr class="border-outline-variant/20 mx-1"/>
+<button class="p-2 hover:bg-surface-container-high rounded-lg text-primary"><span class="material-symbols-outlined">my_location</span></button>
+</div>
+<div class="glass-panel p-2 rounded-xl shadow-lg border border-white/40">
+<button class="p-2 bg-primary text-white rounded-lg"><span class="material-symbols-outlined">layers</span></button>
+</div>
+</div>
+<!-- Data Attribution -->
+<div class="absolute bottom-4 left-6 flex items-center gap-3 text-[10px] text-on-surface-variant font-medium tracking-wide uppercase">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">verified</span> PropTx Data Engine</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-xs">history_edu</span> Municipal Planning Records</span>
+</div>
+</div>
+<!-- Right Panel: Insights & ROI (Asymmetric Layout) -->
+<section class="absolute right-0 top-0 h-full w-[440px] glass-panel border-l border-white/20 shadow-2xl flex flex-col overflow-y-auto">
+<div class="p-8">
+<div class="flex items-start justify-between mb-8">
+<div>
+<span class="text-[11px] font-extrabold uppercase tracking-widest text-secondary mb-1 block">Active Selection</span>
+<h1 class="text-3xl font-black leading-none text-primary">King-Parliament Assembly</h1>
+<p class="text-sm text-on-surface-variant mt-2">Downtown East, Toronto (Area 14A)</p>
+</div>
+<span class="bg-tertiary-container text-on-tertiary-container px-3 py-1 rounded-sm text-[10px] font-black uppercase">High Potency</span>
+</div>
+<!-- Assembly Details Grid -->
+<div class="grid grid-cols-2 gap-4 mb-10">
+<div class="bg-surface-container-low p-5 rounded-2xl border-b-2 border-primary-container/10">
+<label class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Total Site Area</label>
+<span class="text-xl font-black text-primary">1.42 Acres</span>
+<div class="text-[10px] text-secondary mt-1 font-semibold">61,855 sqft</div>
+</div>
+<div class="bg-surface-container-low p-5 rounded-2xl border-b-2 border-primary-container/10">
+<label class="text-[10px] uppercase font-bold text-on-surface-variant block mb-1">Combined Frontage</label>
+<span class="text-xl font-black text-primary">285.4 m</span>
+<div class="text-[10px] text-secondary mt-1 font-semibold">Multiple Street Access</div>
+</div>
+<div class="bg-primary p-5 rounded-2xl col-span-2">
+<div class="flex justify-between items-center mb-2">
+<label class="text-[10px] uppercase font-bold text-on-primary-container">Max Potential Density</label>
+<span class="material-symbols-outlined text-on-primary-container text-sm">info</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="text-3xl font-black text-white">14.5 FSI</span>
+<span class="text-xs text-on-primary-container">GFA: 896,000 sqft</span>
+</div>
+</div>
+</div>
+<!-- Financial Summary (Pro-forma ROI) -->
+<div class="mb-10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-sm font-black uppercase tracking-tight text-primary">Pro-forma ROI Modeler</h3>
+<button class="text-xs font-bold text-secondary flex items-center gap-1"><span class="material-symbols-outlined text-xs">edit</span> Customize Inputs</button>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center py-3 px-4 bg-white rounded-xl shadow-sm">
+<span class="text-xs font-semibold text-on-surface-variant">Estimated Land Cost</span>
+<span class="text-sm font-black text-primary">$124.5M</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-white rounded-xl shadow-sm">
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-on-surface-variant">Hard/Soft Costs</span>
+<span class="text-[9px] text-outline">Ontario Market Avg ($385/sqft)</span>
+</div>
+<span class="text-sm font-black text-primary">$345.0M</span>
+</div>
+<div class="flex justify-between items-center py-3 px-4 bg-white rounded-xl shadow-sm">
+<span class="text-xs font-semibold text-on-surface-variant">Target Exit Value</span>
+<span class="text-sm font-black text-primary">$612.8M</span>
+</div>
+<div class="mt-4 p-5 bg-gradient-to-br from-primary to-primary-container rounded-2xl flex justify-between items-center shadow-xl">
+<div>
+<span class="text-[10px] uppercase font-bold text-on-primary-container block">Projected Yield</span>
+<span class="text-2xl font-black text-white">22.4%</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase font-bold text-on-primary-container block">Cap Rate</span>
+<span class="text-2xl font-black text-white">4.85%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Zoning Variance Insights -->
+<div class="mb-8">
+<h3 class="text-sm font-black uppercase tracking-tight text-primary mb-4">Zoning Variance Insights</h3>
+<div class="space-y-4">
+<div class="flex gap-4 p-4 border border-outline-variant/20 rounded-xl hover:bg-surface-container transition-all">
+<div class="bg-tertiary-fixed-dim/20 p-2 rounded-lg h-fit">
+<span class="material-symbols-outlined text-tertiary">history</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary">Density Bonus Approved (2023)</p>
+<p class="text-[11px] text-on-surface-variant leading-relaxed mt-1">Block 12 immediately North granted 12.0 FSI increase via Section 37 for community benefits.</p>
+</div>
+</div>
+<div class="flex gap-4 p-4 border border-outline-variant/20 rounded-xl hover:bg-surface-container transition-all">
+<div class="bg-secondary-container/20 p-2 rounded-lg h-fit">
+<span class="material-symbols-outlined text-secondary">domain_verification</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary">Frontage Variance Precedent</p>
+<p class="text-[11px] text-on-surface-variant leading-relaxed mt-1">3 parcels on King St E successfully merged with 15% reduction in side-lot setbacks.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Existing Improvements Info -->
+<div class="bg-surface-container-highest/30 p-6 rounded-2xl border-l-4 border-error">
+<div class="flex justify-between mb-4">
+<h3 class="text-[10px] font-black uppercase tracking-tighter text-error">Demo Liability</h3>
+<span class="material-symbols-outlined text-error text-sm">warning</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<p class="text-xl font-black text-primary">$4.2M Value</p>
+<p class="text-[10px] font-medium text-on-surface-variant">3 Structures (C-Class Office)</p>
+</div>
+<button class="bg-white text-primary px-3 py-1 rounded text-[10px] font-bold shadow-sm">View Audits</button>
+</div>
+</div>
+</div>
+<!-- Sticky CTA Panel -->
+<div class="mt-auto p-6 border-t border-outline-variant/20 bg-surface/80 backdrop-blur-md">
+<button class="w-full bg-primary text-white py-4 rounded-xl font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                        Download Detailed Feasibility (PDF)
+                    </button>
+<p class="text-center text-[10px] text-outline mt-4 italic">Analysis based on current MPAC assessed values and Ontario Building Code standards.</p>
+</div>
+</section>
+</main>
+</div>
+</body></html>
